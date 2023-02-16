@@ -29,11 +29,21 @@ make
 The gd32f470zgt6.elf/bin/hex will be generated in 'build' dir.
 
 
-LiangShanPi provide both MCU and RGB LCD interface, 'LCD_MCU_LiangShanPi' is the 
-demo code for MCU interface and LiangShanPi LCD module, to build it:
+LiangShanPi provide both MCU and RGB LCD interface.
+
+'LCD_MCU_LiangShanPi' is the demo code for LiangShanPi LCD module 
+connect to MCU interface, to build it:
 
 ```
 cd LCD_MCU_LiangShanPi
+make
+```
+
+'LCD_TOUCH_MCU_LiangShanPi' is the demo code for LiangShanPi LCD module
+ connect to MCU interface with touch screen support, to build it:
+
+```
+cd LCD_TOUCH_MCU_LiangShanPi
 make
 ```
 
