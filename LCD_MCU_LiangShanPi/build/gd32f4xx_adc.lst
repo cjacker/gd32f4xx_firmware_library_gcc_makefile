@@ -1,0 +1,1448 @@
+ARM GAS  /tmp/cc48W6fx.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32f4xx_adc.c"
+  14              		.text
+  15              		.section	.text.adc_deinit,"ax",%progbits
+  16              		.align	1
+  17              		.global	adc_deinit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	adc_deinit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 40F60810 		movw	r0, #2312
+  27 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  28 000a 40F60810 		movw	r0, #2312
+  29 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  30 0012 08BD     		pop	{r3, pc}
+  32              		.section	.text.adc_clock_config,"ax",%progbits
+  33              		.align	1
+  34              		.global	adc_clock_config
+  35              		.syntax unified
+  36              		.thumb
+  37              		.thumb_func
+  39              	adc_clock_config:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 064B     		ldr	r3, .L4
+  44 0002 D3F80423 		ldr	r2, [r3, #772]
+  45 0006 22F4E022 		bic	r2, r2, #458752
+  46 000a C3F80423 		str	r2, [r3, #772]
+  47 000e D3F80423 		ldr	r2, [r3, #772]
+  48 0012 0243     		orrs	r2, r2, r0
+  49 0014 C3F80423 		str	r2, [r3, #772]
+  50 0018 7047     		bx	lr
+  51              	.L5:
+  52 001a 00BF     		.align	2
+  53              	.L4:
+  54 001c 00200140 		.word	1073815552
+  56              		.section	.text.adc_special_function_config,"ax",%progbits
+  57              		.align	1
+  58              		.global	adc_special_function_config
+  59              		.syntax unified
+  60              		.thumb
+  61              		.thumb_func
+ARM GAS  /tmp/cc48W6fx.s 			page 2
+
+
+  63              	adc_special_function_config:
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67 0000 AAB1     		cbz	r2, .L7
+  68 0002 11F4807F 		tst	r1, #256
+  69 0006 03D0     		beq	.L8
+  70 0008 4368     		ldr	r3, [r0, #4]
+  71 000a 43F48073 		orr	r3, r3, #256
+  72 000e 4360     		str	r3, [r0, #4]
+  73              	.L8:
+  74 0010 11F4806F 		tst	r1, #1024
+  75 0014 03D0     		beq	.L9
+  76 0016 4368     		ldr	r3, [r0, #4]
+  77 0018 43F48063 		orr	r3, r3, #1024
+  78 001c 4360     		str	r3, [r0, #4]
+  79              	.L9:
+  80 001e 11F0020F 		tst	r1, #2
+  81 0022 19D0     		beq	.L6
+  82 0024 8368     		ldr	r3, [r0, #8]
+  83 0026 43F00203 		orr	r3, r3, #2
+  84 002a 8360     		str	r3, [r0, #8]
+  85 002c 7047     		bx	lr
+  86              	.L7:
+  87 002e 11F4807F 		tst	r1, #256
+  88 0032 03D0     		beq	.L11
+  89 0034 4368     		ldr	r3, [r0, #4]
+  90 0036 23F48073 		bic	r3, r3, #256
+  91 003a 4360     		str	r3, [r0, #4]
+  92              	.L11:
+  93 003c 11F4806F 		tst	r1, #1024
+  94 0040 03D0     		beq	.L12
+  95 0042 4368     		ldr	r3, [r0, #4]
+  96 0044 23F48063 		bic	r3, r3, #1024
+  97 0048 4360     		str	r3, [r0, #4]
+  98              	.L12:
+  99 004a 11F0020F 		tst	r1, #2
+ 100 004e 03D0     		beq	.L6
+ 101 0050 8368     		ldr	r3, [r0, #8]
+ 102 0052 23F00203 		bic	r3, r3, #2
+ 103 0056 8360     		str	r3, [r0, #8]
+ 104              	.L6:
+ 105 0058 7047     		bx	lr
+ 107              		.section	.text.adc_data_alignment_config,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	adc_data_alignment_config
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 114              	adc_data_alignment_config:
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+ 118 0000 21B1     		cbz	r1, .L14
+ 119 0002 8368     		ldr	r3, [r0, #8]
+ 120 0004 43F40063 		orr	r3, r3, #2048
+ 121 0008 8360     		str	r3, [r0, #8]
+ARM GAS  /tmp/cc48W6fx.s 			page 3
+
+
+ 122 000a 7047     		bx	lr
+ 123              	.L14:
+ 124 000c 8368     		ldr	r3, [r0, #8]
+ 125 000e 23F40063 		bic	r3, r3, #2048
+ 126 0012 8360     		str	r3, [r0, #8]
+ 127 0014 7047     		bx	lr
+ 129              		.section	.text.adc_enable,"ax",%progbits
+ 130              		.align	1
+ 131              		.global	adc_enable
+ 132              		.syntax unified
+ 133              		.thumb
+ 134              		.thumb_func
+ 136              	adc_enable:
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+ 139              		@ link register save eliminated.
+ 140 0000 8368     		ldr	r3, [r0, #8]
+ 141 0002 13F0010F 		tst	r3, #1
+ 142 0006 03D1     		bne	.L16
+ 143 0008 8368     		ldr	r3, [r0, #8]
+ 144 000a 43F00103 		orr	r3, r3, #1
+ 145 000e 8360     		str	r3, [r0, #8]
+ 146              	.L16:
+ 147 0010 7047     		bx	lr
+ 149              		.section	.text.adc_disable,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	adc_disable
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 156              	adc_disable:
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159              		@ link register save eliminated.
+ 160 0000 8368     		ldr	r3, [r0, #8]
+ 161 0002 23F00103 		bic	r3, r3, #1
+ 162 0006 8360     		str	r3, [r0, #8]
+ 163 0008 7047     		bx	lr
+ 165              		.section	.text.adc_calibration_enable,"ax",%progbits
+ 166              		.align	1
+ 167              		.global	adc_calibration_enable
+ 168              		.syntax unified
+ 169              		.thumb
+ 170              		.thumb_func
+ 172              	adc_calibration_enable:
+ 173              		@ args = 0, pretend = 0, frame = 0
+ 174              		@ frame_needed = 0, uses_anonymous_args = 0
+ 175              		@ link register save eliminated.
+ 176 0000 00F10803 		add	r3, r0, #8
+ 177 0004 8268     		ldr	r2, [r0, #8]
+ 178 0006 42F00802 		orr	r2, r2, #8
+ 179 000a 8260     		str	r2, [r0, #8]
+ 180              	.L20:
+ 181 000c 1A68     		ldr	r2, [r3]
+ 182 000e 12F0080F 		tst	r2, #8
+ 183 0012 FBD1     		bne	.L20
+ 184 0014 8268     		ldr	r2, [r0, #8]
+ARM GAS  /tmp/cc48W6fx.s 			page 4
+
+
+ 185 0016 42F00402 		orr	r2, r2, #4
+ 186 001a 8260     		str	r2, [r0, #8]
+ 187              	.L21:
+ 188 001c 1A68     		ldr	r2, [r3]
+ 189 001e 12F0040F 		tst	r2, #4
+ 190 0022 FBD1     		bne	.L21
+ 191 0024 7047     		bx	lr
+ 193              		.section	.text.adc_channel_16_to_18,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	adc_channel_16_to_18
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 200              	adc_channel_16_to_18:
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203              		@ link register save eliminated.
+ 204 0000 A1B1     		cbz	r1, .L23
+ 205 0002 10F4800F 		tst	r0, #4194304
+ 206 0006 06D0     		beq	.L24
+ 207 0008 134A     		ldr	r2, .L27
+ 208 000a D2F80433 		ldr	r3, [r2, #772]
+ 209 000e 43F48003 		orr	r3, r3, #4194304
+ 210 0012 C2F80433 		str	r3, [r2, #772]
+ 211              	.L24:
+ 212 0016 10F4000F 		tst	r0, #8388608
+ 213 001a 1BD0     		beq	.L22
+ 214 001c 0E4A     		ldr	r2, .L27
+ 215 001e D2F80433 		ldr	r3, [r2, #772]
+ 216 0022 43F40003 		orr	r3, r3, #8388608
+ 217 0026 C2F80433 		str	r3, [r2, #772]
+ 218 002a 7047     		bx	lr
+ 219              	.L23:
+ 220 002c 10F4800F 		tst	r0, #4194304
+ 221 0030 06D0     		beq	.L26
+ 222 0032 094A     		ldr	r2, .L27
+ 223 0034 D2F80433 		ldr	r3, [r2, #772]
+ 224 0038 23F48003 		bic	r3, r3, #4194304
+ 225 003c C2F80433 		str	r3, [r2, #772]
+ 226              	.L26:
+ 227 0040 10F4000F 		tst	r0, #8388608
+ 228 0044 06D0     		beq	.L22
+ 229 0046 044A     		ldr	r2, .L27
+ 230 0048 D2F80433 		ldr	r3, [r2, #772]
+ 231 004c 23F40003 		bic	r3, r3, #8388608
+ 232 0050 C2F80433 		str	r3, [r2, #772]
+ 233              	.L22:
+ 234 0054 7047     		bx	lr
+ 235              	.L28:
+ 236 0056 00BF     		.align	2
+ 237              	.L27:
+ 238 0058 00200140 		.word	1073815552
+ 240              		.section	.text.adc_resolution_config,"ax",%progbits
+ 241              		.align	1
+ 242              		.global	adc_resolution_config
+ 243              		.syntax unified
+ 244              		.thumb
+ARM GAS  /tmp/cc48W6fx.s 			page 5
+
+
+ 245              		.thumb_func
+ 247              	adc_resolution_config:
+ 248              		@ args = 0, pretend = 0, frame = 0
+ 249              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250              		@ link register save eliminated.
+ 251 0000 4368     		ldr	r3, [r0, #4]
+ 252 0002 23F04073 		bic	r3, r3, #50331648
+ 253 0006 4360     		str	r3, [r0, #4]
+ 254 0008 4368     		ldr	r3, [r0, #4]
+ 255 000a 0B43     		orrs	r3, r3, r1
+ 256 000c 4360     		str	r3, [r0, #4]
+ 257 000e 7047     		bx	lr
+ 259              		.section	.text.adc_oversample_mode_config,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	adc_oversample_mode_config
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 266              	adc_oversample_mode_config:
+ 267              		@ args = 0, pretend = 0, frame = 0
+ 268              		@ frame_needed = 0, uses_anonymous_args = 0
+ 269              		@ link register save eliminated.
+ 270 0000 B1F5007F 		cmp	r1, #512
+ 271 0004 12D0     		beq	.L33
+ 272 0006 D0F88010 		ldr	r1, [r0, #128]
+ 273 000a 21F40071 		bic	r1, r1, #512
+ 274 000e C0F88010 		str	r1, [r0, #128]
+ 275              	.L32:
+ 276 0012 D0F88010 		ldr	r1, [r0, #128]
+ 277 0016 21F4FE71 		bic	r1, r1, #508
+ 278 001a C0F88010 		str	r1, [r0, #128]
+ 279 001e D0F88010 		ldr	r1, [r0, #128]
+ 280 0022 1A43     		orrs	r2, r2, r3
+ 281 0024 0A43     		orrs	r2, r2, r1
+ 282 0026 C0F88020 		str	r2, [r0, #128]
+ 283 002a 7047     		bx	lr
+ 284              	.L33:
+ 285 002c D0F88010 		ldr	r1, [r0, #128]
+ 286 0030 41F40071 		orr	r1, r1, #512
+ 287 0034 C0F88010 		str	r1, [r0, #128]
+ 288 0038 EBE7     		b	.L32
+ 290              		.section	.text.adc_oversample_mode_enable,"ax",%progbits
+ 291              		.align	1
+ 292              		.global	adc_oversample_mode_enable
+ 293              		.syntax unified
+ 294              		.thumb
+ 295              		.thumb_func
+ 297              	adc_oversample_mode_enable:
+ 298              		@ args = 0, pretend = 0, frame = 0
+ 299              		@ frame_needed = 0, uses_anonymous_args = 0
+ 300              		@ link register save eliminated.
+ 301 0000 D0F88030 		ldr	r3, [r0, #128]
+ 302 0004 43F00103 		orr	r3, r3, #1
+ 303 0008 C0F88030 		str	r3, [r0, #128]
+ 304 000c 7047     		bx	lr
+ 306              		.section	.text.adc_oversample_mode_disable,"ax",%progbits
+ 307              		.align	1
+ARM GAS  /tmp/cc48W6fx.s 			page 6
+
+
+ 308              		.global	adc_oversample_mode_disable
+ 309              		.syntax unified
+ 310              		.thumb
+ 311              		.thumb_func
+ 313              	adc_oversample_mode_disable:
+ 314              		@ args = 0, pretend = 0, frame = 0
+ 315              		@ frame_needed = 0, uses_anonymous_args = 0
+ 316              		@ link register save eliminated.
+ 317 0000 D0F88030 		ldr	r3, [r0, #128]
+ 318 0004 23F00103 		bic	r3, r3, #1
+ 319 0008 C0F88030 		str	r3, [r0, #128]
+ 320 000c 7047     		bx	lr
+ 322              		.section	.text.adc_dma_mode_enable,"ax",%progbits
+ 323              		.align	1
+ 324              		.global	adc_dma_mode_enable
+ 325              		.syntax unified
+ 326              		.thumb
+ 327              		.thumb_func
+ 329              	adc_dma_mode_enable:
+ 330              		@ args = 0, pretend = 0, frame = 0
+ 331              		@ frame_needed = 0, uses_anonymous_args = 0
+ 332              		@ link register save eliminated.
+ 333 0000 8368     		ldr	r3, [r0, #8]
+ 334 0002 43F48073 		orr	r3, r3, #256
+ 335 0006 8360     		str	r3, [r0, #8]
+ 336 0008 7047     		bx	lr
+ 338              		.section	.text.adc_dma_mode_disable,"ax",%progbits
+ 339              		.align	1
+ 340              		.global	adc_dma_mode_disable
+ 341              		.syntax unified
+ 342              		.thumb
+ 343              		.thumb_func
+ 345              	adc_dma_mode_disable:
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348              		@ link register save eliminated.
+ 349 0000 8368     		ldr	r3, [r0, #8]
+ 350 0002 23F48073 		bic	r3, r3, #256
+ 351 0006 8360     		str	r3, [r0, #8]
+ 352 0008 7047     		bx	lr
+ 354              		.section	.text.adc_dma_request_after_last_enable,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	adc_dma_request_after_last_enable
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 361              	adc_dma_request_after_last_enable:
+ 362              		@ args = 0, pretend = 0, frame = 0
+ 363              		@ frame_needed = 0, uses_anonymous_args = 0
+ 364              		@ link register save eliminated.
+ 365 0000 8368     		ldr	r3, [r0, #8]
+ 366 0002 43F40073 		orr	r3, r3, #512
+ 367 0006 8360     		str	r3, [r0, #8]
+ 368 0008 7047     		bx	lr
+ 370              		.section	.text.adc_dma_request_after_last_disable,"ax",%progbits
+ 371              		.align	1
+ 372              		.global	adc_dma_request_after_last_disable
+ARM GAS  /tmp/cc48W6fx.s 			page 7
+
+
+ 373              		.syntax unified
+ 374              		.thumb
+ 375              		.thumb_func
+ 377              	adc_dma_request_after_last_disable:
+ 378              		@ args = 0, pretend = 0, frame = 0
+ 379              		@ frame_needed = 0, uses_anonymous_args = 0
+ 380              		@ link register save eliminated.
+ 381 0000 8368     		ldr	r3, [r0, #8]
+ 382 0002 23F40073 		bic	r3, r3, #512
+ 383 0006 8360     		str	r3, [r0, #8]
+ 384 0008 7047     		bx	lr
+ 386              		.section	.text.adc_discontinuous_mode_config,"ax",%progbits
+ 387              		.align	1
+ 388              		.global	adc_discontinuous_mode_config
+ 389              		.syntax unified
+ 390              		.thumb
+ 391              		.thumb_func
+ 393              	adc_discontinuous_mode_config:
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396              		@ link register save eliminated.
+ 397 0000 4368     		ldr	r3, [r0, #4]
+ 398 0002 23F4C053 		bic	r3, r3, #6144
+ 399 0006 4360     		str	r3, [r0, #4]
+ 400 0008 0129     		cmp	r1, #1
+ 401 000a 02D0     		beq	.L41
+ 402 000c 0229     		cmp	r1, #2
+ 403 000e 13D0     		beq	.L42
+ 404 0010 7047     		bx	lr
+ 405              	.L41:
+ 406 0012 4368     		ldr	r3, [r0, #4]
+ 407 0014 23F46043 		bic	r3, r3, #57344
+ 408 0018 4360     		str	r3, [r0, #4]
+ 409 001a 531E     		subs	r3, r2, #1
+ 410 001c DBB2     		uxtb	r3, r3
+ 411 001e 072B     		cmp	r3, #7
+ 412 0020 05D8     		bhi	.L44
+ 413 0022 4368     		ldr	r3, [r0, #4]
+ 414 0024 013A     		subs	r2, r2, #1
+ 415 0026 5203     		lsls	r2, r2, #13
+ 416 0028 92B2     		uxth	r2, r2
+ 417 002a 1343     		orrs	r3, r3, r2
+ 418 002c 4360     		str	r3, [r0, #4]
+ 419              	.L44:
+ 420 002e 4368     		ldr	r3, [r0, #4]
+ 421 0030 43F40063 		orr	r3, r3, #2048
+ 422 0034 4360     		str	r3, [r0, #4]
+ 423 0036 7047     		bx	lr
+ 424              	.L42:
+ 425 0038 4368     		ldr	r3, [r0, #4]
+ 426 003a 43F48053 		orr	r3, r3, #4096
+ 427 003e 4360     		str	r3, [r0, #4]
+ 428 0040 7047     		bx	lr
+ 430              		.section	.text.adc_channel_length_config,"ax",%progbits
+ 431              		.align	1
+ 432              		.global	adc_channel_length_config
+ 433              		.syntax unified
+ARM GAS  /tmp/cc48W6fx.s 			page 8
+
+
+ 434              		.thumb
+ 435              		.thumb_func
+ 437              	adc_channel_length_config:
+ 438              		@ args = 0, pretend = 0, frame = 0
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440              		@ link register save eliminated.
+ 441 0000 0129     		cmp	r1, #1
+ 442 0002 02D0     		beq	.L46
+ 443 0004 0229     		cmp	r1, #2
+ 444 0006 0ED0     		beq	.L47
+ 445 0008 7047     		bx	lr
+ 446              	.L46:
+ 447 000a 013A     		subs	r2, r2, #1
+ 448 000c 0F2A     		cmp	r2, #15
+ 449 000e 17D8     		bhi	.L45
+ 450 0010 C36A     		ldr	r3, [r0, #44]
+ 451 0012 23F47003 		bic	r3, r3, #15728640
+ 452 0016 C362     		str	r3, [r0, #44]
+ 453 0018 C36A     		ldr	r3, [r0, #44]
+ 454 001a 1205     		lsls	r2, r2, #20
+ 455 001c 02F47002 		and	r2, r2, #15728640
+ 456 0020 1343     		orrs	r3, r3, r2
+ 457 0022 C362     		str	r3, [r0, #44]
+ 458 0024 7047     		bx	lr
+ 459              	.L47:
+ 460 0026 013A     		subs	r2, r2, #1
+ 461 0028 032A     		cmp	r2, #3
+ 462 002a 09D8     		bhi	.L45
+ 463 002c 836B     		ldr	r3, [r0, #56]
+ 464 002e 23F44013 		bic	r3, r3, #3145728
+ 465 0032 8363     		str	r3, [r0, #56]
+ 466 0034 836B     		ldr	r3, [r0, #56]
+ 467 0036 1205     		lsls	r2, r2, #20
+ 468 0038 02F44012 		and	r2, r2, #3145728
+ 469 003c 1343     		orrs	r3, r3, r2
+ 470 003e 8363     		str	r3, [r0, #56]
+ 471              	.L45:
+ 472 0040 7047     		bx	lr
+ 474              		.section	.text.adc_routine_channel_config,"ax",%progbits
+ 475              		.align	1
+ 476              		.global	adc_routine_channel_config
+ 477              		.syntax unified
+ 478              		.thumb
+ 479              		.thumb_func
+ 481              	adc_routine_channel_config:
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ 484              		@ link register save eliminated.
+ 485 0000 10B4     		push	{r4}
+ 486 0002 0529     		cmp	r1, #5
+ 487 0004 1ED8     		bhi	.L50
+ 488 0006 446B     		ldr	r4, [r0, #52]
+ 489 0008 01EB8101 		add	r1, r1, r1, lsl #2
+ 490 000c 4FF01F0C 		mov	ip, #31
+ 491 0010 0CFA01FC 		lsl	ip, ip, r1
+ 492 0014 24EA0C0C 		bic	ip, r4, ip
+ 493 0018 02FA01F1 		lsl	r1, r2, r1
+ARM GAS  /tmp/cc48W6fx.s 			page 9
+
+
+ 494 001c 41EA0C01 		orr	r1, r1, ip
+ 495 0020 4163     		str	r1, [r0, #52]
+ 496              	.L51:
+ 497 0022 092A     		cmp	r2, #9
+ 498 0024 30D8     		bhi	.L53
+ 499 0026 0169     		ldr	r1, [r0, #16]
+ 500 0028 02EB4202 		add	r2, r2, r2, lsl #1
+ 501 002c 4FF0070C 		mov	ip, #7
+ 502 0030 0CFA02FC 		lsl	ip, ip, r2
+ 503 0034 21EA0C01 		bic	r1, r1, ip
+ 504 0038 03FA02F2 		lsl	r2, r3, r2
+ 505 003c 0A43     		orrs	r2, r2, r1
+ 506 003e 0261     		str	r2, [r0, #16]
+ 507              	.L49:
+ 508 0040 10BC     		pop	{r4}
+ 509 0042 7047     		bx	lr
+ 510              	.L50:
+ 511 0044 0B29     		cmp	r1, #11
+ 512 0046 0ED8     		bhi	.L52
+ 513 0048 046B     		ldr	r4, [r0, #48]
+ 514 004a 0639     		subs	r1, r1, #6
+ 515 004c 01EB8101 		add	r1, r1, r1, lsl #2
+ 516 0050 4FF01F0C 		mov	ip, #31
+ 517 0054 0CFA01FC 		lsl	ip, ip, r1
+ 518 0058 24EA0C04 		bic	r4, r4, ip
+ 519 005c 02FA01F1 		lsl	r1, r2, r1
+ 520 0060 2143     		orrs	r1, r1, r4
+ 521 0062 0163     		str	r1, [r0, #48]
+ 522 0064 DDE7     		b	.L51
+ 523              	.L52:
+ 524 0066 0F29     		cmp	r1, #15
+ 525 0068 DBD8     		bhi	.L51
+ 526 006a C46A     		ldr	r4, [r0, #44]
+ 527 006c 0C39     		subs	r1, r1, #12
+ 528 006e 01EB8101 		add	r1, r1, r1, lsl #2
+ 529 0072 4FF01F0C 		mov	ip, #31
+ 530 0076 0CFA01FC 		lsl	ip, ip, r1
+ 531 007a 24EA0C04 		bic	r4, r4, ip
+ 532 007e 02FA01F1 		lsl	r1, r2, r1
+ 533 0082 2143     		orrs	r1, r1, r4
+ 534 0084 C162     		str	r1, [r0, #44]
+ 535 0086 CCE7     		b	.L51
+ 536              	.L53:
+ 537 0088 122A     		cmp	r2, #18
+ 538 008a D9D8     		bhi	.L49
+ 539 008c C168     		ldr	r1, [r0, #12]
+ 540 008e 0A3A     		subs	r2, r2, #10
+ 541 0090 02EB4202 		add	r2, r2, r2, lsl #1
+ 542 0094 0724     		movs	r4, #7
+ 543 0096 9440     		lsls	r4, r4, r2
+ 544 0098 21EA0401 		bic	r1, r1, r4
+ 545 009c 9340     		lsls	r3, r3, r2
+ 546 009e 0B43     		orrs	r3, r3, r1
+ 547 00a0 C360     		str	r3, [r0, #12]
+ 548 00a2 CDE7     		b	.L49
+ 550              		.section	.text.adc_inserted_channel_config,"ax",%progbits
+ 551              		.align	1
+ARM GAS  /tmp/cc48W6fx.s 			page 10
+
+
+ 552              		.global	adc_inserted_channel_config
+ 553              		.syntax unified
+ 554              		.thumb
+ 555              		.thumb_func
+ 557              	adc_inserted_channel_config:
+ 558              		@ args = 0, pretend = 0, frame = 0
+ 559              		@ frame_needed = 0, uses_anonymous_args = 0
+ 560              		@ link register save eliminated.
+ 561 0000 30B4     		push	{r4, r5}
+ 562 0002 846B     		ldr	r4, [r0, #56]
+ 563 0004 C4F30154 		ubfx	r4, r4, #20, #2
+ 564 0008 0329     		cmp	r1, #3
+ 565 000a 0ED8     		bhi	.L57
+ 566 000c 856B     		ldr	r5, [r0, #56]
+ 567 000e 611A     		subs	r1, r4, r1
+ 568 0010 C1EB8174 		rsb	r4, r1, r1, lsl #30
+ 569 0014 C1EB8401 		rsb	r1, r1, r4, lsl #2
+ 570 0018 0F31     		adds	r1, r1, #15
+ 571 001a 1F24     		movs	r4, #31
+ 572 001c 8C40     		lsls	r4, r4, r1
+ 573 001e 25EA0404 		bic	r4, r5, r4
+ 574 0022 02FA01F1 		lsl	r1, r2, r1
+ 575 0026 2143     		orrs	r1, r1, r4
+ 576 0028 8163     		str	r1, [r0, #56]
+ 577              	.L57:
+ 578 002a 092A     		cmp	r2, #9
+ 579 002c 0CD8     		bhi	.L58
+ 580 002e 0169     		ldr	r1, [r0, #16]
+ 581 0030 02EB4202 		add	r2, r2, r2, lsl #1
+ 582 0034 0724     		movs	r4, #7
+ 583 0036 9440     		lsls	r4, r4, r2
+ 584 0038 21EA0401 		bic	r1, r1, r4
+ 585 003c 03FA02F2 		lsl	r2, r3, r2
+ 586 0040 0A43     		orrs	r2, r2, r1
+ 587 0042 0261     		str	r2, [r0, #16]
+ 588              	.L56:
+ 589 0044 30BC     		pop	{r4, r5}
+ 590 0046 7047     		bx	lr
+ 591              	.L58:
+ 592 0048 122A     		cmp	r2, #18
+ 593 004a FBD8     		bhi	.L56
+ 594 004c C168     		ldr	r1, [r0, #12]
+ 595 004e 0A3A     		subs	r2, r2, #10
+ 596 0050 02EB4202 		add	r2, r2, r2, lsl #1
+ 597 0054 0724     		movs	r4, #7
+ 598 0056 9440     		lsls	r4, r4, r2
+ 599 0058 21EA0401 		bic	r1, r1, r4
+ 600 005c 9340     		lsls	r3, r3, r2
+ 601 005e 0B43     		orrs	r3, r3, r1
+ 602 0060 C360     		str	r3, [r0, #12]
+ 603 0062 EFE7     		b	.L56
+ 605              		.section	.text.adc_inserted_channel_offset_config,"ax",%progbits
+ 606              		.align	1
+ 607              		.global	adc_inserted_channel_offset_config
+ 608              		.syntax unified
+ 609              		.thumb
+ 610              		.thumb_func
+ARM GAS  /tmp/cc48W6fx.s 			page 11
+
+
+ 612              	adc_inserted_channel_offset_config:
+ 613              		@ args = 0, pretend = 0, frame = 0
+ 614              		@ frame_needed = 0, uses_anonymous_args = 0
+ 615              		@ link register save eliminated.
+ 616 0000 836B     		ldr	r3, [r0, #56]
+ 617 0002 C3F30153 		ubfx	r3, r3, #20, #2
+ 618 0006 C91A     		subs	r1, r1, r3
+ 619 0008 0331     		adds	r1, r1, #3
+ 620 000a 0329     		cmp	r1, #3
+ 621 000c 04D8     		bhi	.L61
+ 622 000e 00EB8100 		add	r0, r0, r1, lsl #2
+ 623 0012 C2F30B02 		ubfx	r2, r2, #0, #12
+ 624 0016 4261     		str	r2, [r0, #20]
+ 625              	.L61:
+ 626 0018 7047     		bx	lr
+ 628              		.section	.text.adc_external_trigger_source_config,"ax",%progbits
+ 629              		.align	1
+ 630              		.global	adc_external_trigger_source_config
+ 631              		.syntax unified
+ 632              		.thumb
+ 633              		.thumb_func
+ 635              	adc_external_trigger_source_config:
+ 636              		@ args = 0, pretend = 0, frame = 0
+ 637              		@ frame_needed = 0, uses_anonymous_args = 0
+ 638              		@ link register save eliminated.
+ 639 0000 0129     		cmp	r1, #1
+ 640 0002 02D0     		beq	.L64
+ 641 0004 0229     		cmp	r1, #2
+ 642 0006 08D0     		beq	.L65
+ 643 0008 7047     		bx	lr
+ 644              	.L64:
+ 645 000a 8368     		ldr	r3, [r0, #8]
+ 646 000c 23F07063 		bic	r3, r3, #251658240
+ 647 0010 8360     		str	r3, [r0, #8]
+ 648 0012 8368     		ldr	r3, [r0, #8]
+ 649 0014 1343     		orrs	r3, r3, r2
+ 650 0016 8360     		str	r3, [r0, #8]
+ 651 0018 7047     		bx	lr
+ 652              	.L65:
+ 653 001a 8368     		ldr	r3, [r0, #8]
+ 654 001c 23F47023 		bic	r3, r3, #983040
+ 655 0020 8360     		str	r3, [r0, #8]
+ 656 0022 8368     		ldr	r3, [r0, #8]
+ 657 0024 1343     		orrs	r3, r3, r2
+ 658 0026 8360     		str	r3, [r0, #8]
+ 659 0028 7047     		bx	lr
+ 661              		.section	.text.adc_external_trigger_config,"ax",%progbits
+ 662              		.align	1
+ 663              		.global	adc_external_trigger_config
+ 664              		.syntax unified
+ 665              		.thumb
+ 666              		.thumb_func
+ 668              	adc_external_trigger_config:
+ 669              		@ args = 0, pretend = 0, frame = 0
+ 670              		@ frame_needed = 0, uses_anonymous_args = 0
+ 671              		@ link register save eliminated.
+ 672 0000 0129     		cmp	r1, #1
+ARM GAS  /tmp/cc48W6fx.s 			page 12
+
+
+ 673 0002 02D0     		beq	.L68
+ 674 0004 0229     		cmp	r1, #2
+ 675 0006 09D0     		beq	.L69
+ 676 0008 7047     		bx	lr
+ 677              	.L68:
+ 678 000a 8368     		ldr	r3, [r0, #8]
+ 679 000c 23F04053 		bic	r3, r3, #805306368
+ 680 0010 8360     		str	r3, [r0, #8]
+ 681 0012 8368     		ldr	r3, [r0, #8]
+ 682 0014 43EA0273 		orr	r3, r3, r2, lsl #28
+ 683 0018 8360     		str	r3, [r0, #8]
+ 684 001a 7047     		bx	lr
+ 685              	.L69:
+ 686 001c 8368     		ldr	r3, [r0, #8]
+ 687 001e 23F44013 		bic	r3, r3, #3145728
+ 688 0022 8360     		str	r3, [r0, #8]
+ 689 0024 8368     		ldr	r3, [r0, #8]
+ 690 0026 43EA0253 		orr	r3, r3, r2, lsl #20
+ 691 002a 8360     		str	r3, [r0, #8]
+ 692 002c 7047     		bx	lr
+ 694              		.section	.text.adc_software_trigger_enable,"ax",%progbits
+ 695              		.align	1
+ 696              		.global	adc_software_trigger_enable
+ 697              		.syntax unified
+ 698              		.thumb
+ 699              		.thumb_func
+ 701              	adc_software_trigger_enable:
+ 702              		@ args = 0, pretend = 0, frame = 0
+ 703              		@ frame_needed = 0, uses_anonymous_args = 0
+ 704              		@ link register save eliminated.
+ 705 0000 0129     		cmp	r1, #1
+ 706 0002 02D0     		beq	.L72
+ 707 0004 0229     		cmp	r1, #2
+ 708 0006 05D0     		beq	.L73
+ 709 0008 7047     		bx	lr
+ 710              	.L72:
+ 711 000a 8368     		ldr	r3, [r0, #8]
+ 712 000c 43F08043 		orr	r3, r3, #1073741824
+ 713 0010 8360     		str	r3, [r0, #8]
+ 714 0012 7047     		bx	lr
+ 715              	.L73:
+ 716 0014 8368     		ldr	r3, [r0, #8]
+ 717 0016 43F48003 		orr	r3, r3, #4194304
+ 718 001a 8360     		str	r3, [r0, #8]
+ 719 001c 7047     		bx	lr
+ 721              		.section	.text.adc_end_of_conversion_config,"ax",%progbits
+ 722              		.align	1
+ 723              		.global	adc_end_of_conversion_config
+ 724              		.syntax unified
+ 725              		.thumb
+ 726              		.thumb_func
+ 728              	adc_end_of_conversion_config:
+ 729              		@ args = 0, pretend = 0, frame = 0
+ 730              		@ frame_needed = 0, uses_anonymous_args = 0
+ 731              		@ link register save eliminated.
+ 732 0000 11B1     		cbz	r1, .L76
+ 733 0002 0129     		cmp	r1, #1
+ARM GAS  /tmp/cc48W6fx.s 			page 13
+
+
+ 734 0004 05D0     		beq	.L77
+ 735 0006 7047     		bx	lr
+ 736              	.L76:
+ 737 0008 8368     		ldr	r3, [r0, #8]
+ 738 000a 23F48063 		bic	r3, r3, #1024
+ 739 000e 8360     		str	r3, [r0, #8]
+ 740 0010 7047     		bx	lr
+ 741              	.L77:
+ 742 0012 8368     		ldr	r3, [r0, #8]
+ 743 0014 43F48063 		orr	r3, r3, #1024
+ 744 0018 8360     		str	r3, [r0, #8]
+ 745 001a 7047     		bx	lr
+ 747              		.section	.text.adc_routine_data_read,"ax",%progbits
+ 748              		.align	1
+ 749              		.global	adc_routine_data_read
+ 750              		.syntax unified
+ 751              		.thumb
+ 752              		.thumb_func
+ 754              	adc_routine_data_read:
+ 755              		@ args = 0, pretend = 0, frame = 0
+ 756              		@ frame_needed = 0, uses_anonymous_args = 0
+ 757              		@ link register save eliminated.
+ 758 0000 C06C     		ldr	r0, [r0, #76]
+ 759 0002 80B2     		uxth	r0, r0
+ 760 0004 7047     		bx	lr
+ 762              		.section	.text.adc_inserted_data_read,"ax",%progbits
+ 763              		.align	1
+ 764              		.global	adc_inserted_data_read
+ 765              		.syntax unified
+ 766              		.thumb
+ 767              		.thumb_func
+ 769              	adc_inserted_data_read:
+ 770              		@ args = 0, pretend = 0, frame = 0
+ 771              		@ frame_needed = 0, uses_anonymous_args = 0
+ 772              		@ link register save eliminated.
+ 773 0000 0329     		cmp	r1, #3
+ 774 0002 0CD8     		bhi	.L87
+ 775 0004 DFE801F0 		tbb	[pc, r1]
+ 776              	.L83:
+ 777 0008 02       		.byte	(.L86-.L83)/2
+ 778 0009 05       		.byte	(.L85-.L83)/2
+ 779 000a 07       		.byte	(.L84-.L83)/2
+ 780 000b 09       		.byte	(.L82-.L83)/2
+ 781              		.p2align 1
+ 782              	.L86:
+ 783 000c C06B     		ldr	r0, [r0, #60]
+ 784              	.L81:
+ 785 000e 80B2     		uxth	r0, r0
+ 786 0010 7047     		bx	lr
+ 787              	.L85:
+ 788 0012 006C     		ldr	r0, [r0, #64]
+ 789 0014 FBE7     		b	.L81
+ 790              	.L84:
+ 791 0016 406C     		ldr	r0, [r0, #68]
+ 792 0018 F9E7     		b	.L81
+ 793              	.L82:
+ 794 001a 806C     		ldr	r0, [r0, #72]
+ARM GAS  /tmp/cc48W6fx.s 			page 14
+
+
+ 795 001c F7E7     		b	.L81
+ 796              	.L87:
+ 797 001e 0020     		movs	r0, #0
+ 798 0020 F5E7     		b	.L81
+ 800              		.section	.text.adc_watchdog_single_channel_disable,"ax",%progbits
+ 801              		.align	1
+ 802              		.global	adc_watchdog_single_channel_disable
+ 803              		.syntax unified
+ 804              		.thumb
+ 805              		.thumb_func
+ 807              	adc_watchdog_single_channel_disable:
+ 808              		@ args = 0, pretend = 0, frame = 0
+ 809              		@ frame_needed = 0, uses_anonymous_args = 0
+ 810              		@ link register save eliminated.
+ 811 0000 4368     		ldr	r3, [r0, #4]
+ 812 0002 23F40073 		bic	r3, r3, #512
+ 813 0006 4360     		str	r3, [r0, #4]
+ 814 0008 7047     		bx	lr
+ 816              		.section	.text.adc_watchdog_single_channel_enable,"ax",%progbits
+ 817              		.align	1
+ 818              		.global	adc_watchdog_single_channel_enable
+ 819              		.syntax unified
+ 820              		.thumb
+ 821              		.thumb_func
+ 823              	adc_watchdog_single_channel_enable:
+ 824              		@ args = 0, pretend = 0, frame = 0
+ 825              		@ frame_needed = 0, uses_anonymous_args = 0
+ 826              		@ link register save eliminated.
+ 827 0000 4368     		ldr	r3, [r0, #4]
+ 828 0002 23F01F03 		bic	r3, r3, #31
+ 829 0006 4360     		str	r3, [r0, #4]
+ 830 0008 4368     		ldr	r3, [r0, #4]
+ 831 000a 0B43     		orrs	r3, r3, r1
+ 832 000c 4360     		str	r3, [r0, #4]
+ 833 000e 4368     		ldr	r3, [r0, #4]
+ 834 0010 43F40073 		orr	r3, r3, #512
+ 835 0014 4360     		str	r3, [r0, #4]
+ 836 0016 7047     		bx	lr
+ 838              		.section	.text.adc_watchdog_sequence_channel_enable,"ax",%progbits
+ 839              		.align	1
+ 840              		.global	adc_watchdog_sequence_channel_enable
+ 841              		.syntax unified
+ 842              		.thumb
+ 843              		.thumb_func
+ 845              	adc_watchdog_sequence_channel_enable:
+ 846              		@ args = 0, pretend = 0, frame = 0
+ 847              		@ frame_needed = 0, uses_anonymous_args = 0
+ 848              		@ link register save eliminated.
+ 849 0000 4368     		ldr	r3, [r0, #4]
+ 850 0002 23F44003 		bic	r3, r3, #12582912
+ 851 0006 23F40073 		bic	r3, r3, #512
+ 852 000a 4360     		str	r3, [r0, #4]
+ 853 000c 0229     		cmp	r1, #2
+ 854 000e 09D0     		beq	.L91
+ 855 0010 0329     		cmp	r1, #3
+ 856 0012 0CD0     		beq	.L92
+ 857 0014 0129     		cmp	r1, #1
+ARM GAS  /tmp/cc48W6fx.s 			page 15
+
+
+ 858 0016 00D0     		beq	.L94
+ 859              	.L90:
+ 860 0018 7047     		bx	lr
+ 861              	.L94:
+ 862 001a 4368     		ldr	r3, [r0, #4]
+ 863 001c 43F40003 		orr	r3, r3, #8388608
+ 864 0020 4360     		str	r3, [r0, #4]
+ 865 0022 7047     		bx	lr
+ 866              	.L91:
+ 867 0024 4368     		ldr	r3, [r0, #4]
+ 868 0026 43F48003 		orr	r3, r3, #4194304
+ 869 002a 4360     		str	r3, [r0, #4]
+ 870 002c 7047     		bx	lr
+ 871              	.L92:
+ 872 002e 4368     		ldr	r3, [r0, #4]
+ 873 0030 43F44003 		orr	r3, r3, #12582912
+ 874 0034 4360     		str	r3, [r0, #4]
+ 875 0036 EFE7     		b	.L90
+ 877              		.section	.text.adc_watchdog_disable,"ax",%progbits
+ 878              		.align	1
+ 879              		.global	adc_watchdog_disable
+ 880              		.syntax unified
+ 881              		.thumb
+ 882              		.thumb_func
+ 884              	adc_watchdog_disable:
+ 885              		@ args = 0, pretend = 0, frame = 0
+ 886              		@ frame_needed = 0, uses_anonymous_args = 0
+ 887              		@ link register save eliminated.
+ 888 0000 0229     		cmp	r1, #2
+ 889 0002 09D0     		beq	.L96
+ 890 0004 0329     		cmp	r1, #3
+ 891 0006 0CD0     		beq	.L97
+ 892 0008 0129     		cmp	r1, #1
+ 893 000a 00D0     		beq	.L99
+ 894              	.L95:
+ 895 000c 7047     		bx	lr
+ 896              	.L99:
+ 897 000e 4368     		ldr	r3, [r0, #4]
+ 898 0010 23F40003 		bic	r3, r3, #8388608
+ 899 0014 4360     		str	r3, [r0, #4]
+ 900 0016 7047     		bx	lr
+ 901              	.L96:
+ 902 0018 4368     		ldr	r3, [r0, #4]
+ 903 001a 23F48003 		bic	r3, r3, #4194304
+ 904 001e 4360     		str	r3, [r0, #4]
+ 905 0020 7047     		bx	lr
+ 906              	.L97:
+ 907 0022 4368     		ldr	r3, [r0, #4]
+ 908 0024 23F44003 		bic	r3, r3, #12582912
+ 909 0028 4360     		str	r3, [r0, #4]
+ 910 002a EFE7     		b	.L95
+ 912              		.section	.text.adc_watchdog_threshold_config,"ax",%progbits
+ 913              		.align	1
+ 914              		.global	adc_watchdog_threshold_config
+ 915              		.syntax unified
+ 916              		.thumb
+ 917              		.thumb_func
+ARM GAS  /tmp/cc48W6fx.s 			page 16
+
+
+ 919              	adc_watchdog_threshold_config:
+ 920              		@ args = 0, pretend = 0, frame = 0
+ 921              		@ frame_needed = 0, uses_anonymous_args = 0
+ 922              		@ link register save eliminated.
+ 923 0000 C1F30B01 		ubfx	r1, r1, #0, #12
+ 924 0004 8162     		str	r1, [r0, #40]
+ 925 0006 C2F30B02 		ubfx	r2, r2, #0, #12
+ 926 000a 4262     		str	r2, [r0, #36]
+ 927 000c 7047     		bx	lr
+ 929              		.section	.text.adc_flag_get,"ax",%progbits
+ 930              		.align	1
+ 931              		.global	adc_flag_get
+ 932              		.syntax unified
+ 933              		.thumb
+ 934              		.thumb_func
+ 936              	adc_flag_get:
+ 937              		@ args = 0, pretend = 0, frame = 0
+ 938              		@ frame_needed = 0, uses_anonymous_args = 0
+ 939              		@ link register save eliminated.
+ 940 0000 0368     		ldr	r3, [r0]
+ 941 0002 0B42     		tst	r3, r1
+ 942 0004 01D1     		bne	.L103
+ 943 0006 0020     		movs	r0, #0
+ 944 0008 7047     		bx	lr
+ 945              	.L103:
+ 946 000a 0120     		movs	r0, #1
+ 947 000c 7047     		bx	lr
+ 949              		.section	.text.adc_flag_clear,"ax",%progbits
+ 950              		.align	1
+ 951              		.global	adc_flag_clear
+ 952              		.syntax unified
+ 953              		.thumb
+ 954              		.thumb_func
+ 956              	adc_flag_clear:
+ 957              		@ args = 0, pretend = 0, frame = 0
+ 958              		@ frame_needed = 0, uses_anonymous_args = 0
+ 959              		@ link register save eliminated.
+ 960 0000 0368     		ldr	r3, [r0]
+ 961 0002 23EA0103 		bic	r3, r3, r1
+ 962 0006 0360     		str	r3, [r0]
+ 963 0008 7047     		bx	lr
+ 965              		.section	.text.adc_routine_software_startconv_flag_get,"ax",%progbits
+ 966              		.align	1
+ 967              		.global	adc_routine_software_startconv_flag_get
+ 968              		.syntax unified
+ 969              		.thumb
+ 970              		.thumb_func
+ 972              	adc_routine_software_startconv_flag_get:
+ 973              		@ args = 0, pretend = 0, frame = 0
+ 974              		@ frame_needed = 0, uses_anonymous_args = 0
+ 975              		@ link register save eliminated.
+ 976 0000 0368     		ldr	r3, [r0]
+ 977 0002 13F0100F 		tst	r3, #16
+ 978 0006 01D1     		bne	.L107
+ 979 0008 0020     		movs	r0, #0
+ 980 000a 7047     		bx	lr
+ 981              	.L107:
+ARM GAS  /tmp/cc48W6fx.s 			page 17
+
+
+ 982 000c 0120     		movs	r0, #1
+ 983 000e 7047     		bx	lr
+ 985              		.section	.text.adc_inserted_software_startconv_flag_get,"ax",%progbits
+ 986              		.align	1
+ 987              		.global	adc_inserted_software_startconv_flag_get
+ 988              		.syntax unified
+ 989              		.thumb
+ 990              		.thumb_func
+ 992              	adc_inserted_software_startconv_flag_get:
+ 993              		@ args = 0, pretend = 0, frame = 0
+ 994              		@ frame_needed = 0, uses_anonymous_args = 0
+ 995              		@ link register save eliminated.
+ 996 0000 0368     		ldr	r3, [r0]
+ 997 0002 13F0080F 		tst	r3, #8
+ 998 0006 01D1     		bne	.L110
+ 999 0008 0020     		movs	r0, #0
+ 1000 000a 7047     		bx	lr
+ 1001              	.L110:
+ 1002 000c 0120     		movs	r0, #1
+ 1003 000e 7047     		bx	lr
+ 1005              		.section	.text.adc_interrupt_flag_get,"ax",%progbits
+ 1006              		.align	1
+ 1007              		.global	adc_interrupt_flag_get
+ 1008              		.syntax unified
+ 1009              		.thumb
+ 1010              		.thumb_func
+ 1012              	adc_interrupt_flag_get:
+ 1013              		@ args = 0, pretend = 0, frame = 0
+ 1014              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1015              		@ link register save eliminated.
+ 1016 0000 0139     		subs	r1, r1, #1
+ 1017 0002 1F29     		cmp	r1, #31
+ 1018 0004 39D8     		bhi	.L118
+ 1019 0006 DFE801F0 		tbb	[pc, r1]
+ 1020              	.L114:
+ 1021 000a 10       		.byte	(.L117-.L114)/2
+ 1022 000b 1A       		.byte	(.L116-.L114)/2
+ 1023 000c 38       		.byte	(.L118-.L114)/2
+ 1024 000d 24       		.byte	(.L115-.L114)/2
+ 1025 000e 38       		.byte	(.L118-.L114)/2
+ 1026 000f 38       		.byte	(.L118-.L114)/2
+ 1027 0010 38       		.byte	(.L118-.L114)/2
+ 1028 0011 38       		.byte	(.L118-.L114)/2
+ 1029 0012 38       		.byte	(.L118-.L114)/2
+ 1030 0013 38       		.byte	(.L118-.L114)/2
+ 1031 0014 38       		.byte	(.L118-.L114)/2
+ 1032 0015 38       		.byte	(.L118-.L114)/2
+ 1033 0016 38       		.byte	(.L118-.L114)/2
+ 1034 0017 38       		.byte	(.L118-.L114)/2
+ 1035 0018 38       		.byte	(.L118-.L114)/2
+ 1036 0019 38       		.byte	(.L118-.L114)/2
+ 1037 001a 38       		.byte	(.L118-.L114)/2
+ 1038 001b 38       		.byte	(.L118-.L114)/2
+ 1039 001c 38       		.byte	(.L118-.L114)/2
+ 1040 001d 38       		.byte	(.L118-.L114)/2
+ 1041 001e 38       		.byte	(.L118-.L114)/2
+ 1042 001f 38       		.byte	(.L118-.L114)/2
+ARM GAS  /tmp/cc48W6fx.s 			page 18
+
+
+ 1043 0020 38       		.byte	(.L118-.L114)/2
+ 1044 0021 38       		.byte	(.L118-.L114)/2
+ 1045 0022 38       		.byte	(.L118-.L114)/2
+ 1046 0023 38       		.byte	(.L118-.L114)/2
+ 1047 0024 38       		.byte	(.L118-.L114)/2
+ 1048 0025 38       		.byte	(.L118-.L114)/2
+ 1049 0026 38       		.byte	(.L118-.L114)/2
+ 1050 0027 38       		.byte	(.L118-.L114)/2
+ 1051 0028 38       		.byte	(.L118-.L114)/2
+ 1052 0029 2E       		.byte	(.L113-.L114)/2
+ 1053              		.p2align 1
+ 1054              	.L117:
+ 1055 002a 0368     		ldr	r3, [r0]
+ 1056 002c 03F00103 		and	r3, r3, #1
+ 1057 0030 4268     		ldr	r2, [r0, #4]
+ 1058 0032 12F0400F 		tst	r2, #64
+ 1059 0036 22D0     		beq	.L119
+ 1060 0038 1BBB     		cbnz	r3, .L120
+ 1061 003a 0020     		movs	r0, #0
+ 1062 003c 7047     		bx	lr
+ 1063              	.L116:
+ 1064 003e 0368     		ldr	r3, [r0]
+ 1065 0040 03F00203 		and	r3, r3, #2
+ 1066 0044 4268     		ldr	r2, [r0, #4]
+ 1067 0046 12F0200F 		tst	r2, #32
+ 1068 004a 1CD0     		beq	.L121
+ 1069 004c EBB9     		cbnz	r3, .L122
+ 1070 004e 0020     		movs	r0, #0
+ 1071 0050 7047     		bx	lr
+ 1072              	.L115:
+ 1073 0052 0368     		ldr	r3, [r0]
+ 1074 0054 03F00403 		and	r3, r3, #4
+ 1075 0058 4268     		ldr	r2, [r0, #4]
+ 1076 005a 12F0800F 		tst	r2, #128
+ 1077 005e 16D0     		beq	.L123
+ 1078 0060 BBB9     		cbnz	r3, .L124
+ 1079 0062 0020     		movs	r0, #0
+ 1080 0064 7047     		bx	lr
+ 1081              	.L113:
+ 1082 0066 0368     		ldr	r3, [r0]
+ 1083 0068 03F02003 		and	r3, r3, #32
+ 1084 006c 4268     		ldr	r2, [r0, #4]
+ 1085 006e 12F0806F 		tst	r2, #67108864
+ 1086 0072 10D0     		beq	.L125
+ 1087 0074 8BB9     		cbnz	r3, .L126
+ 1088 0076 0020     		movs	r0, #0
+ 1089 0078 7047     		bx	lr
+ 1090              	.L118:
+ 1091 007a 0020     		movs	r0, #0
+ 1092 007c 7047     		bx	lr
+ 1093              	.L119:
+ 1094 007e 0020     		movs	r0, #0
+ 1095 0080 7047     		bx	lr
+ 1096              	.L120:
+ 1097 0082 0120     		movs	r0, #1
+ 1098 0084 7047     		bx	lr
+ 1099              	.L121:
+ARM GAS  /tmp/cc48W6fx.s 			page 19
+
+
+ 1100 0086 0020     		movs	r0, #0
+ 1101 0088 7047     		bx	lr
+ 1102              	.L122:
+ 1103 008a 0120     		movs	r0, #1
+ 1104 008c 7047     		bx	lr
+ 1105              	.L123:
+ 1106 008e 0020     		movs	r0, #0
+ 1107 0090 7047     		bx	lr
+ 1108              	.L124:
+ 1109 0092 0120     		movs	r0, #1
+ 1110 0094 7047     		bx	lr
+ 1111              	.L125:
+ 1112 0096 0020     		movs	r0, #0
+ 1113 0098 7047     		bx	lr
+ 1114              	.L126:
+ 1115 009a 0120     		movs	r0, #1
+ 1116 009c 7047     		bx	lr
+ 1118              		.section	.text.adc_interrupt_flag_clear,"ax",%progbits
+ 1119              		.align	1
+ 1120              		.global	adc_interrupt_flag_clear
+ 1121              		.syntax unified
+ 1122              		.thumb
+ 1123              		.thumb_func
+ 1125              	adc_interrupt_flag_clear:
+ 1126              		@ args = 0, pretend = 0, frame = 0
+ 1127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1128              		@ link register save eliminated.
+ 1129 0000 0368     		ldr	r3, [r0]
+ 1130 0002 23EA0103 		bic	r3, r3, r1
+ 1131 0006 0360     		str	r3, [r0]
+ 1132 0008 7047     		bx	lr
+ 1134              		.section	.text.adc_interrupt_enable,"ax",%progbits
+ 1135              		.align	1
+ 1136              		.global	adc_interrupt_enable
+ 1137              		.syntax unified
+ 1138              		.thumb
+ 1139              		.thumb_func
+ 1141              	adc_interrupt_enable:
+ 1142              		@ args = 0, pretend = 0, frame = 0
+ 1143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1144              		@ link register save eliminated.
+ 1145 0000 8029     		cmp	r1, #128
+ 1146 0002 18D0     		beq	.L129
+ 1147 0004 09D8     		bhi	.L130
+ 1148 0006 2029     		cmp	r1, #32
+ 1149 0008 10D0     		beq	.L131
+ 1150 000a 4029     		cmp	r1, #64
+ 1151 000c 04D1     		bne	.L135
+ 1152 000e 4368     		ldr	r3, [r0, #4]
+ 1153 0010 43F04003 		orr	r3, r3, #64
+ 1154 0014 4360     		str	r3, [r0, #4]
+ 1155 0016 7047     		bx	lr
+ 1156              	.L135:
+ 1157 0018 7047     		bx	lr
+ 1158              	.L130:
+ 1159 001a B1F1806F 		cmp	r1, #67108864
+ 1160 001e 04D1     		bne	.L136
+ARM GAS  /tmp/cc48W6fx.s 			page 20
+
+
+ 1161 0020 4368     		ldr	r3, [r0, #4]
+ 1162 0022 43F08063 		orr	r3, r3, #67108864
+ 1163 0026 4360     		str	r3, [r0, #4]
+ 1164 0028 7047     		bx	lr
+ 1165              	.L136:
+ 1166 002a 7047     		bx	lr
+ 1167              	.L131:
+ 1168 002c 4368     		ldr	r3, [r0, #4]
+ 1169 002e 43F02003 		orr	r3, r3, #32
+ 1170 0032 4360     		str	r3, [r0, #4]
+ 1171 0034 7047     		bx	lr
+ 1172              	.L129:
+ 1173 0036 4368     		ldr	r3, [r0, #4]
+ 1174 0038 43F08003 		orr	r3, r3, #128
+ 1175 003c 4360     		str	r3, [r0, #4]
+ 1176 003e 7047     		bx	lr
+ 1178              		.section	.text.adc_interrupt_disable,"ax",%progbits
+ 1179              		.align	1
+ 1180              		.global	adc_interrupt_disable
+ 1181              		.syntax unified
+ 1182              		.thumb
+ 1183              		.thumb_func
+ 1185              	adc_interrupt_disable:
+ 1186              		@ args = 0, pretend = 0, frame = 0
+ 1187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1188              		@ link register save eliminated.
+ 1189 0000 8029     		cmp	r1, #128
+ 1190 0002 18D0     		beq	.L138
+ 1191 0004 09D8     		bhi	.L139
+ 1192 0006 2029     		cmp	r1, #32
+ 1193 0008 10D0     		beq	.L140
+ 1194 000a 4029     		cmp	r1, #64
+ 1195 000c 04D1     		bne	.L144
+ 1196 000e 4368     		ldr	r3, [r0, #4]
+ 1197 0010 23F04003 		bic	r3, r3, #64
+ 1198 0014 4360     		str	r3, [r0, #4]
+ 1199 0016 7047     		bx	lr
+ 1200              	.L144:
+ 1201 0018 7047     		bx	lr
+ 1202              	.L139:
+ 1203 001a B1F1806F 		cmp	r1, #67108864
+ 1204 001e 04D1     		bne	.L145
+ 1205 0020 4368     		ldr	r3, [r0, #4]
+ 1206 0022 23F08063 		bic	r3, r3, #67108864
+ 1207 0026 4360     		str	r3, [r0, #4]
+ 1208 0028 7047     		bx	lr
+ 1209              	.L145:
+ 1210 002a 7047     		bx	lr
+ 1211              	.L140:
+ 1212 002c 4368     		ldr	r3, [r0, #4]
+ 1213 002e 23F02003 		bic	r3, r3, #32
+ 1214 0032 4360     		str	r3, [r0, #4]
+ 1215 0034 7047     		bx	lr
+ 1216              	.L138:
+ 1217 0036 4368     		ldr	r3, [r0, #4]
+ 1218 0038 23F08003 		bic	r3, r3, #128
+ 1219 003c 4360     		str	r3, [r0, #4]
+ARM GAS  /tmp/cc48W6fx.s 			page 21
+
+
+ 1220 003e 7047     		bx	lr
+ 1222              		.section	.text.adc_sync_mode_config,"ax",%progbits
+ 1223              		.align	1
+ 1224              		.global	adc_sync_mode_config
+ 1225              		.syntax unified
+ 1226              		.thumb
+ 1227              		.thumb_func
+ 1229              	adc_sync_mode_config:
+ 1230              		@ args = 0, pretend = 0, frame = 0
+ 1231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1232              		@ link register save eliminated.
+ 1233 0000 064B     		ldr	r3, .L147
+ 1234 0002 D3F80423 		ldr	r2, [r3, #772]
+ 1235 0006 22F01F02 		bic	r2, r2, #31
+ 1236 000a C3F80423 		str	r2, [r3, #772]
+ 1237 000e D3F80423 		ldr	r2, [r3, #772]
+ 1238 0012 0243     		orrs	r2, r2, r0
+ 1239 0014 C3F80423 		str	r2, [r3, #772]
+ 1240 0018 7047     		bx	lr
+ 1241              	.L148:
+ 1242 001a 00BF     		.align	2
+ 1243              	.L147:
+ 1244 001c 00200140 		.word	1073815552
+ 1246              		.section	.text.adc_sync_delay_config,"ax",%progbits
+ 1247              		.align	1
+ 1248              		.global	adc_sync_delay_config
+ 1249              		.syntax unified
+ 1250              		.thumb
+ 1251              		.thumb_func
+ 1253              	adc_sync_delay_config:
+ 1254              		@ args = 0, pretend = 0, frame = 0
+ 1255              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1256              		@ link register save eliminated.
+ 1257 0000 064B     		ldr	r3, .L150
+ 1258 0002 D3F80423 		ldr	r2, [r3, #772]
+ 1259 0006 22F47062 		bic	r2, r2, #3840
+ 1260 000a C3F80423 		str	r2, [r3, #772]
+ 1261 000e D3F80423 		ldr	r2, [r3, #772]
+ 1262 0012 0243     		orrs	r2, r2, r0
+ 1263 0014 C3F80423 		str	r2, [r3, #772]
+ 1264 0018 7047     		bx	lr
+ 1265              	.L151:
+ 1266 001a 00BF     		.align	2
+ 1267              	.L150:
+ 1268 001c 00200140 		.word	1073815552
+ 1270              		.section	.text.adc_sync_dma_config,"ax",%progbits
+ 1271              		.align	1
+ 1272              		.global	adc_sync_dma_config
+ 1273              		.syntax unified
+ 1274              		.thumb
+ 1275              		.thumb_func
+ 1277              	adc_sync_dma_config:
+ 1278              		@ args = 0, pretend = 0, frame = 0
+ 1279              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1280              		@ link register save eliminated.
+ 1281 0000 064B     		ldr	r3, .L153
+ 1282 0002 D3F80423 		ldr	r2, [r3, #772]
+ARM GAS  /tmp/cc48W6fx.s 			page 22
+
+
+ 1283 0006 22F44042 		bic	r2, r2, #49152
+ 1284 000a C3F80423 		str	r2, [r3, #772]
+ 1285 000e D3F80423 		ldr	r2, [r3, #772]
+ 1286 0012 0243     		orrs	r2, r2, r0
+ 1287 0014 C3F80423 		str	r2, [r3, #772]
+ 1288 0018 7047     		bx	lr
+ 1289              	.L154:
+ 1290 001a 00BF     		.align	2
+ 1291              	.L153:
+ 1292 001c 00200140 		.word	1073815552
+ 1294              		.section	.text.adc_sync_dma_request_after_last_enable,"ax",%progbits
+ 1295              		.align	1
+ 1296              		.global	adc_sync_dma_request_after_last_enable
+ 1297              		.syntax unified
+ 1298              		.thumb
+ 1299              		.thumb_func
+ 1301              	adc_sync_dma_request_after_last_enable:
+ 1302              		@ args = 0, pretend = 0, frame = 0
+ 1303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1304              		@ link register save eliminated.
+ 1305 0000 034A     		ldr	r2, .L156
+ 1306 0002 D2F80433 		ldr	r3, [r2, #772]
+ 1307 0006 43F40053 		orr	r3, r3, #8192
+ 1308 000a C2F80433 		str	r3, [r2, #772]
+ 1309 000e 7047     		bx	lr
+ 1310              	.L157:
+ 1311              		.align	2
+ 1312              	.L156:
+ 1313 0010 00200140 		.word	1073815552
+ 1315              		.section	.text.adc_sync_dma_request_after_last_disable,"ax",%progbits
+ 1316              		.align	1
+ 1317              		.global	adc_sync_dma_request_after_last_disable
+ 1318              		.syntax unified
+ 1319              		.thumb
+ 1320              		.thumb_func
+ 1322              	adc_sync_dma_request_after_last_disable:
+ 1323              		@ args = 0, pretend = 0, frame = 0
+ 1324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1325              		@ link register save eliminated.
+ 1326 0000 034A     		ldr	r2, .L159
+ 1327 0002 D2F80433 		ldr	r3, [r2, #772]
+ 1328 0006 23F40053 		bic	r3, r3, #8192
+ 1329 000a C2F80433 		str	r3, [r2, #772]
+ 1330 000e 7047     		bx	lr
+ 1331              	.L160:
+ 1332              		.align	2
+ 1333              	.L159:
+ 1334 0010 00200140 		.word	1073815552
+ 1336              		.section	.text.adc_sync_routine_data_read,"ax",%progbits
+ 1337              		.align	1
+ 1338              		.global	adc_sync_routine_data_read
+ 1339              		.syntax unified
+ 1340              		.thumb
+ 1341              		.thumb_func
+ 1343              	adc_sync_routine_data_read:
+ 1344              		@ args = 0, pretend = 0, frame = 0
+ 1345              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc48W6fx.s 			page 23
+
+
+ 1346              		@ link register save eliminated.
+ 1347 0000 014B     		ldr	r3, .L162
+ 1348 0002 D3F80803 		ldr	r0, [r3, #776]
+ 1349 0006 7047     		bx	lr
+ 1350              	.L163:
+ 1351              		.align	2
+ 1352              	.L162:
+ 1353 0008 00200140 		.word	1073815552
+ 1355              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 12.2.1 20221205"
+ARM GAS  /tmp/cc48W6fx.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_adc.c
+     /tmp/cc48W6fx.s:16     .text.adc_deinit:0000000000000000 $t
+     /tmp/cc48W6fx.s:22     .text.adc_deinit:0000000000000000 adc_deinit
+     /tmp/cc48W6fx.s:33     .text.adc_clock_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:39     .text.adc_clock_config:0000000000000000 adc_clock_config
+     /tmp/cc48W6fx.s:54     .text.adc_clock_config:000000000000001c $d
+     /tmp/cc48W6fx.s:57     .text.adc_special_function_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:63     .text.adc_special_function_config:0000000000000000 adc_special_function_config
+     /tmp/cc48W6fx.s:108    .text.adc_data_alignment_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:114    .text.adc_data_alignment_config:0000000000000000 adc_data_alignment_config
+     /tmp/cc48W6fx.s:130    .text.adc_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:136    .text.adc_enable:0000000000000000 adc_enable
+     /tmp/cc48W6fx.s:150    .text.adc_disable:0000000000000000 $t
+     /tmp/cc48W6fx.s:156    .text.adc_disable:0000000000000000 adc_disable
+     /tmp/cc48W6fx.s:166    .text.adc_calibration_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:172    .text.adc_calibration_enable:0000000000000000 adc_calibration_enable
+     /tmp/cc48W6fx.s:194    .text.adc_channel_16_to_18:0000000000000000 $t
+     /tmp/cc48W6fx.s:200    .text.adc_channel_16_to_18:0000000000000000 adc_channel_16_to_18
+     /tmp/cc48W6fx.s:238    .text.adc_channel_16_to_18:0000000000000058 $d
+     /tmp/cc48W6fx.s:241    .text.adc_resolution_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:247    .text.adc_resolution_config:0000000000000000 adc_resolution_config
+     /tmp/cc48W6fx.s:260    .text.adc_oversample_mode_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:266    .text.adc_oversample_mode_config:0000000000000000 adc_oversample_mode_config
+     /tmp/cc48W6fx.s:291    .text.adc_oversample_mode_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:297    .text.adc_oversample_mode_enable:0000000000000000 adc_oversample_mode_enable
+     /tmp/cc48W6fx.s:307    .text.adc_oversample_mode_disable:0000000000000000 $t
+     /tmp/cc48W6fx.s:313    .text.adc_oversample_mode_disable:0000000000000000 adc_oversample_mode_disable
+     /tmp/cc48W6fx.s:323    .text.adc_dma_mode_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:329    .text.adc_dma_mode_enable:0000000000000000 adc_dma_mode_enable
+     /tmp/cc48W6fx.s:339    .text.adc_dma_mode_disable:0000000000000000 $t
+     /tmp/cc48W6fx.s:345    .text.adc_dma_mode_disable:0000000000000000 adc_dma_mode_disable
+     /tmp/cc48W6fx.s:355    .text.adc_dma_request_after_last_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:361    .text.adc_dma_request_after_last_enable:0000000000000000 adc_dma_request_after_last_enable
+     /tmp/cc48W6fx.s:371    .text.adc_dma_request_after_last_disable:0000000000000000 $t
+     /tmp/cc48W6fx.s:377    .text.adc_dma_request_after_last_disable:0000000000000000 adc_dma_request_after_last_disable
+     /tmp/cc48W6fx.s:387    .text.adc_discontinuous_mode_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:393    .text.adc_discontinuous_mode_config:0000000000000000 adc_discontinuous_mode_config
+     /tmp/cc48W6fx.s:431    .text.adc_channel_length_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:437    .text.adc_channel_length_config:0000000000000000 adc_channel_length_config
+     /tmp/cc48W6fx.s:475    .text.adc_routine_channel_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:481    .text.adc_routine_channel_config:0000000000000000 adc_routine_channel_config
+     /tmp/cc48W6fx.s:551    .text.adc_inserted_channel_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:557    .text.adc_inserted_channel_config:0000000000000000 adc_inserted_channel_config
+     /tmp/cc48W6fx.s:606    .text.adc_inserted_channel_offset_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:612    .text.adc_inserted_channel_offset_config:0000000000000000 adc_inserted_channel_offset_config
+     /tmp/cc48W6fx.s:629    .text.adc_external_trigger_source_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:635    .text.adc_external_trigger_source_config:0000000000000000 adc_external_trigger_source_config
+     /tmp/cc48W6fx.s:662    .text.adc_external_trigger_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:668    .text.adc_external_trigger_config:0000000000000000 adc_external_trigger_config
+     /tmp/cc48W6fx.s:695    .text.adc_software_trigger_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:701    .text.adc_software_trigger_enable:0000000000000000 adc_software_trigger_enable
+     /tmp/cc48W6fx.s:722    .text.adc_end_of_conversion_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:728    .text.adc_end_of_conversion_config:0000000000000000 adc_end_of_conversion_config
+     /tmp/cc48W6fx.s:748    .text.adc_routine_data_read:0000000000000000 $t
+     /tmp/cc48W6fx.s:754    .text.adc_routine_data_read:0000000000000000 adc_routine_data_read
+     /tmp/cc48W6fx.s:763    .text.adc_inserted_data_read:0000000000000000 $t
+ARM GAS  /tmp/cc48W6fx.s 			page 25
+
+
+     /tmp/cc48W6fx.s:769    .text.adc_inserted_data_read:0000000000000000 adc_inserted_data_read
+     /tmp/cc48W6fx.s:777    .text.adc_inserted_data_read:0000000000000008 $d
+     /tmp/cc48W6fx.s:781    .text.adc_inserted_data_read:000000000000000c $t
+     /tmp/cc48W6fx.s:801    .text.adc_watchdog_single_channel_disable:0000000000000000 $t
+     /tmp/cc48W6fx.s:807    .text.adc_watchdog_single_channel_disable:0000000000000000 adc_watchdog_single_channel_disable
+     /tmp/cc48W6fx.s:817    .text.adc_watchdog_single_channel_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:823    .text.adc_watchdog_single_channel_enable:0000000000000000 adc_watchdog_single_channel_enable
+     /tmp/cc48W6fx.s:839    .text.adc_watchdog_sequence_channel_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:845    .text.adc_watchdog_sequence_channel_enable:0000000000000000 adc_watchdog_sequence_channel_enable
+     /tmp/cc48W6fx.s:878    .text.adc_watchdog_disable:0000000000000000 $t
+     /tmp/cc48W6fx.s:884    .text.adc_watchdog_disable:0000000000000000 adc_watchdog_disable
+     /tmp/cc48W6fx.s:913    .text.adc_watchdog_threshold_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:919    .text.adc_watchdog_threshold_config:0000000000000000 adc_watchdog_threshold_config
+     /tmp/cc48W6fx.s:930    .text.adc_flag_get:0000000000000000 $t
+     /tmp/cc48W6fx.s:936    .text.adc_flag_get:0000000000000000 adc_flag_get
+     /tmp/cc48W6fx.s:950    .text.adc_flag_clear:0000000000000000 $t
+     /tmp/cc48W6fx.s:956    .text.adc_flag_clear:0000000000000000 adc_flag_clear
+     /tmp/cc48W6fx.s:966    .text.adc_routine_software_startconv_flag_get:0000000000000000 $t
+     /tmp/cc48W6fx.s:972    .text.adc_routine_software_startconv_flag_get:0000000000000000 adc_routine_software_startconv_flag_get
+     /tmp/cc48W6fx.s:986    .text.adc_inserted_software_startconv_flag_get:0000000000000000 $t
+     /tmp/cc48W6fx.s:992    .text.adc_inserted_software_startconv_flag_get:0000000000000000 adc_inserted_software_startconv_flag_get
+     /tmp/cc48W6fx.s:1006   .text.adc_interrupt_flag_get:0000000000000000 $t
+     /tmp/cc48W6fx.s:1012   .text.adc_interrupt_flag_get:0000000000000000 adc_interrupt_flag_get
+     /tmp/cc48W6fx.s:1021   .text.adc_interrupt_flag_get:000000000000000a $d
+     /tmp/cc48W6fx.s:1053   .text.adc_interrupt_flag_get:000000000000002a $t
+     /tmp/cc48W6fx.s:1119   .text.adc_interrupt_flag_clear:0000000000000000 $t
+     /tmp/cc48W6fx.s:1125   .text.adc_interrupt_flag_clear:0000000000000000 adc_interrupt_flag_clear
+     /tmp/cc48W6fx.s:1135   .text.adc_interrupt_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:1141   .text.adc_interrupt_enable:0000000000000000 adc_interrupt_enable
+     /tmp/cc48W6fx.s:1179   .text.adc_interrupt_disable:0000000000000000 $t
+     /tmp/cc48W6fx.s:1185   .text.adc_interrupt_disable:0000000000000000 adc_interrupt_disable
+     /tmp/cc48W6fx.s:1223   .text.adc_sync_mode_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:1229   .text.adc_sync_mode_config:0000000000000000 adc_sync_mode_config
+     /tmp/cc48W6fx.s:1244   .text.adc_sync_mode_config:000000000000001c $d
+     /tmp/cc48W6fx.s:1247   .text.adc_sync_delay_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:1253   .text.adc_sync_delay_config:0000000000000000 adc_sync_delay_config
+     /tmp/cc48W6fx.s:1268   .text.adc_sync_delay_config:000000000000001c $d
+     /tmp/cc48W6fx.s:1271   .text.adc_sync_dma_config:0000000000000000 $t
+     /tmp/cc48W6fx.s:1277   .text.adc_sync_dma_config:0000000000000000 adc_sync_dma_config
+     /tmp/cc48W6fx.s:1292   .text.adc_sync_dma_config:000000000000001c $d
+     /tmp/cc48W6fx.s:1295   .text.adc_sync_dma_request_after_last_enable:0000000000000000 $t
+     /tmp/cc48W6fx.s:1301   .text.adc_sync_dma_request_after_last_enable:0000000000000000 adc_sync_dma_request_after_last_enable
+     /tmp/cc48W6fx.s:1313   .text.adc_sync_dma_request_after_last_enable:0000000000000010 $d
+     /tmp/cc48W6fx.s:1316   .text.adc_sync_dma_request_after_last_disable:0000000000000000 $t
+     /tmp/cc48W6fx.s:1322   .text.adc_sync_dma_request_after_last_disable:0000000000000000 adc_sync_dma_request_after_last_disable
+     /tmp/cc48W6fx.s:1334   .text.adc_sync_dma_request_after_last_disable:0000000000000010 $d
+     /tmp/cc48W6fx.s:1337   .text.adc_sync_routine_data_read:0000000000000000 $t
+     /tmp/cc48W6fx.s:1343   .text.adc_sync_routine_data_read:0000000000000000 adc_sync_routine_data_read
+     /tmp/cc48W6fx.s:1353   .text.adc_sync_routine_data_read:0000000000000008 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

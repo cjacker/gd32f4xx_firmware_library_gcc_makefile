@@ -1,0 +1,813 @@
+ARM GAS  /tmp/cc69JfPv.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32f4xx_tli.c"
+  14              		.text
+  15              		.section	.text.tli_deinit,"ax",%progbits
+  16              		.align	1
+  17              		.global	tli_deinit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	tli_deinit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 40F61A10 		movw	r0, #2330
+  27 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  28 000a 40F61A10 		movw	r0, #2330
+  29 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  30 0012 08BD     		pop	{r3, pc}
+  32              		.section	.text.tli_struct_para_init,"ax",%progbits
+  33              		.align	1
+  34              		.global	tli_struct_para_init
+  35              		.syntax unified
+  36              		.thumb
+  37              		.thumb_func
+  39              	tli_struct_para_init:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 0023     		movs	r3, #0
+  44 0002 0380     		strh	r3, [r0]	@ movhi
+  45 0004 4380     		strh	r3, [r0, #2]	@ movhi
+  46 0006 8380     		strh	r3, [r0, #4]	@ movhi
+  47 0008 C380     		strh	r3, [r0, #6]	@ movhi
+  48 000a 8360     		str	r3, [r0, #8]
+  49 000c C360     		str	r3, [r0, #12]
+  50 000e 0361     		str	r3, [r0, #16]
+  51 0010 4361     		str	r3, [r0, #20]
+  52 0012 8361     		str	r3, [r0, #24]
+  53 0014 C361     		str	r3, [r0, #28]
+  54 0016 0362     		str	r3, [r0, #32]
+  55 0018 4362     		str	r3, [r0, #36]
+  56 001a 8362     		str	r3, [r0, #40]
+  57 001c C362     		str	r3, [r0, #44]
+  58 001e 0363     		str	r3, [r0, #48]
+  59 0020 7047     		bx	lr
+  61              		.section	.text.tli_init,"ax",%progbits
+ARM GAS  /tmp/cc69JfPv.s 			page 2
+
+
+  62              		.align	1
+  63              		.global	tli_init
+  64              		.syntax unified
+  65              		.thumb
+  66              		.thumb_func
+  68              	tli_init:
+  69              		@ args = 0, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71              		@ link register save eliminated.
+  72 0000 10B4     		push	{r4}
+  73 0002 2A4B     		ldr	r3, .L6
+  74 0004 D3F80828 		ldr	r2, [r3, #2056]
+  75 0008 02F0F022 		and	r2, r2, #-268374016
+  76 000c C3F80828 		str	r2, [r3, #2056]
+  77 0010 0288     		ldrh	r2, [r0]
+  78 0012 4188     		ldrh	r1, [r0, #2]
+  79 0014 42EA0142 		orr	r2, r2, r1, lsl #16
+  80 0018 C3F80828 		str	r2, [r3, #2056]
+  81 001c D3F80C28 		ldr	r2, [r3, #2060]
+  82 0020 02F0F022 		and	r2, r2, #-268374016
+  83 0024 C3F80C28 		str	r2, [r3, #2060]
+  84 0028 8288     		ldrh	r2, [r0, #4]
+  85 002a C188     		ldrh	r1, [r0, #6]
+  86 002c 42EA0142 		orr	r2, r2, r1, lsl #16
+  87 0030 C3F80C28 		str	r2, [r3, #2060]
+  88 0034 D3F81028 		ldr	r2, [r3, #2064]
+  89 0038 02F0F022 		and	r2, r2, #-268374016
+  90 003c C3F81028 		str	r2, [r3, #2064]
+  91 0040 8268     		ldr	r2, [r0, #8]
+  92 0042 C168     		ldr	r1, [r0, #12]
+  93 0044 42EA0142 		orr	r2, r2, r1, lsl #16
+  94 0048 C3F81028 		str	r2, [r3, #2064]
+  95 004c D3F81428 		ldr	r2, [r3, #2068]
+  96 0050 02F0F022 		and	r2, r2, #-268374016
+  97 0054 C3F81428 		str	r2, [r3, #2068]
+  98 0058 0269     		ldr	r2, [r0, #16]
+  99 005a 4169     		ldr	r1, [r0, #20]
+ 100 005c 42EA0142 		orr	r2, r2, r1, lsl #16
+ 101 0060 C3F81428 		str	r2, [r3, #2068]
+ 102 0064 D3F82C28 		ldr	r2, [r3, #2092]
+ 103 0068 02F07F42 		and	r2, r2, #-16777216
+ 104 006c C3F82C28 		str	r2, [r3, #2092]
+ 105 0070 026A     		ldr	r2, [r0, #32]
+ 106 0072 C169     		ldr	r1, [r0, #28]
+ 107 0074 42EA0122 		orr	r2, r2, r1, lsl #8
+ 108 0078 8169     		ldr	r1, [r0, #24]
+ 109 007a 42EA0142 		orr	r2, r2, r1, lsl #16
+ 110 007e C3F82C28 		str	r2, [r3, #2092]
+ 111 0082 D3F81828 		ldr	r2, [r3, #2072]
+ 112 0086 22F07042 		bic	r2, r2, #-268435456
+ 113 008a C3F81828 		str	r2, [r3, #2072]
+ 114 008e D3F81818 		ldr	r1, [r3, #2072]
+ 115 0092 426A     		ldr	r2, [r0, #36]
+ 116 0094 846A     		ldr	r4, [r0, #40]
+ 117 0096 2243     		orrs	r2, r2, r4
+ 118 0098 C46A     		ldr	r4, [r0, #44]
+ 119 009a 2243     		orrs	r2, r2, r4
+ARM GAS  /tmp/cc69JfPv.s 			page 3
+
+
+ 120 009c 006B     		ldr	r0, [r0, #48]
+ 121 009e 0243     		orrs	r2, r2, r0
+ 122 00a0 0A43     		orrs	r2, r2, r1
+ 123 00a2 C3F81828 		str	r2, [r3, #2072]
+ 124 00a6 10BC     		pop	{r4}
+ 125 00a8 7047     		bx	lr
+ 126              	.L7:
+ 127 00aa 00BF     		.align	2
+ 128              	.L6:
+ 129 00ac 00600140 		.word	1073831936
+ 131              		.section	.text.tli_dither_config,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	tli_dither_config
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	tli_dither_config:
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              		@ link register save eliminated.
+ 142 0000 0128     		cmp	r0, #1
+ 143 0002 07D0     		beq	.L11
+ 144 0004 074A     		ldr	r2, .L12
+ 145 0006 D2F81838 		ldr	r3, [r2, #2072]
+ 146 000a 23F48033 		bic	r3, r3, #65536
+ 147 000e C2F81838 		str	r3, [r2, #2072]
+ 148 0012 7047     		bx	lr
+ 149              	.L11:
+ 150 0014 034A     		ldr	r2, .L12
+ 151 0016 D2F81838 		ldr	r3, [r2, #2072]
+ 152 001a 43F48033 		orr	r3, r3, #65536
+ 153 001e C2F81838 		str	r3, [r2, #2072]
+ 154 0022 7047     		bx	lr
+ 155              	.L13:
+ 156              		.align	2
+ 157              	.L12:
+ 158 0024 00600140 		.word	1073831936
+ 160              		.section	.text.tli_enable,"ax",%progbits
+ 161              		.align	1
+ 162              		.global	tli_enable
+ 163              		.syntax unified
+ 164              		.thumb
+ 165              		.thumb_func
+ 167              	tli_enable:
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              		@ link register save eliminated.
+ 171 0000 034A     		ldr	r2, .L15
+ 172 0002 D2F81838 		ldr	r3, [r2, #2072]
+ 173 0006 43F00103 		orr	r3, r3, #1
+ 174 000a C2F81838 		str	r3, [r2, #2072]
+ 175 000e 7047     		bx	lr
+ 176              	.L16:
+ 177              		.align	2
+ 178              	.L15:
+ 179 0010 00600140 		.word	1073831936
+ 181              		.section	.text.tli_disable,"ax",%progbits
+ARM GAS  /tmp/cc69JfPv.s 			page 4
+
+
+ 182              		.align	1
+ 183              		.global	tli_disable
+ 184              		.syntax unified
+ 185              		.thumb
+ 186              		.thumb_func
+ 188              	tli_disable:
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191              		@ link register save eliminated.
+ 192 0000 034A     		ldr	r2, .L18
+ 193 0002 D2F81838 		ldr	r3, [r2, #2072]
+ 194 0006 23F00103 		bic	r3, r3, #1
+ 195 000a C2F81838 		str	r3, [r2, #2072]
+ 196 000e 7047     		bx	lr
+ 197              	.L19:
+ 198              		.align	2
+ 199              	.L18:
+ 200 0010 00600140 		.word	1073831936
+ 202              		.section	.text.tli_reload_config,"ax",%progbits
+ 203              		.align	1
+ 204              		.global	tli_reload_config
+ 205              		.syntax unified
+ 206              		.thumb
+ 207              		.thumb_func
+ 209              	tli_reload_config:
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		@ link register save eliminated.
+ 213 0000 38B9     		cbnz	r0, .L21
+ 214 0002 084A     		ldr	r2, .L23
+ 215 0004 D2F82438 		ldr	r3, [r2, #2084]
+ 216 0008 43F00203 		orr	r3, r3, #2
+ 217 000c C2F82438 		str	r3, [r2, #2084]
+ 218 0010 7047     		bx	lr
+ 219              	.L21:
+ 220 0012 044A     		ldr	r2, .L23
+ 221 0014 D2F82438 		ldr	r3, [r2, #2084]
+ 222 0018 43F00103 		orr	r3, r3, #1
+ 223 001c C2F82438 		str	r3, [r2, #2084]
+ 224 0020 7047     		bx	lr
+ 225              	.L24:
+ 226 0022 00BF     		.align	2
+ 227              	.L23:
+ 228 0024 00600140 		.word	1073831936
+ 230              		.section	.text.tli_layer_struct_para_init,"ax",%progbits
+ 231              		.align	1
+ 232              		.global	tli_layer_struct_para_init
+ 233              		.syntax unified
+ 234              		.thumb
+ 235              		.thumb_func
+ 237              	tli_layer_struct_para_init:
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240              		@ link register save eliminated.
+ 241 0000 0023     		movs	r3, #0
+ 242 0002 0380     		strh	r3, [r0]	@ movhi
+ 243 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ARM GAS  /tmp/cc69JfPv.s 			page 5
+
+
+ 244 0006 8380     		strh	r3, [r0, #4]	@ movhi
+ 245 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 246 000a 8360     		str	r3, [r0, #8]
+ 247 000c FF22     		movs	r2, #255
+ 248 000e 0273     		strb	r2, [r0, #12]
+ 249 0010 4373     		strb	r3, [r0, #13]
+ 250 0012 8373     		strb	r3, [r0, #14]
+ 251 0014 C373     		strb	r3, [r0, #15]
+ 252 0016 0374     		strb	r3, [r0, #16]
+ 253 0018 4FF4C062 		mov	r2, #1536
+ 254 001c 4261     		str	r2, [r0, #20]
+ 255 001e 0722     		movs	r2, #7
+ 256 0020 8261     		str	r2, [r0, #24]
+ 257 0022 C361     		str	r3, [r0, #28]
+ 258 0024 0384     		strh	r3, [r0, #32]	@ movhi
+ 259 0026 4384     		strh	r3, [r0, #34]	@ movhi
+ 260 0028 8384     		strh	r3, [r0, #36]	@ movhi
+ 261 002a 7047     		bx	lr
+ 263              		.section	.text.tli_layer_init,"ax",%progbits
+ 264              		.align	1
+ 265              		.global	tli_layer_init
+ 266              		.syntax unified
+ 267              		.thumb
+ 268              		.thumb_func
+ 270              	tli_layer_init:
+ 271              		@ args = 0, pretend = 0, frame = 0
+ 272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 273              		@ link register save eliminated.
+ 274 0000 10B4     		push	{r4}
+ 275 0002 D0F88830 		ldr	r3, [r0, #136]
+ 276 0006 03F0F023 		and	r3, r3, #-268374016
+ 277 000a C0F88830 		str	r3, [r0, #136]
+ 278 000e 4B88     		ldrh	r3, [r1, #2]
+ 279 0010 0A88     		ldrh	r2, [r1]
+ 280 0012 43EA0243 		orr	r3, r3, r2, lsl #16
+ 281 0016 C0F88830 		str	r3, [r0, #136]
+ 282 001a D0F88C30 		ldr	r3, [r0, #140]
+ 283 001e 03F0F023 		and	r3, r3, #-268374016
+ 284 0022 C0F88C30 		str	r3, [r0, #140]
+ 285 0026 CB88     		ldrh	r3, [r1, #6]
+ 286 0028 8A88     		ldrh	r2, [r1, #4]
+ 287 002a 43EA0243 		orr	r3, r3, r2, lsl #16
+ 288 002e C0F88C30 		str	r3, [r0, #140]
+ 289 0032 D0F89430 		ldr	r3, [r0, #148]
+ 290 0036 23F00703 		bic	r3, r3, #7
+ 291 003a C0F89430 		str	r3, [r0, #148]
+ 292 003e 8B68     		ldr	r3, [r1, #8]
+ 293 0040 C0F89430 		str	r3, [r0, #148]
+ 294 0044 D0F89830 		ldr	r3, [r0, #152]
+ 295 0048 23F0FF03 		bic	r3, r3, #255
+ 296 004c C0F89830 		str	r3, [r0, #152]
+ 297 0050 0B7B     		ldrb	r3, [r1, #12]	@ zero_extendqisi2
+ 298 0052 C0F89830 		str	r3, [r0, #152]
+ 299 0056 D0F89C30 		ldr	r3, [r0, #156]
+ 300 005a 0022     		movs	r2, #0
+ 301 005c C0F89C20 		str	r2, [r0, #156]
+ 302 0060 0B7C     		ldrb	r3, [r1, #16]	@ zero_extendqisi2
+ARM GAS  /tmp/cc69JfPv.s 			page 6
+
+
+ 303 0062 91F80FC0 		ldrb	ip, [r1, #15]	@ zero_extendqisi2
+ 304 0066 43EA0C23 		orr	r3, r3, ip, lsl #8
+ 305 006a 91F80EC0 		ldrb	ip, [r1, #14]	@ zero_extendqisi2
+ 306 006e 43EA0C43 		orr	r3, r3, ip, lsl #16
+ 307 0072 91F80DC0 		ldrb	ip, [r1, #13]	@ zero_extendqisi2
+ 308 0076 43EA0C63 		orr	r3, r3, ip, lsl #24
+ 309 007a C0F89C30 		str	r3, [r0, #156]
+ 310 007e D0F8A030 		ldr	r3, [r0, #160]
+ 311 0082 23F4E063 		bic	r3, r3, #1792
+ 312 0086 23F00703 		bic	r3, r3, #7
+ 313 008a C0F8A030 		str	r3, [r0, #160]
+ 314 008e 8B69     		ldr	r3, [r1, #24]
+ 315 0090 4C69     		ldr	r4, [r1, #20]
+ 316 0092 2343     		orrs	r3, r3, r4
+ 317 0094 C0F8A030 		str	r3, [r0, #160]
+ 318 0098 D0F8AC30 		ldr	r3, [r0, #172]
+ 319 009c C0F8AC20 		str	r2, [r0, #172]
+ 320 00a0 CB69     		ldr	r3, [r1, #28]
+ 321 00a2 C0F8AC30 		str	r3, [r0, #172]
+ 322 00a6 D0F8B030 		ldr	r3, [r0, #176]
+ 323 00aa 03F0C023 		and	r3, r3, #-1073692672
+ 324 00ae C0F8B030 		str	r3, [r0, #176]
+ 325 00b2 4B8C     		ldrh	r3, [r1, #34]
+ 326 00b4 0A8C     		ldrh	r2, [r1, #32]
+ 327 00b6 43EA0243 		orr	r3, r3, r2, lsl #16
+ 328 00ba C0F8B030 		str	r3, [r0, #176]
+ 329 00be D0F8B430 		ldr	r3, [r0, #180]
+ 330 00c2 23F4FF63 		bic	r3, r3, #2040
+ 331 00c6 23F00703 		bic	r3, r3, #7
+ 332 00ca C0F8B430 		str	r3, [r0, #180]
+ 333 00ce 8B8C     		ldrh	r3, [r1, #36]
+ 334 00d0 C0F8B430 		str	r3, [r0, #180]
+ 335 00d4 10BC     		pop	{r4}
+ 336 00d6 7047     		bx	lr
+ 338              		.section	.text.tli_layer_window_offset_modify,"ax",%progbits
+ 339              		.align	1
+ 340              		.global	tli_layer_window_offset_modify
+ 341              		.syntax unified
+ 342              		.thumb
+ 343              		.thumb_func
+ 345              	tli_layer_window_offset_modify:
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348              		@ link register save eliminated.
+ 349 0000 10B4     		push	{r4}
+ 350 0002 D0F88830 		ldr	r3, [r0, #136]
+ 351 0006 03F0F023 		and	r3, r3, #-268374016
+ 352 000a C0F88830 		str	r3, [r0, #136]
+ 353 000e D0F88C30 		ldr	r3, [r0, #140]
+ 354 0012 03F0F023 		and	r3, r3, #-268374016
+ 355 0016 C0F88C30 		str	r3, [r0, #140]
+ 356 001a 254C     		ldr	r4, .L37
+ 357 001c D4F80C38 		ldr	r3, [r4, #2060]
+ 358 0020 C3F30B43 		ubfx	r3, r3, #16, #12
+ 359 0024 1944     		add	r1, r1, r3
+ 360 0026 0131     		adds	r1, r1, #1
+ 361 0028 D4F80C38 		ldr	r3, [r4, #2060]
+ARM GAS  /tmp/cc69JfPv.s 			page 7
+
+
+ 362 002c C3F30B03 		ubfx	r3, r3, #0, #12
+ 363 0030 1A44     		add	r2, r2, r3
+ 364 0032 0132     		adds	r2, r2, #1
+ 365 0034 D0F8B430 		ldr	r3, [r0, #180]
+ 366 0038 C3F30A0C 		ubfx	ip, r3, #0, #11
+ 367 003c D0F89430 		ldr	r3, [r0, #148]
+ 368 0040 03F00703 		and	r3, r3, #7
+ 369 0044 072B     		cmp	r3, #7
+ 370 0046 31D8     		bhi	.L35
+ 371 0048 DFE803F0 		tbb	[pc, r3]
+ 372              	.L31:
+ 373 004c 04       		.byte	(.L34-.L31)/2
+ 374 004d 19       		.byte	(.L33-.L31)/2
+ 375 004e 23       		.byte	(.L30-.L31)/2
+ 376 004f 23       		.byte	(.L30-.L31)/2
+ 377 0050 23       		.byte	(.L30-.L31)/2
+ 378 0051 2A       		.byte	(.L32-.L31)/2
+ 379 0052 2A       		.byte	(.L32-.L31)/2
+ 380 0053 23       		.byte	(.L30-.L31)/2
+ 381              		.p2align 1
+ 382              	.L34:
+ 383 0054 D0F8B030 		ldr	r3, [r0, #176]
+ 384 0058 C3F30D03 		ubfx	r3, r3, #0, #14
+ 385 005c 033B     		subs	r3, r3, #3
+ 386 005e 9B08     		lsrs	r3, r3, #2
+ 387              	.L29:
+ 388 0060 0B44     		add	r3, r3, r1
+ 389 0062 013B     		subs	r3, r3, #1
+ 390 0064 41EA0341 		orr	r1, r1, r3, lsl #16
+ 391 0068 C0F88810 		str	r1, [r0, #136]
+ 392 006c 9444     		add	ip, ip, r2
+ 393 006e 0CF1FF3C 		add	ip, ip, #-1
+ 394 0072 42EA0C42 		orr	r2, r2, ip, lsl #16
+ 395 0076 C0F88C20 		str	r2, [r0, #140]
+ 396 007a 10BC     		pop	{r4}
+ 397 007c 7047     		bx	lr
+ 398              	.L33:
+ 399 007e D0F8B030 		ldr	r3, [r0, #176]
+ 400 0082 C3F30D03 		ubfx	r3, r3, #0, #14
+ 401 0086 033B     		subs	r3, r3, #3
+ 402 0088 0A4C     		ldr	r4, .L37+4
+ 403 008a A4FB0343 		umull	r4, r3, r4, r3
+ 404 008e 5B08     		lsrs	r3, r3, #1
+ 405 0090 E6E7     		b	.L29
+ 406              	.L30:
+ 407 0092 D0F8B030 		ldr	r3, [r0, #176]
+ 408 0096 C3F30D03 		ubfx	r3, r3, #0, #14
+ 409 009a 033B     		subs	r3, r3, #3
+ 410 009c 5B08     		lsrs	r3, r3, #1
+ 411 009e DFE7     		b	.L29
+ 412              	.L32:
+ 413 00a0 D0F8B030 		ldr	r3, [r0, #176]
+ 414 00a4 C3F30D03 		ubfx	r3, r3, #0, #14
+ 415 00a8 033B     		subs	r3, r3, #3
+ 416 00aa D9E7     		b	.L29
+ 417              	.L35:
+ 418 00ac 0023     		movs	r3, #0
+ARM GAS  /tmp/cc69JfPv.s 			page 8
+
+
+ 419 00ae D7E7     		b	.L29
+ 420              	.L38:
+ 421              		.align	2
+ 422              	.L37:
+ 423 00b0 00600140 		.word	1073831936
+ 424 00b4 ABAAAAAA 		.word	-1431655765
+ 426              		.section	.text.tli_lut_struct_para_init,"ax",%progbits
+ 427              		.align	1
+ 428              		.global	tli_lut_struct_para_init
+ 429              		.syntax unified
+ 430              		.thumb
+ 431              		.thumb_func
+ 433              	tli_lut_struct_para_init:
+ 434              		@ args = 0, pretend = 0, frame = 0
+ 435              		@ frame_needed = 0, uses_anonymous_args = 0
+ 436              		@ link register save eliminated.
+ 437 0000 0023     		movs	r3, #0
+ 438 0002 0360     		str	r3, [r0]
+ 439 0004 0371     		strb	r3, [r0, #4]
+ 440 0006 4371     		strb	r3, [r0, #5]
+ 441 0008 8371     		strb	r3, [r0, #6]
+ 442 000a 7047     		bx	lr
+ 444              		.section	.text.tli_lut_init,"ax",%progbits
+ 445              		.align	1
+ 446              		.global	tli_lut_init
+ 447              		.syntax unified
+ 448              		.thumb
+ 449              		.thumb_func
+ 451              	tli_lut_init:
+ 452              		@ args = 0, pretend = 0, frame = 0
+ 453              		@ frame_needed = 0, uses_anonymous_args = 0
+ 454              		@ link register save eliminated.
+ 455 0000 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
+ 456 0002 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
+ 457 0004 43EA0223 		orr	r3, r3, r2, lsl #8
+ 458 0008 91F804C0 		ldrb	ip, [r1, #4]	@ zero_extendqisi2
+ 459 000c 0A68     		ldr	r2, [r1]
+ 460 000e 1206     		lsls	r2, r2, #24
+ 461 0010 42EA0C42 		orr	r2, r2, ip, lsl #16
+ 462 0014 1343     		orrs	r3, r3, r2
+ 463 0016 C0F8C430 		str	r3, [r0, #196]
+ 464 001a 7047     		bx	lr
+ 466              		.section	.text.tli_color_key_init,"ax",%progbits
+ 467              		.align	1
+ 468              		.global	tli_color_key_init
+ 469              		.syntax unified
+ 470              		.thumb
+ 471              		.thumb_func
+ 473              	tli_color_key_init:
+ 474              		@ args = 0, pretend = 0, frame = 0
+ 475              		@ frame_needed = 0, uses_anonymous_args = 0
+ 476              		@ link register save eliminated.
+ 477 0000 43EA0223 		orr	r3, r3, r2, lsl #8
+ 478 0004 43EA0143 		orr	r3, r3, r1, lsl #16
+ 479 0008 C0F89030 		str	r3, [r0, #144]
+ 480 000c 7047     		bx	lr
+ 482              		.section	.text.tli_layer_enable,"ax",%progbits
+ARM GAS  /tmp/cc69JfPv.s 			page 9
+
+
+ 483              		.align	1
+ 484              		.global	tli_layer_enable
+ 485              		.syntax unified
+ 486              		.thumb
+ 487              		.thumb_func
+ 489              	tli_layer_enable:
+ 490              		@ args = 0, pretend = 0, frame = 0
+ 491              		@ frame_needed = 0, uses_anonymous_args = 0
+ 492              		@ link register save eliminated.
+ 493 0000 D0F88430 		ldr	r3, [r0, #132]
+ 494 0004 43F00103 		orr	r3, r3, #1
+ 495 0008 C0F88430 		str	r3, [r0, #132]
+ 496 000c 7047     		bx	lr
+ 498              		.section	.text.tli_layer_disable,"ax",%progbits
+ 499              		.align	1
+ 500              		.global	tli_layer_disable
+ 501              		.syntax unified
+ 502              		.thumb
+ 503              		.thumb_func
+ 505              	tli_layer_disable:
+ 506              		@ args = 0, pretend = 0, frame = 0
+ 507              		@ frame_needed = 0, uses_anonymous_args = 0
+ 508              		@ link register save eliminated.
+ 509 0000 D0F88430 		ldr	r3, [r0, #132]
+ 510 0004 23F00103 		bic	r3, r3, #1
+ 511 0008 C0F88430 		str	r3, [r0, #132]
+ 512 000c 7047     		bx	lr
+ 514              		.section	.text.tli_color_key_enable,"ax",%progbits
+ 515              		.align	1
+ 516              		.global	tli_color_key_enable
+ 517              		.syntax unified
+ 518              		.thumb
+ 519              		.thumb_func
+ 521              	tli_color_key_enable:
+ 522              		@ args = 0, pretend = 0, frame = 0
+ 523              		@ frame_needed = 0, uses_anonymous_args = 0
+ 524              		@ link register save eliminated.
+ 525 0000 D0F88430 		ldr	r3, [r0, #132]
+ 526 0004 43F00203 		orr	r3, r3, #2
+ 527 0008 C0F88430 		str	r3, [r0, #132]
+ 528 000c 7047     		bx	lr
+ 530              		.section	.text.tli_color_key_disable,"ax",%progbits
+ 531              		.align	1
+ 532              		.global	tli_color_key_disable
+ 533              		.syntax unified
+ 534              		.thumb
+ 535              		.thumb_func
+ 537              	tli_color_key_disable:
+ 538              		@ args = 0, pretend = 0, frame = 0
+ 539              		@ frame_needed = 0, uses_anonymous_args = 0
+ 540              		@ link register save eliminated.
+ 541 0000 D0F88430 		ldr	r3, [r0, #132]
+ 542 0004 23F00203 		bic	r3, r3, #2
+ 543 0008 C0F88430 		str	r3, [r0, #132]
+ 544 000c 7047     		bx	lr
+ 546              		.section	.text.tli_lut_enable,"ax",%progbits
+ 547              		.align	1
+ARM GAS  /tmp/cc69JfPv.s 			page 10
+
+
+ 548              		.global	tli_lut_enable
+ 549              		.syntax unified
+ 550              		.thumb
+ 551              		.thumb_func
+ 553              	tli_lut_enable:
+ 554              		@ args = 0, pretend = 0, frame = 0
+ 555              		@ frame_needed = 0, uses_anonymous_args = 0
+ 556              		@ link register save eliminated.
+ 557 0000 D0F88430 		ldr	r3, [r0, #132]
+ 558 0004 43F01003 		orr	r3, r3, #16
+ 559 0008 C0F88430 		str	r3, [r0, #132]
+ 560 000c 7047     		bx	lr
+ 562              		.section	.text.tli_lut_disable,"ax",%progbits
+ 563              		.align	1
+ 564              		.global	tli_lut_disable
+ 565              		.syntax unified
+ 566              		.thumb
+ 567              		.thumb_func
+ 569              	tli_lut_disable:
+ 570              		@ args = 0, pretend = 0, frame = 0
+ 571              		@ frame_needed = 0, uses_anonymous_args = 0
+ 572              		@ link register save eliminated.
+ 573 0000 D0F88430 		ldr	r3, [r0, #132]
+ 574 0004 23F01003 		bic	r3, r3, #16
+ 575 0008 C0F88430 		str	r3, [r0, #132]
+ 576 000c 7047     		bx	lr
+ 578              		.section	.text.tli_line_mark_set,"ax",%progbits
+ 579              		.align	1
+ 580              		.global	tli_line_mark_set
+ 581              		.syntax unified
+ 582              		.thumb
+ 583              		.thumb_func
+ 585              	tli_line_mark_set:
+ 586              		@ args = 0, pretend = 0, frame = 0
+ 587              		@ frame_needed = 0, uses_anonymous_args = 0
+ 588              		@ link register save eliminated.
+ 589 0000 054A     		ldr	r2, .L49
+ 590 0002 D2F84038 		ldr	r3, [r2, #2112]
+ 591 0006 23F4FF63 		bic	r3, r3, #2040
+ 592 000a 23F00703 		bic	r3, r3, #7
+ 593 000e C2F84038 		str	r3, [r2, #2112]
+ 594 0012 C2F84008 		str	r0, [r2, #2112]
+ 595 0016 7047     		bx	lr
+ 596              	.L50:
+ 597              		.align	2
+ 598              	.L49:
+ 599 0018 00600140 		.word	1073831936
+ 601              		.section	.text.tli_current_pos_get,"ax",%progbits
+ 602              		.align	1
+ 603              		.global	tli_current_pos_get
+ 604              		.syntax unified
+ 605              		.thumb
+ 606              		.thumb_func
+ 608              	tli_current_pos_get:
+ 609              		@ args = 0, pretend = 0, frame = 0
+ 610              		@ frame_needed = 0, uses_anonymous_args = 0
+ 611              		@ link register save eliminated.
+ARM GAS  /tmp/cc69JfPv.s 			page 11
+
+
+ 612 0000 014B     		ldr	r3, .L52
+ 613 0002 D3F84408 		ldr	r0, [r3, #2116]
+ 614 0006 7047     		bx	lr
+ 615              	.L53:
+ 616              		.align	2
+ 617              	.L52:
+ 618 0008 00600140 		.word	1073831936
+ 620              		.section	.text.tli_interrupt_enable,"ax",%progbits
+ 621              		.align	1
+ 622              		.global	tli_interrupt_enable
+ 623              		.syntax unified
+ 624              		.thumb
+ 625              		.thumb_func
+ 627              	tli_interrupt_enable:
+ 628              		@ args = 0, pretend = 0, frame = 0
+ 629              		@ frame_needed = 0, uses_anonymous_args = 0
+ 630              		@ link register save eliminated.
+ 631 0000 034A     		ldr	r2, .L55
+ 632 0002 D2F83438 		ldr	r3, [r2, #2100]
+ 633 0006 0343     		orrs	r3, r3, r0
+ 634 0008 C2F83438 		str	r3, [r2, #2100]
+ 635 000c 7047     		bx	lr
+ 636              	.L56:
+ 637 000e 00BF     		.align	2
+ 638              	.L55:
+ 639 0010 00600140 		.word	1073831936
+ 641              		.section	.text.tli_interrupt_disable,"ax",%progbits
+ 642              		.align	1
+ 643              		.global	tli_interrupt_disable
+ 644              		.syntax unified
+ 645              		.thumb
+ 646              		.thumb_func
+ 648              	tli_interrupt_disable:
+ 649              		@ args = 0, pretend = 0, frame = 0
+ 650              		@ frame_needed = 0, uses_anonymous_args = 0
+ 651              		@ link register save eliminated.
+ 652 0000 034A     		ldr	r2, .L58
+ 653 0002 D2F83438 		ldr	r3, [r2, #2100]
+ 654 0006 23EA0003 		bic	r3, r3, r0
+ 655 000a C2F83438 		str	r3, [r2, #2100]
+ 656 000e 7047     		bx	lr
+ 657              	.L59:
+ 658              		.align	2
+ 659              	.L58:
+ 660 0010 00600140 		.word	1073831936
+ 662              		.section	.text.tli_interrupt_flag_get,"ax",%progbits
+ 663              		.align	1
+ 664              		.global	tli_interrupt_flag_get
+ 665              		.syntax unified
+ 666              		.thumb
+ 667              		.thumb_func
+ 669              	tli_interrupt_flag_get:
+ 670              		@ args = 0, pretend = 0, frame = 0
+ 671              		@ frame_needed = 0, uses_anonymous_args = 0
+ 672              		@ link register save eliminated.
+ 673 0000 074B     		ldr	r3, .L64
+ 674 0002 D3F83838 		ldr	r3, [r3, #2104]
+ARM GAS  /tmp/cc69JfPv.s 			page 12
+
+
+ 675 0006 0342     		tst	r3, r0
+ 676 0008 06D0     		beq	.L62
+ 677 000a 054B     		ldr	r3, .L64
+ 678 000c D3F83438 		ldr	r3, [r3, #2100]
+ 679 0010 1842     		tst	r0, r3
+ 680 0012 03D1     		bne	.L63
+ 681 0014 0020     		movs	r0, #0
+ 682 0016 7047     		bx	lr
+ 683              	.L62:
+ 684 0018 0020     		movs	r0, #0
+ 685 001a 7047     		bx	lr
+ 686              	.L63:
+ 687 001c 0120     		movs	r0, #1
+ 688 001e 7047     		bx	lr
+ 689              	.L65:
+ 690              		.align	2
+ 691              	.L64:
+ 692 0020 00600140 		.word	1073831936
+ 694              		.section	.text.tli_interrupt_flag_clear,"ax",%progbits
+ 695              		.align	1
+ 696              		.global	tli_interrupt_flag_clear
+ 697              		.syntax unified
+ 698              		.thumb
+ 699              		.thumb_func
+ 701              	tli_interrupt_flag_clear:
+ 702              		@ args = 0, pretend = 0, frame = 0
+ 703              		@ frame_needed = 0, uses_anonymous_args = 0
+ 704              		@ link register save eliminated.
+ 705 0000 034A     		ldr	r2, .L67
+ 706 0002 D2F83C38 		ldr	r3, [r2, #2108]
+ 707 0006 0343     		orrs	r3, r3, r0
+ 708 0008 C2F83C38 		str	r3, [r2, #2108]
+ 709 000c 7047     		bx	lr
+ 710              	.L68:
+ 711 000e 00BF     		.align	2
+ 712              	.L67:
+ 713 0010 00600140 		.word	1073831936
+ 715              		.section	.text.tli_flag_get,"ax",%progbits
+ 716              		.align	1
+ 717              		.global	tli_flag_get
+ 718              		.syntax unified
+ 719              		.thumb
+ 720              		.thumb_func
+ 722              	tli_flag_get:
+ 723              		@ args = 0, pretend = 0, frame = 0
+ 724              		@ frame_needed = 0, uses_anonymous_args = 0
+ 725              		@ link register save eliminated.
+ 726 0000 0028     		cmp	r0, #0
+ 727 0002 06DB     		blt	.L74
+ 728 0004 064B     		ldr	r3, .L75
+ 729 0006 D3F84838 		ldr	r3, [r3, #2120]
+ 730              	.L71:
+ 731 000a 0342     		tst	r3, r0
+ 732 000c 05D0     		beq	.L73
+ 733 000e 0120     		movs	r0, #1
+ 734 0010 7047     		bx	lr
+ 735              	.L74:
+ARM GAS  /tmp/cc69JfPv.s 			page 13
+
+
+ 736 0012 034B     		ldr	r3, .L75
+ 737 0014 D3F83838 		ldr	r3, [r3, #2104]
+ 738 0018 F7E7     		b	.L71
+ 739              	.L73:
+ 740 001a 0020     		movs	r0, #0
+ 741 001c 7047     		bx	lr
+ 742              	.L76:
+ 743 001e 00BF     		.align	2
+ 744              	.L75:
+ 745 0020 00600140 		.word	1073831936
+ 747              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 12.2.1 20221205"
+ARM GAS  /tmp/cc69JfPv.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_tli.c
+     /tmp/cc69JfPv.s:16     .text.tli_deinit:0000000000000000 $t
+     /tmp/cc69JfPv.s:22     .text.tli_deinit:0000000000000000 tli_deinit
+     /tmp/cc69JfPv.s:33     .text.tli_struct_para_init:0000000000000000 $t
+     /tmp/cc69JfPv.s:39     .text.tli_struct_para_init:0000000000000000 tli_struct_para_init
+     /tmp/cc69JfPv.s:62     .text.tli_init:0000000000000000 $t
+     /tmp/cc69JfPv.s:68     .text.tli_init:0000000000000000 tli_init
+     /tmp/cc69JfPv.s:129    .text.tli_init:00000000000000ac $d
+     /tmp/cc69JfPv.s:132    .text.tli_dither_config:0000000000000000 $t
+     /tmp/cc69JfPv.s:138    .text.tli_dither_config:0000000000000000 tli_dither_config
+     /tmp/cc69JfPv.s:158    .text.tli_dither_config:0000000000000024 $d
+     /tmp/cc69JfPv.s:161    .text.tli_enable:0000000000000000 $t
+     /tmp/cc69JfPv.s:167    .text.tli_enable:0000000000000000 tli_enable
+     /tmp/cc69JfPv.s:179    .text.tli_enable:0000000000000010 $d
+     /tmp/cc69JfPv.s:182    .text.tli_disable:0000000000000000 $t
+     /tmp/cc69JfPv.s:188    .text.tli_disable:0000000000000000 tli_disable
+     /tmp/cc69JfPv.s:200    .text.tli_disable:0000000000000010 $d
+     /tmp/cc69JfPv.s:203    .text.tli_reload_config:0000000000000000 $t
+     /tmp/cc69JfPv.s:209    .text.tli_reload_config:0000000000000000 tli_reload_config
+     /tmp/cc69JfPv.s:228    .text.tli_reload_config:0000000000000024 $d
+     /tmp/cc69JfPv.s:231    .text.tli_layer_struct_para_init:0000000000000000 $t
+     /tmp/cc69JfPv.s:237    .text.tli_layer_struct_para_init:0000000000000000 tli_layer_struct_para_init
+     /tmp/cc69JfPv.s:264    .text.tli_layer_init:0000000000000000 $t
+     /tmp/cc69JfPv.s:270    .text.tli_layer_init:0000000000000000 tli_layer_init
+     /tmp/cc69JfPv.s:339    .text.tli_layer_window_offset_modify:0000000000000000 $t
+     /tmp/cc69JfPv.s:345    .text.tli_layer_window_offset_modify:0000000000000000 tli_layer_window_offset_modify
+     /tmp/cc69JfPv.s:373    .text.tli_layer_window_offset_modify:000000000000004c $d
+     /tmp/cc69JfPv.s:381    .text.tli_layer_window_offset_modify:0000000000000054 $t
+     /tmp/cc69JfPv.s:423    .text.tli_layer_window_offset_modify:00000000000000b0 $d
+     /tmp/cc69JfPv.s:427    .text.tli_lut_struct_para_init:0000000000000000 $t
+     /tmp/cc69JfPv.s:433    .text.tli_lut_struct_para_init:0000000000000000 tli_lut_struct_para_init
+     /tmp/cc69JfPv.s:445    .text.tli_lut_init:0000000000000000 $t
+     /tmp/cc69JfPv.s:451    .text.tli_lut_init:0000000000000000 tli_lut_init
+     /tmp/cc69JfPv.s:467    .text.tli_color_key_init:0000000000000000 $t
+     /tmp/cc69JfPv.s:473    .text.tli_color_key_init:0000000000000000 tli_color_key_init
+     /tmp/cc69JfPv.s:483    .text.tli_layer_enable:0000000000000000 $t
+     /tmp/cc69JfPv.s:489    .text.tli_layer_enable:0000000000000000 tli_layer_enable
+     /tmp/cc69JfPv.s:499    .text.tli_layer_disable:0000000000000000 $t
+     /tmp/cc69JfPv.s:505    .text.tli_layer_disable:0000000000000000 tli_layer_disable
+     /tmp/cc69JfPv.s:515    .text.tli_color_key_enable:0000000000000000 $t
+     /tmp/cc69JfPv.s:521    .text.tli_color_key_enable:0000000000000000 tli_color_key_enable
+     /tmp/cc69JfPv.s:531    .text.tli_color_key_disable:0000000000000000 $t
+     /tmp/cc69JfPv.s:537    .text.tli_color_key_disable:0000000000000000 tli_color_key_disable
+     /tmp/cc69JfPv.s:547    .text.tli_lut_enable:0000000000000000 $t
+     /tmp/cc69JfPv.s:553    .text.tli_lut_enable:0000000000000000 tli_lut_enable
+     /tmp/cc69JfPv.s:563    .text.tli_lut_disable:0000000000000000 $t
+     /tmp/cc69JfPv.s:569    .text.tli_lut_disable:0000000000000000 tli_lut_disable
+     /tmp/cc69JfPv.s:579    .text.tli_line_mark_set:0000000000000000 $t
+     /tmp/cc69JfPv.s:585    .text.tli_line_mark_set:0000000000000000 tli_line_mark_set
+     /tmp/cc69JfPv.s:599    .text.tli_line_mark_set:0000000000000018 $d
+     /tmp/cc69JfPv.s:602    .text.tli_current_pos_get:0000000000000000 $t
+     /tmp/cc69JfPv.s:608    .text.tli_current_pos_get:0000000000000000 tli_current_pos_get
+     /tmp/cc69JfPv.s:618    .text.tli_current_pos_get:0000000000000008 $d
+     /tmp/cc69JfPv.s:621    .text.tli_interrupt_enable:0000000000000000 $t
+     /tmp/cc69JfPv.s:627    .text.tli_interrupt_enable:0000000000000000 tli_interrupt_enable
+     /tmp/cc69JfPv.s:639    .text.tli_interrupt_enable:0000000000000010 $d
+ARM GAS  /tmp/cc69JfPv.s 			page 15
+
+
+     /tmp/cc69JfPv.s:642    .text.tli_interrupt_disable:0000000000000000 $t
+     /tmp/cc69JfPv.s:648    .text.tli_interrupt_disable:0000000000000000 tli_interrupt_disable
+     /tmp/cc69JfPv.s:660    .text.tli_interrupt_disable:0000000000000010 $d
+     /tmp/cc69JfPv.s:663    .text.tli_interrupt_flag_get:0000000000000000 $t
+     /tmp/cc69JfPv.s:669    .text.tli_interrupt_flag_get:0000000000000000 tli_interrupt_flag_get
+     /tmp/cc69JfPv.s:692    .text.tli_interrupt_flag_get:0000000000000020 $d
+     /tmp/cc69JfPv.s:695    .text.tli_interrupt_flag_clear:0000000000000000 $t
+     /tmp/cc69JfPv.s:701    .text.tli_interrupt_flag_clear:0000000000000000 tli_interrupt_flag_clear
+     /tmp/cc69JfPv.s:713    .text.tli_interrupt_flag_clear:0000000000000010 $d
+     /tmp/cc69JfPv.s:716    .text.tli_flag_get:0000000000000000 $t
+     /tmp/cc69JfPv.s:722    .text.tli_flag_get:0000000000000000 tli_flag_get
+     /tmp/cc69JfPv.s:745    .text.tli_flag_get:0000000000000020 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

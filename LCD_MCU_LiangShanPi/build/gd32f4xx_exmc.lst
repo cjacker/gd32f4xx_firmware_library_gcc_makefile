@@ -1,0 +1,1471 @@
+ARM GAS  /tmp/cc2IZYMA.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32f4xx_exmc.c"
+  14              		.text
+  15              		.section	.text.exmc_norsram_deinit,"ax",%progbits
+  16              		.align	1
+  17              		.global	exmc_norsram_deinit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	exmc_norsram_deinit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 00F1A053 		add	r3, r0, #335544320
+  27 0004 DB00     		lsls	r3, r3, #3
+  28 0006 43F2DA02 		movw	r2, #12506
+  29 000a 1A60     		str	r2, [r3]
+  30 000c C000     		lsls	r0, r0, #3
+  31 000e 00F12040 		add	r0, r0, #-1610612736
+  32 0012 6FF07043 		mvn	r3, #-268435456
+  33 0016 4360     		str	r3, [r0, #4]
+  34 0018 C0F80431 		str	r3, [r0, #260]
+  35 001c 7047     		bx	lr
+  37              		.section	.text.exmc_norsram_struct_para_init,"ax",%progbits
+  38              		.align	1
+  39              		.global	exmc_norsram_struct_para_init
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	exmc_norsram_struct_para_init:
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47              		@ link register save eliminated.
+  48 0000 30B4     		push	{r4, r5}
+  49 0002 0023     		movs	r3, #0
+  50 0004 0360     		str	r3, [r0]
+  51 0006 0122     		movs	r2, #1
+  52 0008 0263     		str	r2, [r0, #48]
+  53 000a C362     		str	r3, [r0, #44]
+  54 000c 8362     		str	r3, [r0, #40]
+  55 000e 4362     		str	r3, [r0, #36]
+  56 0010 0362     		str	r3, [r0, #32]
+  57 0012 C361     		str	r3, [r0, #28]
+  58 0014 8361     		str	r3, [r0, #24]
+  59 0016 4261     		str	r2, [r0, #20]
+  60 0018 0261     		str	r2, [r0, #16]
+ARM GAS  /tmp/cc2IZYMA.s 			page 2
+
+
+  61 001a 8360     		str	r3, [r0, #8]
+  62 001c C360     		str	r3, [r0, #12]
+  63 001e 4360     		str	r3, [r0, #4]
+  64 0020 416B     		ldr	r1, [r0, #52]
+  65 0022 0F22     		movs	r2, #15
+  66 0024 8A61     		str	r2, [r1, #24]
+  67 0026 416B     		ldr	r1, [r0, #52]
+  68 0028 4A61     		str	r2, [r1, #20]
+  69 002a 446B     		ldr	r4, [r0, #52]
+  70 002c FF21     		movs	r1, #255
+  71 002e 2161     		str	r1, [r4, #16]
+  72 0030 446B     		ldr	r4, [r0, #52]
+  73 0032 E260     		str	r2, [r4, #12]
+  74 0034 446B     		ldr	r4, [r0, #52]
+  75 0036 4FF47005 		mov	r5, #15728640
+  76 003a A560     		str	r5, [r4, #8]
+  77 003c 4FF07064 		mov	r4, #251658240
+  78 0040 456B     		ldr	r5, [r0, #52]
+  79 0042 6C60     		str	r4, [r5, #4]
+  80 0044 446B     		ldr	r4, [r0, #52]
+  81 0046 2360     		str	r3, [r4]
+  82 0048 846B     		ldr	r4, [r0, #56]
+  83 004a A261     		str	r2, [r4, #24]
+  84 004c 846B     		ldr	r4, [r0, #56]
+  85 004e 6261     		str	r2, [r4, #20]
+  86 0050 846B     		ldr	r4, [r0, #56]
+  87 0052 2161     		str	r1, [r4, #16]
+  88 0054 816B     		ldr	r1, [r0, #56]
+  89 0056 CA60     		str	r2, [r1, #12]
+  90 0058 826B     		ldr	r2, [r0, #56]
+  91 005a 1360     		str	r3, [r2]
+  92 005c 30BC     		pop	{r4, r5}
+  93 005e 7047     		bx	lr
+  95              		.section	.text.exmc_norsram_init,"ax",%progbits
+  96              		.align	1
+  97              		.global	exmc_norsram_init
+  98              		.syntax unified
+  99              		.thumb
+ 100              		.thumb_func
+ 102              	exmc_norsram_init:
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              		@ link register save eliminated.
+ 106 0000 F0B4     		push	{r4, r5, r6, r7}
+ 107 0002 0268     		ldr	r2, [r0]
+ 108 0004 02F1A052 		add	r2, r2, #335544320
+ 109 0008 D200     		lsls	r2, r2, #3
+ 110 000a 1368     		ldr	r3, [r2]
+ 111 000c 2B4C     		ldr	r4, .L11
+ 112 000e 1C40     		ands	r4, r4, r3
+ 113 0010 036B     		ldr	r3, [r0, #48]
+ 114 0012 C16A     		ldr	r1, [r0, #44]
+ 115 0014 41EA4303 		orr	r3, r1, r3, lsl #1
+ 116 0018 856A     		ldr	r5, [r0, #40]
+ 117 001a 2B43     		orrs	r3, r3, r5
+ 118 001c 456A     		ldr	r5, [r0, #36]
+ 119 001e 43EA0523 		orr	r3, r3, r5, lsl #8
+ARM GAS  /tmp/cc2IZYMA.s 			page 3
+
+
+ 120 0022 056A     		ldr	r5, [r0, #32]
+ 121 0024 2B43     		orrs	r3, r3, r5
+ 122 0026 C569     		ldr	r5, [r0, #28]
+ 123 0028 43EA8523 		orr	r3, r3, r5, lsl #10
+ 124 002c 8569     		ldr	r5, [r0, #24]
+ 125 002e 2B43     		orrs	r3, r3, r5
+ 126 0030 4569     		ldr	r5, [r0, #20]
+ 127 0032 43EA0533 		orr	r3, r3, r5, lsl #12
+ 128 0036 0569     		ldr	r5, [r0, #16]
+ 129 0038 43EA4533 		orr	r3, r3, r5, lsl #13
+ 130 003c 8568     		ldr	r5, [r0, #8]
+ 131 003e 43EA8533 		orr	r3, r3, r5, lsl #14
+ 132 0042 C668     		ldr	r6, [r0, #12]
+ 133 0044 43EAC633 		orr	r3, r3, r6, lsl #15
+ 134 0048 4668     		ldr	r6, [r0, #4]
+ 135 004a 3343     		orrs	r3, r3, r6
+ 136 004c 2343     		orrs	r3, r3, r4
+ 137 004e 466B     		ldr	r6, [r0, #52]
+ 138 0050 B469     		ldr	r4, [r6, #24]
+ 139 0052 7769     		ldr	r7, [r6, #20]
+ 140 0054 44EA0714 		orr	r4, r4, r7, lsl #4
+ 141 0058 3769     		ldr	r7, [r6, #16]
+ 142 005a 44EA0724 		orr	r4, r4, r7, lsl #8
+ 143 005e F768     		ldr	r7, [r6, #12]
+ 144 0060 44EA0744 		orr	r4, r4, r7, lsl #16
+ 145 0064 B768     		ldr	r7, [r6, #8]
+ 146 0066 3C43     		orrs	r4, r4, r7
+ 147 0068 7768     		ldr	r7, [r6, #4]
+ 148 006a 3C43     		orrs	r4, r4, r7
+ 149 006c 3668     		ldr	r6, [r6]
+ 150 006e 3443     		orrs	r4, r4, r6
+ 151 0070 0829     		cmp	r1, #8
+ 152 0072 11D0     		beq	.L9
+ 153              	.L5:
+ 154 0074 012D     		cmp	r5, #1
+ 155 0076 12D0     		beq	.L10
+ 156 0078 6FF07041 		mvn	r1, #-268435456
+ 157              	.L6:
+ 158 007c 1360     		str	r3, [r2]
+ 159 007e 0368     		ldr	r3, [r0]
+ 160 0080 DB00     		lsls	r3, r3, #3
+ 161 0082 03F12043 		add	r3, r3, #-1610612736
+ 162 0086 5C60     		str	r4, [r3, #4]
+ 163 0088 0368     		ldr	r3, [r0]
+ 164 008a DB00     		lsls	r3, r3, #3
+ 165 008c 03F12043 		add	r3, r3, #-1610612736
+ 166 0090 C3F80411 		str	r1, [r3, #260]
+ 167 0094 F0BC     		pop	{r4, r5, r6, r7}
+ 168 0096 7047     		bx	lr
+ 169              	.L9:
+ 170 0098 43F04003 		orr	r3, r3, #64
+ 171 009c EAE7     		b	.L5
+ 172              	.L10:
+ 173 009e 856B     		ldr	r5, [r0, #56]
+ 174 00a0 A969     		ldr	r1, [r5, #24]
+ 175 00a2 6E69     		ldr	r6, [r5, #20]
+ 176 00a4 41EA0611 		orr	r1, r1, r6, lsl #4
+ARM GAS  /tmp/cc2IZYMA.s 			page 4
+
+
+ 177 00a8 2E69     		ldr	r6, [r5, #16]
+ 178 00aa 41EA0621 		orr	r1, r1, r6, lsl #8
+ 179 00ae EE68     		ldr	r6, [r5, #12]
+ 180 00b0 41EA0641 		orr	r1, r1, r6, lsl #16
+ 181 00b4 2D68     		ldr	r5, [r5]
+ 182 00b6 2943     		orrs	r1, r1, r5
+ 183 00b8 E0E7     		b	.L6
+ 184              	.L12:
+ 185 00ba 00BF     		.align	2
+ 186              	.L11:
+ 187 00bc 8100F7FF 		.word	-589695
+ 189              		.section	.text.exmc_norsram_enable,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	exmc_norsram_enable
+ 192              		.syntax unified
+ 193              		.thumb
+ 194              		.thumb_func
+ 196              	exmc_norsram_enable:
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		@ link register save eliminated.
+ 200 0000 00F1A050 		add	r0, r0, #335544320
+ 201 0004 C000     		lsls	r0, r0, #3
+ 202 0006 0368     		ldr	r3, [r0]
+ 203 0008 43F00103 		orr	r3, r3, #1
+ 204 000c 0360     		str	r3, [r0]
+ 205 000e 7047     		bx	lr
+ 207              		.section	.text.exmc_norsram_disable,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	exmc_norsram_disable
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	exmc_norsram_disable:
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              		@ link register save eliminated.
+ 218 0000 00F1A050 		add	r0, r0, #335544320
+ 219 0004 C000     		lsls	r0, r0, #3
+ 220 0006 0368     		ldr	r3, [r0]
+ 221 0008 23F00103 		bic	r3, r3, #1
+ 222 000c 0360     		str	r3, [r0]
+ 223 000e 7047     		bx	lr
+ 225              		.section	.text.exmc_nand_deinit,"ax",%progbits
+ 226              		.align	1
+ 227              		.global	exmc_nand_deinit
+ 228              		.syntax unified
+ 229              		.thumb
+ 230              		.thumb_func
+ 232              	exmc_nand_deinit:
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235              		@ link register save eliminated.
+ 236 0000 00F1A063 		add	r3, r0, #83886080
+ 237 0004 0233     		adds	r3, r3, #2
+ 238 0006 5B01     		lsls	r3, r3, #5
+ 239 0008 0822     		movs	r2, #8
+ARM GAS  /tmp/cc2IZYMA.s 			page 5
+
+
+ 240 000a 1A60     		str	r2, [r3]
+ 241 000c 4001     		lsls	r0, r0, #5
+ 242 000e 00F12040 		add	r0, r0, #-1610612736
+ 243 0012 4223     		movs	r3, #66
+ 244 0014 4364     		str	r3, [r0, #68]
+ 245 0016 4FF0FF33 		mov	r3, #-1
+ 246 001a 8364     		str	r3, [r0, #72]
+ 247 001c C364     		str	r3, [r0, #76]
+ 248 001e 7047     		bx	lr
+ 250              		.section	.text.exmc_nand_struct_para_init,"ax",%progbits
+ 251              		.align	1
+ 252              		.global	exmc_nand_struct_para_init
+ 253              		.syntax unified
+ 254              		.thumb
+ 255              		.thumb_func
+ 257              	exmc_nand_struct_para_init:
+ 258              		@ args = 0, pretend = 0, frame = 0
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260              		@ link register save eliminated.
+ 261 0000 0123     		movs	r3, #1
+ 262 0002 0360     		str	r3, [r0]
+ 263 0004 0023     		movs	r3, #0
+ 264 0006 8361     		str	r3, [r0, #24]
+ 265 0008 4361     		str	r3, [r0, #20]
+ 266 000a 0361     		str	r3, [r0, #16]
+ 267 000c 4360     		str	r3, [r0, #4]
+ 268 000e C360     		str	r3, [r0, #12]
+ 269 0010 8360     		str	r3, [r0, #8]
+ 270 0012 C269     		ldr	r2, [r0, #28]
+ 271 0014 FC23     		movs	r3, #252
+ 272 0016 D360     		str	r3, [r2, #12]
+ 273 0018 C269     		ldr	r2, [r0, #28]
+ 274 001a 9360     		str	r3, [r2, #8]
+ 275 001c C269     		ldr	r2, [r0, #28]
+ 276 001e 5360     		str	r3, [r2, #4]
+ 277 0020 C269     		ldr	r2, [r0, #28]
+ 278 0022 1360     		str	r3, [r2]
+ 279 0024 026A     		ldr	r2, [r0, #32]
+ 280 0026 D360     		str	r3, [r2, #12]
+ 281 0028 026A     		ldr	r2, [r0, #32]
+ 282 002a 9360     		str	r3, [r2, #8]
+ 283 002c 026A     		ldr	r2, [r0, #32]
+ 284 002e 5360     		str	r3, [r2, #4]
+ 285 0030 026A     		ldr	r2, [r0, #32]
+ 286 0032 1360     		str	r3, [r2]
+ 287 0034 7047     		bx	lr
+ 289              		.section	.text.exmc_nand_init,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	exmc_nand_init
+ 292              		.syntax unified
+ 293              		.thumb
+ 294              		.thumb_func
+ 296              	exmc_nand_init:
+ 297              		@ args = 0, pretend = 0, frame = 0
+ 298              		@ frame_needed = 0, uses_anonymous_args = 0
+ 299              		@ link register save eliminated.
+ 300 0000 10B4     		push	{r4}
+ARM GAS  /tmp/cc2IZYMA.s 			page 6
+
+
+ 301 0002 8269     		ldr	r2, [r0, #24]
+ 302 0004 4369     		ldr	r3, [r0, #20]
+ 303 0006 43EA4202 		orr	r2, r3, r2, lsl #1
+ 304 000a 0369     		ldr	r3, [r0, #16]
+ 305 000c 42EA8312 		orr	r2, r2, r3, lsl #6
+ 306 0010 4368     		ldr	r3, [r0, #4]
+ 307 0012 1A43     		orrs	r2, r2, r3
+ 308 0014 C368     		ldr	r3, [r0, #12]
+ 309 0016 1A43     		orrs	r2, r2, r3
+ 310 0018 8368     		ldr	r3, [r0, #8]
+ 311 001a 1A43     		orrs	r2, r2, r3
+ 312 001c 42F00802 		orr	r2, r2, #8
+ 313 0020 C469     		ldr	r4, [r0, #28]
+ 314 0022 E368     		ldr	r3, [r4, #12]
+ 315 0024 591E     		subs	r1, r3, #1
+ 316 0026 C9B2     		uxtb	r1, r1
+ 317 0028 A368     		ldr	r3, [r4, #8]
+ 318 002a 013B     		subs	r3, r3, #1
+ 319 002c 1B02     		lsls	r3, r3, #8
+ 320 002e 9BB2     		uxth	r3, r3
+ 321 0030 1943     		orrs	r1, r1, r3
+ 322 0032 6368     		ldr	r3, [r4, #4]
+ 323 0034 1B04     		lsls	r3, r3, #16
+ 324 0036 03F47F03 		and	r3, r3, #16711680
+ 325 003a 1943     		orrs	r1, r1, r3
+ 326 003c 2368     		ldr	r3, [r4]
+ 327 003e 013B     		subs	r3, r3, #1
+ 328 0040 41EA0361 		orr	r1, r1, r3, lsl #24
+ 329 0044 046A     		ldr	r4, [r0, #32]
+ 330 0046 E368     		ldr	r3, [r4, #12]
+ 331 0048 013B     		subs	r3, r3, #1
+ 332 004a DBB2     		uxtb	r3, r3
+ 333 004c D4F808C0 		ldr	ip, [r4, #8]
+ 334 0050 0CF1FF3C 		add	ip, ip, #-1
+ 335 0054 4FEA0C2C 		lsl	ip, ip, #8
+ 336 0058 1FFA8CFC 		uxth	ip, ip
+ 337 005c 43EA0C03 		orr	r3, r3, ip
+ 338 0060 D4F804C0 		ldr	ip, [r4, #4]
+ 339 0064 4FEA0C4C 		lsl	ip, ip, #16
+ 340 0068 0CF47F0C 		and	ip, ip, #16711680
+ 341 006c 43EA0C03 		orr	r3, r3, ip
+ 342 0070 2468     		ldr	r4, [r4]
+ 343 0072 43EA0463 		orr	r3, r3, r4, lsl #24
+ 344 0076 0468     		ldr	r4, [r0]
+ 345 0078 04F1A06C 		add	ip, r4, #83886080
+ 346 007c 0CF1020C 		add	ip, ip, #2
+ 347 0080 4FEA4C1C 		lsl	ip, ip, #5
+ 348 0084 CCF80020 		str	r2, [ip]
+ 349 0088 0268     		ldr	r2, [r0]
+ 350 008a 5201     		lsls	r2, r2, #5
+ 351 008c 02F12042 		add	r2, r2, #-1610612736
+ 352 0090 9164     		str	r1, [r2, #72]
+ 353 0092 0268     		ldr	r2, [r0]
+ 354 0094 5201     		lsls	r2, r2, #5
+ 355 0096 02F12042 		add	r2, r2, #-1610612736
+ 356 009a D364     		str	r3, [r2, #76]
+ 357 009c 10BC     		pop	{r4}
+ARM GAS  /tmp/cc2IZYMA.s 			page 7
+
+
+ 358 009e 7047     		bx	lr
+ 360              		.section	.text.exmc_nand_enable,"ax",%progbits
+ 361              		.align	1
+ 362              		.global	exmc_nand_enable
+ 363              		.syntax unified
+ 364              		.thumb
+ 365              		.thumb_func
+ 367              	exmc_nand_enable:
+ 368              		@ args = 0, pretend = 0, frame = 0
+ 369              		@ frame_needed = 0, uses_anonymous_args = 0
+ 370              		@ link register save eliminated.
+ 371 0000 00F1A060 		add	r0, r0, #83886080
+ 372 0004 0230     		adds	r0, r0, #2
+ 373 0006 4001     		lsls	r0, r0, #5
+ 374 0008 0368     		ldr	r3, [r0]
+ 375 000a 43F00403 		orr	r3, r3, #4
+ 376 000e 0360     		str	r3, [r0]
+ 377 0010 7047     		bx	lr
+ 379              		.section	.text.exmc_nand_disable,"ax",%progbits
+ 380              		.align	1
+ 381              		.global	exmc_nand_disable
+ 382              		.syntax unified
+ 383              		.thumb
+ 384              		.thumb_func
+ 386              	exmc_nand_disable:
+ 387              		@ args = 0, pretend = 0, frame = 0
+ 388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 389              		@ link register save eliminated.
+ 390 0000 00F1A060 		add	r0, r0, #83886080
+ 391 0004 0230     		adds	r0, r0, #2
+ 392 0006 4001     		lsls	r0, r0, #5
+ 393 0008 0368     		ldr	r3, [r0]
+ 394 000a 23F00403 		bic	r3, r3, #4
+ 395 000e 0360     		str	r3, [r0]
+ 396 0010 7047     		bx	lr
+ 398              		.section	.text.exmc_pccard_deinit,"ax",%progbits
+ 399              		.align	1
+ 400              		.global	exmc_pccard_deinit
+ 401              		.syntax unified
+ 402              		.thumb
+ 403              		.thumb_func
+ 405              	exmc_pccard_deinit:
+ 406              		@ args = 0, pretend = 0, frame = 0
+ 407              		@ frame_needed = 0, uses_anonymous_args = 0
+ 408              		@ link register save eliminated.
+ 409 0000 4FF02043 		mov	r3, #-1610612736
+ 410 0004 0822     		movs	r2, #8
+ 411 0006 C3F8A020 		str	r2, [r3, #160]
+ 412 000a 4022     		movs	r2, #64
+ 413 000c C3F8A420 		str	r2, [r3, #164]
+ 414 0010 4FF0FF32 		mov	r2, #-1
+ 415 0014 C3F8A820 		str	r2, [r3, #168]
+ 416 0018 C3F8AC20 		str	r2, [r3, #172]
+ 417 001c C3F8B020 		str	r2, [r3, #176]
+ 418 0020 7047     		bx	lr
+ 420              		.section	.text.exmc_pccard_struct_para_init,"ax",%progbits
+ 421              		.align	1
+ARM GAS  /tmp/cc2IZYMA.s 			page 8
+
+
+ 422              		.global	exmc_pccard_struct_para_init
+ 423              		.syntax unified
+ 424              		.thumb
+ 425              		.thumb_func
+ 427              	exmc_pccard_struct_para_init:
+ 428              		@ args = 0, pretend = 0, frame = 0
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 430              		@ link register save eliminated.
+ 431 0000 0023     		movs	r3, #0
+ 432 0002 8360     		str	r3, [r0, #8]
+ 433 0004 4360     		str	r3, [r0, #4]
+ 434 0006 0360     		str	r3, [r0]
+ 435 0008 C268     		ldr	r2, [r0, #12]
+ 436 000a FC23     		movs	r3, #252
+ 437 000c D360     		str	r3, [r2, #12]
+ 438 000e C268     		ldr	r2, [r0, #12]
+ 439 0010 9360     		str	r3, [r2, #8]
+ 440 0012 C268     		ldr	r2, [r0, #12]
+ 441 0014 5360     		str	r3, [r2, #4]
+ 442 0016 C268     		ldr	r2, [r0, #12]
+ 443 0018 1360     		str	r3, [r2]
+ 444 001a 0269     		ldr	r2, [r0, #16]
+ 445 001c D360     		str	r3, [r2, #12]
+ 446 001e 0269     		ldr	r2, [r0, #16]
+ 447 0020 9360     		str	r3, [r2, #8]
+ 448 0022 0269     		ldr	r2, [r0, #16]
+ 449 0024 5360     		str	r3, [r2, #4]
+ 450 0026 0269     		ldr	r2, [r0, #16]
+ 451 0028 1360     		str	r3, [r2]
+ 452 002a 4269     		ldr	r2, [r0, #20]
+ 453 002c D360     		str	r3, [r2, #12]
+ 454 002e 4269     		ldr	r2, [r0, #20]
+ 455 0030 9360     		str	r3, [r2, #8]
+ 456 0032 4269     		ldr	r2, [r0, #20]
+ 457 0034 5360     		str	r3, [r2, #4]
+ 458 0036 4269     		ldr	r2, [r0, #20]
+ 459 0038 1360     		str	r3, [r2]
+ 460 003a 7047     		bx	lr
+ 462              		.section	.text.exmc_pccard_init,"ax",%progbits
+ 463              		.align	1
+ 464              		.global	exmc_pccard_init
+ 465              		.syntax unified
+ 466              		.thumb
+ 467              		.thumb_func
+ 469              	exmc_pccard_init:
+ 470              		@ args = 0, pretend = 0, frame = 0
+ 471              		@ frame_needed = 0, uses_anonymous_args = 0
+ 472              		@ link register save eliminated.
+ 473 0000 10B4     		push	{r4}
+ 474 0002 8268     		ldr	r2, [r0, #8]
+ 475 0004 4368     		ldr	r3, [r0, #4]
+ 476 0006 43EA4203 		orr	r3, r3, r2, lsl #1
+ 477 000a 0268     		ldr	r2, [r0]
+ 478 000c 1343     		orrs	r3, r3, r2
+ 479 000e 43F01003 		orr	r3, r3, #16
+ 480 0012 4FF02042 		mov	r2, #-1610612736
+ 481 0016 C2F8A030 		str	r3, [r2, #160]
+ARM GAS  /tmp/cc2IZYMA.s 			page 9
+
+
+ 482 001a C468     		ldr	r4, [r0, #12]
+ 483 001c E368     		ldr	r3, [r4, #12]
+ 484 001e 013B     		subs	r3, r3, #1
+ 485 0020 DBB2     		uxtb	r3, r3
+ 486 0022 A168     		ldr	r1, [r4, #8]
+ 487 0024 0139     		subs	r1, r1, #1
+ 488 0026 0902     		lsls	r1, r1, #8
+ 489 0028 89B2     		uxth	r1, r1
+ 490 002a 0B43     		orrs	r3, r3, r1
+ 491 002c 6168     		ldr	r1, [r4, #4]
+ 492 002e 0904     		lsls	r1, r1, #16
+ 493 0030 01F47F01 		and	r1, r1, #16711680
+ 494 0034 0B43     		orrs	r3, r3, r1
+ 495 0036 2168     		ldr	r1, [r4]
+ 496 0038 0139     		subs	r1, r1, #1
+ 497 003a 43EA0163 		orr	r3, r3, r1, lsl #24
+ 498 003e C2F8A830 		str	r3, [r2, #168]
+ 499 0042 0469     		ldr	r4, [r0, #16]
+ 500 0044 E368     		ldr	r3, [r4, #12]
+ 501 0046 013B     		subs	r3, r3, #1
+ 502 0048 DBB2     		uxtb	r3, r3
+ 503 004a A168     		ldr	r1, [r4, #8]
+ 504 004c 0139     		subs	r1, r1, #1
+ 505 004e 0902     		lsls	r1, r1, #8
+ 506 0050 89B2     		uxth	r1, r1
+ 507 0052 0B43     		orrs	r3, r3, r1
+ 508 0054 6168     		ldr	r1, [r4, #4]
+ 509 0056 0904     		lsls	r1, r1, #16
+ 510 0058 01F47F01 		and	r1, r1, #16711680
+ 511 005c 0B43     		orrs	r3, r3, r1
+ 512 005e 2168     		ldr	r1, [r4]
+ 513 0060 43EA0163 		orr	r3, r3, r1, lsl #24
+ 514 0064 C2F8AC30 		str	r3, [r2, #172]
+ 515 0068 4069     		ldr	r0, [r0, #20]
+ 516 006a C368     		ldr	r3, [r0, #12]
+ 517 006c 013B     		subs	r3, r3, #1
+ 518 006e DBB2     		uxtb	r3, r3
+ 519 0070 8168     		ldr	r1, [r0, #8]
+ 520 0072 0139     		subs	r1, r1, #1
+ 521 0074 0902     		lsls	r1, r1, #8
+ 522 0076 89B2     		uxth	r1, r1
+ 523 0078 0B43     		orrs	r3, r3, r1
+ 524 007a 4168     		ldr	r1, [r0, #4]
+ 525 007c 0904     		lsls	r1, r1, #16
+ 526 007e 01F47F01 		and	r1, r1, #16711680
+ 527 0082 0B43     		orrs	r3, r3, r1
+ 528 0084 0168     		ldr	r1, [r0]
+ 529 0086 43EA0163 		orr	r3, r3, r1, lsl #24
+ 530 008a C2F8B030 		str	r3, [r2, #176]
+ 531 008e 10BC     		pop	{r4}
+ 532 0090 7047     		bx	lr
+ 534              		.section	.text.exmc_pccard_enable,"ax",%progbits
+ 535              		.align	1
+ 536              		.global	exmc_pccard_enable
+ 537              		.syntax unified
+ 538              		.thumb
+ 539              		.thumb_func
+ARM GAS  /tmp/cc2IZYMA.s 			page 10
+
+
+ 541              	exmc_pccard_enable:
+ 542              		@ args = 0, pretend = 0, frame = 0
+ 543              		@ frame_needed = 0, uses_anonymous_args = 0
+ 544              		@ link register save eliminated.
+ 545 0000 4FF02042 		mov	r2, #-1610612736
+ 546 0004 D2F8A030 		ldr	r3, [r2, #160]
+ 547 0008 43F00403 		orr	r3, r3, #4
+ 548 000c C2F8A030 		str	r3, [r2, #160]
+ 549 0010 7047     		bx	lr
+ 551              		.section	.text.exmc_pccard_disable,"ax",%progbits
+ 552              		.align	1
+ 553              		.global	exmc_pccard_disable
+ 554              		.syntax unified
+ 555              		.thumb
+ 556              		.thumb_func
+ 558              	exmc_pccard_disable:
+ 559              		@ args = 0, pretend = 0, frame = 0
+ 560              		@ frame_needed = 0, uses_anonymous_args = 0
+ 561              		@ link register save eliminated.
+ 562 0000 4FF02042 		mov	r2, #-1610612736
+ 563 0004 D2F8A030 		ldr	r3, [r2, #160]
+ 564 0008 23F00403 		bic	r3, r3, #4
+ 565 000c C2F8A030 		str	r3, [r2, #160]
+ 566 0010 7047     		bx	lr
+ 568              		.section	.text.exmc_sdram_deinit,"ax",%progbits
+ 569              		.align	1
+ 570              		.global	exmc_sdram_deinit
+ 571              		.syntax unified
+ 572              		.thumb
+ 573              		.thumb_func
+ 575              	exmc_sdram_deinit:
+ 576              		@ args = 0, pretend = 0, frame = 0
+ 577              		@ frame_needed = 0, uses_anonymous_args = 0
+ 578              		@ link register save eliminated.
+ 579 0000 00F12050 		add	r0, r0, #671088640
+ 580 0004 00F14C03 		add	r3, r0, #76
+ 581 0008 9B00     		lsls	r3, r3, #2
+ 582 000a 4FF43472 		mov	r2, #720
+ 583 000e 1A60     		str	r2, [r3]
+ 584 0010 4E30     		adds	r0, r0, #78
+ 585 0012 8000     		lsls	r0, r0, #2
+ 586 0014 6FF07043 		mvn	r3, #-268435456
+ 587 0018 0360     		str	r3, [r0]
+ 588 001a 4FF02043 		mov	r3, #-1610612736
+ 589 001e 0022     		movs	r2, #0
+ 590 0020 C3F85021 		str	r2, [r3, #336]
+ 591 0024 C3F85421 		str	r2, [r3, #340]
+ 592 0028 C3F88021 		str	r2, [r3, #384]
+ 593 002c 7047     		bx	lr
+ 595              		.section	.text.exmc_sdram_struct_para_init,"ax",%progbits
+ 596              		.align	1
+ 597              		.global	exmc_sdram_struct_para_init
+ 598              		.syntax unified
+ 599              		.thumb
+ 600              		.thumb_func
+ 602              	exmc_sdram_struct_para_init:
+ 603              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc2IZYMA.s 			page 11
+
+
+ 604              		@ frame_needed = 0, uses_anonymous_args = 0
+ 605              		@ link register save eliminated.
+ 606 0000 0423     		movs	r3, #4
+ 607 0002 0360     		str	r3, [r0]
+ 608 0004 0022     		movs	r2, #0
+ 609 0006 4262     		str	r2, [r0, #36]
+ 610 0008 0262     		str	r2, [r0, #32]
+ 611 000a 1023     		movs	r3, #16
+ 612 000c C361     		str	r3, [r0, #28]
+ 613 000e 4021     		movs	r1, #64
+ 614 0010 8161     		str	r1, [r0, #24]
+ 615 0012 8021     		movs	r1, #128
+ 616 0014 4161     		str	r1, [r0, #20]
+ 617 0016 0121     		movs	r1, #1
+ 618 0018 0161     		str	r1, [r0, #16]
+ 619 001a C260     		str	r2, [r0, #12]
+ 620 001c 8260     		str	r2, [r0, #8]
+ 621 001e 4260     		str	r2, [r0, #4]
+ 622 0020 826A     		ldr	r2, [r0, #40]
+ 623 0022 9361     		str	r3, [r2, #24]
+ 624 0024 826A     		ldr	r2, [r0, #40]
+ 625 0026 5361     		str	r3, [r2, #20]
+ 626 0028 826A     		ldr	r2, [r0, #40]
+ 627 002a 1361     		str	r3, [r2, #16]
+ 628 002c 826A     		ldr	r2, [r0, #40]
+ 629 002e D360     		str	r3, [r2, #12]
+ 630 0030 826A     		ldr	r2, [r0, #40]
+ 631 0032 9360     		str	r3, [r2, #8]
+ 632 0034 826A     		ldr	r2, [r0, #40]
+ 633 0036 5360     		str	r3, [r2, #4]
+ 634 0038 826A     		ldr	r2, [r0, #40]
+ 635 003a 1360     		str	r3, [r2]
+ 636 003c 7047     		bx	lr
+ 638              		.section	.text.exmc_sdram_init,"ax",%progbits
+ 639              		.align	1
+ 640              		.global	exmc_sdram_init
+ 641              		.syntax unified
+ 642              		.thumb
+ 643              		.thumb_func
+ 645              	exmc_sdram_init:
+ 646              		@ args = 0, pretend = 0, frame = 0
+ 647              		@ frame_needed = 0, uses_anonymous_args = 0
+ 648              		@ link register save eliminated.
+ 649 0000 0368     		ldr	r3, [r0]
+ 650 0002 042B     		cmp	r3, #4
+ 651 0004 49D0     		beq	.L35
+ 652 0006 10B4     		push	{r4}
+ 653 0008 4FF02042 		mov	r2, #-1610612736
+ 654 000c D2F84031 		ldr	r3, [r2, #320]
+ 655 0010 23F4F84C 		bic	ip, r3, #31744
+ 656 0014 C368     		ldr	r3, [r0, #12]
+ 657 0016 8168     		ldr	r1, [r0, #8]
+ 658 0018 43EA0131 		orr	r1, r3, r1, lsl #12
+ 659 001c 4368     		ldr	r3, [r0, #4]
+ 660 001e 1943     		orrs	r1, r1, r3
+ 661 0020 41EA0C01 		orr	r1, r1, ip
+ 662 0024 436A     		ldr	r3, [r0, #36]
+ARM GAS  /tmp/cc2IZYMA.s 			page 12
+
+
+ 663 0026 046A     		ldr	r4, [r0, #32]
+ 664 0028 2343     		orrs	r3, r3, r4
+ 665 002a C469     		ldr	r4, [r0, #28]
+ 666 002c 2343     		orrs	r3, r3, r4
+ 667 002e 8469     		ldr	r4, [r0, #24]
+ 668 0030 2343     		orrs	r3, r3, r4
+ 669 0032 4469     		ldr	r4, [r0, #20]
+ 670 0034 2343     		orrs	r3, r3, r4
+ 671 0036 0469     		ldr	r4, [r0, #16]
+ 672 0038 43EA4423 		orr	r3, r3, r4, lsl #9
+ 673 003c C2F84011 		str	r1, [r2, #320]
+ 674 0040 C2F84431 		str	r3, [r2, #324]
+ 675 0044 D2F84811 		ldr	r1, [r2, #328]
+ 676 0048 21F47F01 		bic	r1, r1, #16711680
+ 677 004c 21F47041 		bic	r1, r1, #61440
+ 678 0050 806A     		ldr	r0, [r0, #40]
+ 679 0052 C368     		ldr	r3, [r0, #12]
+ 680 0054 03F1FF3C 		add	ip, r3, #-1
+ 681 0058 4368     		ldr	r3, [r0, #4]
+ 682 005a 013B     		subs	r3, r3, #1
+ 683 005c 1B05     		lsls	r3, r3, #20
+ 684 005e 43EA0C33 		orr	r3, r3, ip, lsl #12
+ 685 0062 8468     		ldr	r4, [r0, #8]
+ 686 0064 04F1FF3C 		add	ip, r4, #-1
+ 687 0068 43EA0C43 		orr	r3, r3, ip, lsl #16
+ 688 006c 0B43     		orrs	r3, r3, r1
+ 689 006e 8169     		ldr	r1, [r0, #24]
+ 690 0070 0139     		subs	r1, r1, #1
+ 691 0072 4469     		ldr	r4, [r0, #20]
+ 692 0074 04F1FF3C 		add	ip, r4, #-1
+ 693 0078 41EA0C11 		orr	r1, r1, ip, lsl #4
+ 694 007c 0469     		ldr	r4, [r0, #16]
+ 695 007e 04F1FF3C 		add	ip, r4, #-1
+ 696 0082 41EA0C21 		orr	r1, r1, ip, lsl #8
+ 697 0086 0068     		ldr	r0, [r0]
+ 698 0088 0138     		subs	r0, r0, #1
+ 699 008a 41EA0061 		orr	r1, r1, r0, lsl #24
+ 700 008e C2F84831 		str	r3, [r2, #328]
+ 701 0092 C2F84C11 		str	r1, [r2, #332]
+ 702 0096 10BC     		pop	{r4}
+ 703 0098 7047     		bx	lr
+ 704              	.L35:
+ 705 009a 436A     		ldr	r3, [r0, #36]
+ 706 009c 026A     		ldr	r2, [r0, #32]
+ 707 009e 1343     		orrs	r3, r3, r2
+ 708 00a0 C269     		ldr	r2, [r0, #28]
+ 709 00a2 1343     		orrs	r3, r3, r2
+ 710 00a4 8269     		ldr	r2, [r0, #24]
+ 711 00a6 1343     		orrs	r3, r3, r2
+ 712 00a8 4269     		ldr	r2, [r0, #20]
+ 713 00aa 1343     		orrs	r3, r3, r2
+ 714 00ac 0269     		ldr	r2, [r0, #16]
+ 715 00ae 43EA4223 		orr	r3, r3, r2, lsl #9
+ 716 00b2 C268     		ldr	r2, [r0, #12]
+ 717 00b4 1343     		orrs	r3, r3, r2
+ 718 00b6 8268     		ldr	r2, [r0, #8]
+ 719 00b8 43EA0233 		orr	r3, r3, r2, lsl #12
+ARM GAS  /tmp/cc2IZYMA.s 			page 13
+
+
+ 720 00bc 4268     		ldr	r2, [r0, #4]
+ 721 00be 1343     		orrs	r3, r3, r2
+ 722 00c0 4FF02041 		mov	r1, #-1610612736
+ 723 00c4 C1F84031 		str	r3, [r1, #320]
+ 724 00c8 826A     		ldr	r2, [r0, #40]
+ 725 00ca 9369     		ldr	r3, [r2, #24]
+ 726 00cc 013B     		subs	r3, r3, #1
+ 727 00ce 5069     		ldr	r0, [r2, #20]
+ 728 00d0 0138     		subs	r0, r0, #1
+ 729 00d2 43EA0013 		orr	r3, r3, r0, lsl #4
+ 730 00d6 1069     		ldr	r0, [r2, #16]
+ 731 00d8 0138     		subs	r0, r0, #1
+ 732 00da 43EA0023 		orr	r3, r3, r0, lsl #8
+ 733 00de D068     		ldr	r0, [r2, #12]
+ 734 00e0 0138     		subs	r0, r0, #1
+ 735 00e2 43EA0033 		orr	r3, r3, r0, lsl #12
+ 736 00e6 9068     		ldr	r0, [r2, #8]
+ 737 00e8 0138     		subs	r0, r0, #1
+ 738 00ea 43EA0043 		orr	r3, r3, r0, lsl #16
+ 739 00ee 5068     		ldr	r0, [r2, #4]
+ 740 00f0 0138     		subs	r0, r0, #1
+ 741 00f2 43EA0053 		orr	r3, r3, r0, lsl #20
+ 742 00f6 1268     		ldr	r2, [r2]
+ 743 00f8 013A     		subs	r2, r2, #1
+ 744 00fa 43EA0263 		orr	r3, r3, r2, lsl #24
+ 745 00fe C1F84831 		str	r3, [r1, #328]
+ 746 0102 7047     		bx	lr
+ 748              		.section	.text.exmc_sdram_struct_command_para_init,"ax",%progbits
+ 749              		.align	1
+ 750              		.global	exmc_sdram_struct_command_para_init
+ 751              		.syntax unified
+ 752              		.thumb
+ 753              		.thumb_func
+ 755              	exmc_sdram_struct_command_para_init:
+ 756              		@ args = 0, pretend = 0, frame = 0
+ 757              		@ frame_needed = 0, uses_anonymous_args = 0
+ 758              		@ link register save eliminated.
+ 759 0000 0023     		movs	r3, #0
+ 760 0002 0360     		str	r3, [r0]
+ 761 0004 4360     		str	r3, [r0, #4]
+ 762 0006 1022     		movs	r2, #16
+ 763 0008 8260     		str	r2, [r0, #8]
+ 764 000a C360     		str	r3, [r0, #12]
+ 765 000c 7047     		bx	lr
+ 767              		.section	.text.exmc_sqpipsram_deinit,"ax",%progbits
+ 768              		.align	1
+ 769              		.global	exmc_sqpipsram_deinit
+ 770              		.syntax unified
+ 771              		.thumb
+ 772              		.thumb_func
+ 774              	exmc_sqpipsram_deinit:
+ 775              		@ args = 0, pretend = 0, frame = 0
+ 776              		@ frame_needed = 0, uses_anonymous_args = 0
+ 777              		@ link register save eliminated.
+ 778 0000 4FF02043 		mov	r3, #-1610612736
+ 779 0004 064A     		ldr	r2, .L38
+ 780 0006 C3F81023 		str	r2, [r3, #784]
+ARM GAS  /tmp/cc2IZYMA.s 			page 14
+
+
+ 781 000a 0022     		movs	r2, #0
+ 782 000c C3F82023 		str	r2, [r3, #800]
+ 783 0010 C3F83023 		str	r2, [r3, #816]
+ 784 0014 C3F84023 		str	r2, [r3, #832]
+ 785 0018 C3F85023 		str	r2, [r3, #848]
+ 786 001c 7047     		bx	lr
+ 787              	.L39:
+ 788 001e 00BF     		.align	2
+ 789              	.L38:
+ 790 0020 00000118 		.word	402718720
+ 792              		.section	.text.exmc_sqpipsram_struct_para_init,"ax",%progbits
+ 793              		.align	1
+ 794              		.global	exmc_sqpipsram_struct_para_init
+ 795              		.syntax unified
+ 796              		.thumb
+ 797              		.thumb_func
+ 799              	exmc_sqpipsram_struct_para_init:
+ 800              		@ args = 0, pretend = 0, frame = 0
+ 801              		@ frame_needed = 0, uses_anonymous_args = 0
+ 802              		@ link register save eliminated.
+ 803 0000 0023     		movs	r3, #0
+ 804 0002 0360     		str	r3, [r0]
+ 805 0004 4360     		str	r3, [r0, #4]
+ 806 0006 4FF0C053 		mov	r3, #402653184
+ 807 000a 8360     		str	r3, [r0, #8]
+ 808 000c 4FF48033 		mov	r3, #65536
+ 809 0010 C360     		str	r3, [r0, #12]
+ 810 0012 7047     		bx	lr
+ 812              		.section	.text.exmc_sqpipsram_init,"ax",%progbits
+ 813              		.align	1
+ 814              		.global	exmc_sqpipsram_init
+ 815              		.syntax unified
+ 816              		.thumb
+ 817              		.thumb_func
+ 819              	exmc_sqpipsram_init:
+ 820              		@ args = 0, pretend = 0, frame = 0
+ 821              		@ frame_needed = 0, uses_anonymous_args = 0
+ 822              		@ link register save eliminated.
+ 823 0000 0368     		ldr	r3, [r0]
+ 824 0002 4268     		ldr	r2, [r0, #4]
+ 825 0004 1343     		orrs	r3, r3, r2
+ 826 0006 8268     		ldr	r2, [r0, #8]
+ 827 0008 1343     		orrs	r3, r3, r2
+ 828 000a C268     		ldr	r2, [r0, #12]
+ 829 000c 1343     		orrs	r3, r3, r2
+ 830 000e 4FF02042 		mov	r2, #-1610612736
+ 831 0012 C2F81033 		str	r3, [r2, #784]
+ 832 0016 7047     		bx	lr
+ 834              		.section	.text.exmc_norsram_consecutive_clock_config,"ax",%progbits
+ 835              		.align	1
+ 836              		.global	exmc_norsram_consecutive_clock_config
+ 837              		.syntax unified
+ 838              		.thumb
+ 839              		.thumb_func
+ 841              	exmc_norsram_consecutive_clock_config:
+ 842              		@ args = 0, pretend = 0, frame = 0
+ 843              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc2IZYMA.s 			page 15
+
+
+ 844              		@ link register save eliminated.
+ 845 0000 B0F5801F 		cmp	r0, #1048576
+ 846 0004 06D0     		beq	.L45
+ 847 0006 4FF02042 		mov	r2, #-1610612736
+ 848 000a 1368     		ldr	r3, [r2]
+ 849 000c 23F48013 		bic	r3, r3, #1048576
+ 850 0010 1360     		str	r3, [r2]
+ 851 0012 7047     		bx	lr
+ 852              	.L45:
+ 853 0014 4FF02042 		mov	r2, #-1610612736
+ 854 0018 1368     		ldr	r3, [r2]
+ 855 001a 43F48013 		orr	r3, r3, #1048576
+ 856 001e 1360     		str	r3, [r2]
+ 857 0020 7047     		bx	lr
+ 859              		.section	.text.exmc_norsram_page_size_config,"ax",%progbits
+ 860              		.align	1
+ 861              		.global	exmc_norsram_page_size_config
+ 862              		.syntax unified
+ 863              		.thumb
+ 864              		.thumb_func
+ 866              	exmc_norsram_page_size_config:
+ 867              		@ args = 0, pretend = 0, frame = 0
+ 868              		@ frame_needed = 0, uses_anonymous_args = 0
+ 869              		@ link register save eliminated.
+ 870 0000 00F1A050 		add	r0, r0, #335544320
+ 871 0004 C000     		lsls	r0, r0, #3
+ 872 0006 0368     		ldr	r3, [r0]
+ 873 0008 23F4E023 		bic	r3, r3, #458752
+ 874 000c 0360     		str	r3, [r0]
+ 875 000e 0368     		ldr	r3, [r0]
+ 876 0010 0B43     		orrs	r3, r3, r1
+ 877 0012 0360     		str	r3, [r0]
+ 878 0014 7047     		bx	lr
+ 880              		.section	.text.exmc_nand_ecc_config,"ax",%progbits
+ 881              		.align	1
+ 882              		.global	exmc_nand_ecc_config
+ 883              		.syntax unified
+ 884              		.thumb
+ 885              		.thumb_func
+ 887              	exmc_nand_ecc_config:
+ 888              		@ args = 0, pretend = 0, frame = 0
+ 889              		@ frame_needed = 0, uses_anonymous_args = 0
+ 890              		@ link register save eliminated.
+ 891 0000 0129     		cmp	r1, #1
+ 892 0002 08D0     		beq	.L50
+ 893 0004 00F1A060 		add	r0, r0, #83886080
+ 894 0008 0230     		adds	r0, r0, #2
+ 895 000a 4001     		lsls	r0, r0, #5
+ 896 000c 0368     		ldr	r3, [r0]
+ 897 000e 23F04003 		bic	r3, r3, #64
+ 898 0012 0360     		str	r3, [r0]
+ 899 0014 7047     		bx	lr
+ 900              	.L50:
+ 901 0016 00F1A060 		add	r0, r0, #83886080
+ 902 001a 0230     		adds	r0, r0, #2
+ 903 001c 4001     		lsls	r0, r0, #5
+ 904 001e 0368     		ldr	r3, [r0]
+ARM GAS  /tmp/cc2IZYMA.s 			page 16
+
+
+ 905 0020 43F04003 		orr	r3, r3, #64
+ 906 0024 0360     		str	r3, [r0]
+ 907 0026 7047     		bx	lr
+ 909              		.section	.text.exmc_ecc_get,"ax",%progbits
+ 910              		.align	1
+ 911              		.global	exmc_ecc_get
+ 912              		.syntax unified
+ 913              		.thumb
+ 914              		.thumb_func
+ 916              	exmc_ecc_get:
+ 917              		@ args = 0, pretend = 0, frame = 0
+ 918              		@ frame_needed = 0, uses_anonymous_args = 0
+ 919              		@ link register save eliminated.
+ 920 0000 4001     		lsls	r0, r0, #5
+ 921 0002 00F12040 		add	r0, r0, #-1610612736
+ 922 0006 406D     		ldr	r0, [r0, #84]
+ 923 0008 7047     		bx	lr
+ 925              		.section	.text.exmc_sdram_readsample_enable,"ax",%progbits
+ 926              		.align	1
+ 927              		.global	exmc_sdram_readsample_enable
+ 928              		.syntax unified
+ 929              		.thumb
+ 930              		.thumb_func
+ 932              	exmc_sdram_readsample_enable:
+ 933              		@ args = 0, pretend = 0, frame = 0
+ 934              		@ frame_needed = 0, uses_anonymous_args = 0
+ 935              		@ link register save eliminated.
+ 936 0000 0128     		cmp	r0, #1
+ 937 0002 08D0     		beq	.L55
+ 938 0004 4FF02042 		mov	r2, #-1610612736
+ 939 0008 D2F88031 		ldr	r3, [r2, #384]
+ 940 000c 23F00103 		bic	r3, r3, #1
+ 941 0010 C2F88031 		str	r3, [r2, #384]
+ 942 0014 7047     		bx	lr
+ 943              	.L55:
+ 944 0016 4FF02042 		mov	r2, #-1610612736
+ 945 001a D2F88031 		ldr	r3, [r2, #384]
+ 946 001e 43F00103 		orr	r3, r3, #1
+ 947 0022 C2F88031 		str	r3, [r2, #384]
+ 948 0026 7047     		bx	lr
+ 950              		.section	.text.exmc_sdram_readsample_config,"ax",%progbits
+ 951              		.align	1
+ 952              		.global	exmc_sdram_readsample_config
+ 953              		.syntax unified
+ 954              		.thumb
+ 955              		.thumb_func
+ 957              	exmc_sdram_readsample_config:
+ 958              		@ args = 0, pretend = 0, frame = 0
+ 959              		@ frame_needed = 0, uses_anonymous_args = 0
+ 960              		@ link register save eliminated.
+ 961 0000 4FF02042 		mov	r2, #-1610612736
+ 962 0004 D2F88031 		ldr	r3, [r2, #384]
+ 963 0008 23F0F203 		bic	r3, r3, #242
+ 964 000c 0843     		orrs	r0, r0, r1
+ 965 000e 1843     		orrs	r0, r0, r3
+ 966 0010 C2F88001 		str	r0, [r2, #384]
+ 967 0014 7047     		bx	lr
+ARM GAS  /tmp/cc2IZYMA.s 			page 17
+
+
+ 969              		.section	.text.exmc_sdram_command_config,"ax",%progbits
+ 970              		.align	1
+ 971              		.global	exmc_sdram_command_config
+ 972              		.syntax unified
+ 973              		.thumb
+ 974              		.thumb_func
+ 976              	exmc_sdram_command_config:
+ 977              		@ args = 0, pretend = 0, frame = 0
+ 978              		@ frame_needed = 0, uses_anonymous_args = 0
+ 979              		@ link register save eliminated.
+ 980 0000 C368     		ldr	r3, [r0, #12]
+ 981 0002 8268     		ldr	r2, [r0, #8]
+ 982 0004 1343     		orrs	r3, r3, r2
+ 983 0006 4268     		ldr	r2, [r0, #4]
+ 984 0008 1343     		orrs	r3, r3, r2
+ 985 000a 0268     		ldr	r2, [r0]
+ 986 000c 43EA4223 		orr	r3, r3, r2, lsl #9
+ 987 0010 4FF02042 		mov	r2, #-1610612736
+ 988 0014 C2F85031 		str	r3, [r2, #336]
+ 989 0018 7047     		bx	lr
+ 991              		.section	.text.exmc_sdram_refresh_count_set,"ax",%progbits
+ 992              		.align	1
+ 993              		.global	exmc_sdram_refresh_count_set
+ 994              		.syntax unified
+ 995              		.thumb
+ 996              		.thumb_func
+ 998              	exmc_sdram_refresh_count_set:
+ 999              		@ args = 0, pretend = 0, frame = 0
+ 1000              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1001              		@ link register save eliminated.
+ 1002 0000 4FF02041 		mov	r1, #-1610612736
+ 1003 0004 D1F85421 		ldr	r2, [r1, #340]
+ 1004 0008 22F47F52 		bic	r2, r2, #16320
+ 1005 000c 22F03E02 		bic	r2, r2, #62
+ 1006 0010 43F6FE73 		movw	r3, #16382
+ 1007 0014 03EA4003 		and	r3, r3, r0, lsl #1
+ 1008 0018 1343     		orrs	r3, r3, r2
+ 1009 001a C1F85431 		str	r3, [r1, #340]
+ 1010 001e 7047     		bx	lr
+ 1012              		.section	.text.exmc_sdram_autorefresh_number_set,"ax",%progbits
+ 1013              		.align	1
+ 1014              		.global	exmc_sdram_autorefresh_number_set
+ 1015              		.syntax unified
+ 1016              		.thumb
+ 1017              		.thumb_func
+ 1019              	exmc_sdram_autorefresh_number_set:
+ 1020              		@ args = 0, pretend = 0, frame = 0
+ 1021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1022              		@ link register save eliminated.
+ 1023 0000 4FF02042 		mov	r2, #-1610612736
+ 1024 0004 D2F85031 		ldr	r3, [r2, #336]
+ 1025 0008 23F4F073 		bic	r3, r3, #480
+ 1026 000c 4001     		lsls	r0, r0, #5
+ 1027 000e 00F4F070 		and	r0, r0, #480
+ 1028 0012 1843     		orrs	r0, r0, r3
+ 1029 0014 C2F85001 		str	r0, [r2, #336]
+ 1030 0018 7047     		bx	lr
+ARM GAS  /tmp/cc2IZYMA.s 			page 18
+
+
+ 1032              		.section	.text.exmc_sdram_write_protection_config,"ax",%progbits
+ 1033              		.align	1
+ 1034              		.global	exmc_sdram_write_protection_config
+ 1035              		.syntax unified
+ 1036              		.thumb
+ 1037              		.thumb_func
+ 1039              	exmc_sdram_write_protection_config:
+ 1040              		@ args = 0, pretend = 0, frame = 0
+ 1041              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1042              		@ link register save eliminated.
+ 1043 0000 0129     		cmp	r1, #1
+ 1044 0002 08D0     		beq	.L63
+ 1045 0004 00F12050 		add	r0, r0, #671088640
+ 1046 0008 4C30     		adds	r0, r0, #76
+ 1047 000a 8000     		lsls	r0, r0, #2
+ 1048 000c 0368     		ldr	r3, [r0]
+ 1049 000e 23F40073 		bic	r3, r3, #512
+ 1050 0012 0360     		str	r3, [r0]
+ 1051 0014 7047     		bx	lr
+ 1052              	.L63:
+ 1053 0016 00F12050 		add	r0, r0, #671088640
+ 1054 001a 4C30     		adds	r0, r0, #76
+ 1055 001c 8000     		lsls	r0, r0, #2
+ 1056 001e 0368     		ldr	r3, [r0]
+ 1057 0020 43F40073 		orr	r3, r3, #512
+ 1058 0024 0360     		str	r3, [r0]
+ 1059 0026 7047     		bx	lr
+ 1061              		.section	.text.exmc_sdram_bankstatus_get,"ax",%progbits
+ 1062              		.align	1
+ 1063              		.global	exmc_sdram_bankstatus_get
+ 1064              		.syntax unified
+ 1065              		.thumb
+ 1066              		.thumb_func
+ 1068              	exmc_sdram_bankstatus_get:
+ 1069              		@ args = 0, pretend = 0, frame = 0
+ 1070              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1071              		@ link register save eliminated.
+ 1072 0000 0428     		cmp	r0, #4
+ 1073 0002 06D0     		beq	.L67
+ 1074 0004 4FF02043 		mov	r3, #-1610612736
+ 1075 0008 D3F85801 		ldr	r0, [r3, #344]
+ 1076 000c C0F3C100 		ubfx	r0, r0, #3, #2
+ 1077 0010 7047     		bx	lr
+ 1078              	.L67:
+ 1079 0012 4FF02043 		mov	r3, #-1610612736
+ 1080 0016 D3F85801 		ldr	r0, [r3, #344]
+ 1081 001a C0F34100 		ubfx	r0, r0, #1, #2
+ 1082 001e 7047     		bx	lr
+ 1084              		.section	.text.exmc_sqpipsram_read_command_set,"ax",%progbits
+ 1085              		.align	1
+ 1086              		.global	exmc_sqpipsram_read_command_set
+ 1087              		.syntax unified
+ 1088              		.thumb
+ 1089              		.thumb_func
+ 1091              	exmc_sqpipsram_read_command_set:
+ 1092              		@ args = 0, pretend = 0, frame = 0
+ 1093              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc2IZYMA.s 			page 19
+
+
+ 1094              		@ link register save eliminated.
+ 1095 0000 0904     		lsls	r1, r1, #16
+ 1096 0002 01F47021 		and	r1, r1, #983040
+ 1097 0006 0143     		orrs	r1, r1, r0
+ 1098 0008 92B2     		uxth	r2, r2
+ 1099 000a 1143     		orrs	r1, r1, r2
+ 1100 000c 4FF02043 		mov	r3, #-1610612736
+ 1101 0010 C3F82013 		str	r1, [r3, #800]
+ 1102 0014 7047     		bx	lr
+ 1104              		.section	.text.exmc_sqpipsram_write_command_set,"ax",%progbits
+ 1105              		.align	1
+ 1106              		.global	exmc_sqpipsram_write_command_set
+ 1107              		.syntax unified
+ 1108              		.thumb
+ 1109              		.thumb_func
+ 1111              	exmc_sqpipsram_write_command_set:
+ 1112              		@ args = 0, pretend = 0, frame = 0
+ 1113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1114              		@ link register save eliminated.
+ 1115 0000 0904     		lsls	r1, r1, #16
+ 1116 0002 01F47021 		and	r1, r1, #983040
+ 1117 0006 0143     		orrs	r1, r1, r0
+ 1118 0008 92B2     		uxth	r2, r2
+ 1119 000a 1143     		orrs	r1, r1, r2
+ 1120 000c 4FF02043 		mov	r3, #-1610612736
+ 1121 0010 C3F83013 		str	r1, [r3, #816]
+ 1122 0014 7047     		bx	lr
+ 1124              		.section	.text.exmc_sqpipsram_read_id_command_send,"ax",%progbits
+ 1125              		.align	1
+ 1126              		.global	exmc_sqpipsram_read_id_command_send
+ 1127              		.syntax unified
+ 1128              		.thumb
+ 1129              		.thumb_func
+ 1131              	exmc_sqpipsram_read_id_command_send:
+ 1132              		@ args = 0, pretend = 0, frame = 0
+ 1133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1134              		@ link register save eliminated.
+ 1135 0000 4FF02042 		mov	r2, #-1610612736
+ 1136 0004 D2F82033 		ldr	r3, [r2, #800]
+ 1137 0008 43F00043 		orr	r3, r3, #-2147483648
+ 1138 000c C2F82033 		str	r3, [r2, #800]
+ 1139 0010 7047     		bx	lr
+ 1141              		.section	.text.exmc_sqpipsram_write_cmd_send,"ax",%progbits
+ 1142              		.align	1
+ 1143              		.global	exmc_sqpipsram_write_cmd_send
+ 1144              		.syntax unified
+ 1145              		.thumb
+ 1146              		.thumb_func
+ 1148              	exmc_sqpipsram_write_cmd_send:
+ 1149              		@ args = 0, pretend = 0, frame = 0
+ 1150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1151              		@ link register save eliminated.
+ 1152 0000 4FF02042 		mov	r2, #-1610612736
+ 1153 0004 D2F83033 		ldr	r3, [r2, #816]
+ 1154 0008 43F00043 		orr	r3, r3, #-2147483648
+ 1155 000c C2F83033 		str	r3, [r2, #816]
+ 1156 0010 7047     		bx	lr
+ARM GAS  /tmp/cc2IZYMA.s 			page 20
+
+
+ 1158              		.section	.text.exmc_sqpipsram_low_id_get,"ax",%progbits
+ 1159              		.align	1
+ 1160              		.global	exmc_sqpipsram_low_id_get
+ 1161              		.syntax unified
+ 1162              		.thumb
+ 1163              		.thumb_func
+ 1165              	exmc_sqpipsram_low_id_get:
+ 1166              		@ args = 0, pretend = 0, frame = 0
+ 1167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1168              		@ link register save eliminated.
+ 1169 0000 4FF02043 		mov	r3, #-1610612736
+ 1170 0004 D3F84003 		ldr	r0, [r3, #832]
+ 1171 0008 7047     		bx	lr
+ 1173              		.section	.text.exmc_sqpipsram_high_id_get,"ax",%progbits
+ 1174              		.align	1
+ 1175              		.global	exmc_sqpipsram_high_id_get
+ 1176              		.syntax unified
+ 1177              		.thumb
+ 1178              		.thumb_func
+ 1180              	exmc_sqpipsram_high_id_get:
+ 1181              		@ args = 0, pretend = 0, frame = 0
+ 1182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1183              		@ link register save eliminated.
+ 1184 0000 4FF02043 		mov	r3, #-1610612736
+ 1185 0004 D3F85003 		ldr	r0, [r3, #848]
+ 1186 0008 7047     		bx	lr
+ 1188              		.section	.text.exmc_sqpipsram_send_command_state_get,"ax",%progbits
+ 1189              		.align	1
+ 1190              		.global	exmc_sqpipsram_send_command_state_get
+ 1191              		.syntax unified
+ 1192              		.thumb
+ 1193              		.thumb_func
+ 1195              	exmc_sqpipsram_send_command_state_get:
+ 1196              		@ args = 0, pretend = 0, frame = 0
+ 1197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1198              		@ link register save eliminated.
+ 1199 0000 B0F1004F 		cmp	r0, #-2147483648
+ 1200 0004 04D0     		beq	.L79
+ 1201 0006 0023     		movs	r3, #0
+ 1202              	.L75:
+ 1203 0008 0342     		tst	r3, r0
+ 1204 000a 06D0     		beq	.L78
+ 1205 000c 0120     		movs	r0, #1
+ 1206 000e 7047     		bx	lr
+ 1207              	.L79:
+ 1208 0010 4FF02043 		mov	r3, #-1610612736
+ 1209 0014 D3F82033 		ldr	r3, [r3, #800]
+ 1210 0018 F6E7     		b	.L75
+ 1211              	.L78:
+ 1212 001a 0020     		movs	r0, #0
+ 1213 001c 7047     		bx	lr
+ 1215              		.section	.text.exmc_interrupt_enable,"ax",%progbits
+ 1216              		.align	1
+ 1217              		.global	exmc_interrupt_enable
+ 1218              		.syntax unified
+ 1219              		.thumb
+ 1220              		.thumb_func
+ARM GAS  /tmp/cc2IZYMA.s 			page 21
+
+
+ 1222              	exmc_interrupt_enable:
+ 1223              		@ args = 0, pretend = 0, frame = 0
+ 1224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1225              		@ link register save eliminated.
+ 1226 0000 431E     		subs	r3, r0, #1
+ 1227 0002 022B     		cmp	r3, #2
+ 1228 0004 06D8     		bhi	.L81
+ 1229 0006 4001     		lsls	r0, r0, #5
+ 1230 0008 00F12040 		add	r0, r0, #-1610612736
+ 1231 000c 436C     		ldr	r3, [r0, #68]
+ 1232 000e 0B43     		orrs	r3, r3, r1
+ 1233 0010 4364     		str	r3, [r0, #68]
+ 1234 0012 7047     		bx	lr
+ 1235              	.L81:
+ 1236 0014 4FF02042 		mov	r2, #-1610612736
+ 1237 0018 D2F85431 		ldr	r3, [r2, #340]
+ 1238 001c 43F48043 		orr	r3, r3, #16384
+ 1239 0020 C2F85431 		str	r3, [r2, #340]
+ 1240 0024 7047     		bx	lr
+ 1242              		.section	.text.exmc_interrupt_disable,"ax",%progbits
+ 1243              		.align	1
+ 1244              		.global	exmc_interrupt_disable
+ 1245              		.syntax unified
+ 1246              		.thumb
+ 1247              		.thumb_func
+ 1249              	exmc_interrupt_disable:
+ 1250              		@ args = 0, pretend = 0, frame = 0
+ 1251              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1252              		@ link register save eliminated.
+ 1253 0000 431E     		subs	r3, r0, #1
+ 1254 0002 022B     		cmp	r3, #2
+ 1255 0004 07D8     		bhi	.L84
+ 1256 0006 4001     		lsls	r0, r0, #5
+ 1257 0008 00F12040 		add	r0, r0, #-1610612736
+ 1258 000c 436C     		ldr	r3, [r0, #68]
+ 1259 000e 23EA0103 		bic	r3, r3, r1
+ 1260 0012 4364     		str	r3, [r0, #68]
+ 1261 0014 7047     		bx	lr
+ 1262              	.L84:
+ 1263 0016 4FF02042 		mov	r2, #-1610612736
+ 1264 001a D2F85431 		ldr	r3, [r2, #340]
+ 1265 001e 23F48043 		bic	r3, r3, #16384
+ 1266 0022 C2F85431 		str	r3, [r2, #340]
+ 1267 0026 7047     		bx	lr
+ 1269              		.section	.text.exmc_flag_get,"ax",%progbits
+ 1270              		.align	1
+ 1271              		.global	exmc_flag_get
+ 1272              		.syntax unified
+ 1273              		.thumb
+ 1274              		.thumb_func
+ 1276              	exmc_flag_get:
+ 1277              		@ args = 0, pretend = 0, frame = 0
+ 1278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1279              		@ link register save eliminated.
+ 1280 0000 431E     		subs	r3, r0, #1
+ 1281 0002 022B     		cmp	r3, #2
+ 1282 0004 07D8     		bhi	.L87
+ARM GAS  /tmp/cc2IZYMA.s 			page 22
+
+
+ 1283 0006 4001     		lsls	r0, r0, #5
+ 1284 0008 00F12040 		add	r0, r0, #-1610612736
+ 1285 000c 436C     		ldr	r3, [r0, #68]
+ 1286              	.L88:
+ 1287 000e 9943     		bics	r1, r1, r3
+ 1288 0010 06D0     		beq	.L90
+ 1289 0012 0020     		movs	r0, #0
+ 1290 0014 7047     		bx	lr
+ 1291              	.L87:
+ 1292 0016 4FF02043 		mov	r3, #-1610612736
+ 1293 001a D3F85831 		ldr	r3, [r3, #344]
+ 1294 001e F6E7     		b	.L88
+ 1295              	.L90:
+ 1296 0020 0120     		movs	r0, #1
+ 1297 0022 7047     		bx	lr
+ 1299              		.section	.text.exmc_flag_clear,"ax",%progbits
+ 1300              		.align	1
+ 1301              		.global	exmc_flag_clear
+ 1302              		.syntax unified
+ 1303              		.thumb
+ 1304              		.thumb_func
+ 1306              	exmc_flag_clear:
+ 1307              		@ args = 0, pretend = 0, frame = 0
+ 1308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1309              		@ link register save eliminated.
+ 1310 0000 431E     		subs	r3, r0, #1
+ 1311 0002 022B     		cmp	r3, #2
+ 1312 0004 07D8     		bhi	.L92
+ 1313 0006 4001     		lsls	r0, r0, #5
+ 1314 0008 00F12040 		add	r0, r0, #-1610612736
+ 1315 000c 436C     		ldr	r3, [r0, #68]
+ 1316 000e 23EA0103 		bic	r3, r3, r1
+ 1317 0012 4364     		str	r3, [r0, #68]
+ 1318 0014 7047     		bx	lr
+ 1319              	.L92:
+ 1320 0016 4FF02042 		mov	r2, #-1610612736
+ 1321 001a D2F85831 		ldr	r3, [r2, #344]
+ 1322 001e 23EA0103 		bic	r3, r3, r1
+ 1323 0022 C2F85831 		str	r3, [r2, #344]
+ 1324 0026 7047     		bx	lr
+ 1326              		.section	.text.exmc_interrupt_flag_get,"ax",%progbits
+ 1327              		.align	1
+ 1328              		.global	exmc_interrupt_flag_get
+ 1329              		.syntax unified
+ 1330              		.thumb
+ 1331              		.thumb_func
+ 1333              	exmc_interrupt_flag_get:
+ 1334              		@ args = 0, pretend = 0, frame = 0
+ 1335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1336              		@ link register save eliminated.
+ 1337 0000 431E     		subs	r3, r0, #1
+ 1338 0002 022B     		cmp	r3, #2
+ 1339 0004 0AD8     		bhi	.L95
+ 1340 0006 4001     		lsls	r0, r0, #5
+ 1341 0008 00F12040 		add	r0, r0, #-1610612736
+ 1342 000c 426C     		ldr	r2, [r0, #68]
+ 1343 000e 02EAD103 		and	r3, r2, r1, lsr #3
+ARM GAS  /tmp/cc2IZYMA.s 			page 23
+
+
+ 1344              	.L96:
+ 1345 0012 0A42     		tst	r2, r1
+ 1346 0014 0BD0     		beq	.L98
+ 1347 0016 63B9     		cbnz	r3, .L99
+ 1348 0018 0020     		movs	r0, #0
+ 1349 001a 7047     		bx	lr
+ 1350              	.L95:
+ 1351 001c 4FF02043 		mov	r3, #-1610612736
+ 1352 0020 D3F85421 		ldr	r2, [r3, #340]
+ 1353 0024 D3F85831 		ldr	r3, [r3, #344]
+ 1354 0028 03F00103 		and	r3, r3, #1
+ 1355 002c F1E7     		b	.L96
+ 1356              	.L98:
+ 1357 002e 0020     		movs	r0, #0
+ 1358 0030 7047     		bx	lr
+ 1359              	.L99:
+ 1360 0032 0120     		movs	r0, #1
+ 1361 0034 7047     		bx	lr
+ 1363              		.section	.text.exmc_interrupt_flag_clear,"ax",%progbits
+ 1364              		.align	1
+ 1365              		.global	exmc_interrupt_flag_clear
+ 1366              		.syntax unified
+ 1367              		.thumb
+ 1368              		.thumb_func
+ 1370              	exmc_interrupt_flag_clear:
+ 1371              		@ args = 0, pretend = 0, frame = 0
+ 1372              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1373              		@ link register save eliminated.
+ 1374 0000 431E     		subs	r3, r0, #1
+ 1375 0002 022B     		cmp	r3, #2
+ 1376 0004 07D8     		bhi	.L101
+ 1377 0006 4001     		lsls	r0, r0, #5
+ 1378 0008 00F12040 		add	r0, r0, #-1610612736
+ 1379 000c 436C     		ldr	r3, [r0, #68]
+ 1380 000e 23EAD103 		bic	r3, r3, r1, lsr #3
+ 1381 0012 4364     		str	r3, [r0, #68]
+ 1382 0014 7047     		bx	lr
+ 1383              	.L101:
+ 1384 0016 4FF02042 		mov	r2, #-1610612736
+ 1385 001a D2F85431 		ldr	r3, [r2, #340]
+ 1386 001e 43F00103 		orr	r3, r3, #1
+ 1387 0022 C2F85431 		str	r3, [r2, #340]
+ 1388 0026 7047     		bx	lr
+ 1390              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 12.2.1 20221205"
+ARM GAS  /tmp/cc2IZYMA.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_exmc.c
+     /tmp/cc2IZYMA.s:16     .text.exmc_norsram_deinit:0000000000000000 $t
+     /tmp/cc2IZYMA.s:22     .text.exmc_norsram_deinit:0000000000000000 exmc_norsram_deinit
+     /tmp/cc2IZYMA.s:38     .text.exmc_norsram_struct_para_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:44     .text.exmc_norsram_struct_para_init:0000000000000000 exmc_norsram_struct_para_init
+     /tmp/cc2IZYMA.s:96     .text.exmc_norsram_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:102    .text.exmc_norsram_init:0000000000000000 exmc_norsram_init
+     /tmp/cc2IZYMA.s:187    .text.exmc_norsram_init:00000000000000bc $d
+     /tmp/cc2IZYMA.s:190    .text.exmc_norsram_enable:0000000000000000 $t
+     /tmp/cc2IZYMA.s:196    .text.exmc_norsram_enable:0000000000000000 exmc_norsram_enable
+     /tmp/cc2IZYMA.s:208    .text.exmc_norsram_disable:0000000000000000 $t
+     /tmp/cc2IZYMA.s:214    .text.exmc_norsram_disable:0000000000000000 exmc_norsram_disable
+     /tmp/cc2IZYMA.s:226    .text.exmc_nand_deinit:0000000000000000 $t
+     /tmp/cc2IZYMA.s:232    .text.exmc_nand_deinit:0000000000000000 exmc_nand_deinit
+     /tmp/cc2IZYMA.s:251    .text.exmc_nand_struct_para_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:257    .text.exmc_nand_struct_para_init:0000000000000000 exmc_nand_struct_para_init
+     /tmp/cc2IZYMA.s:290    .text.exmc_nand_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:296    .text.exmc_nand_init:0000000000000000 exmc_nand_init
+     /tmp/cc2IZYMA.s:361    .text.exmc_nand_enable:0000000000000000 $t
+     /tmp/cc2IZYMA.s:367    .text.exmc_nand_enable:0000000000000000 exmc_nand_enable
+     /tmp/cc2IZYMA.s:380    .text.exmc_nand_disable:0000000000000000 $t
+     /tmp/cc2IZYMA.s:386    .text.exmc_nand_disable:0000000000000000 exmc_nand_disable
+     /tmp/cc2IZYMA.s:399    .text.exmc_pccard_deinit:0000000000000000 $t
+     /tmp/cc2IZYMA.s:405    .text.exmc_pccard_deinit:0000000000000000 exmc_pccard_deinit
+     /tmp/cc2IZYMA.s:421    .text.exmc_pccard_struct_para_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:427    .text.exmc_pccard_struct_para_init:0000000000000000 exmc_pccard_struct_para_init
+     /tmp/cc2IZYMA.s:463    .text.exmc_pccard_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:469    .text.exmc_pccard_init:0000000000000000 exmc_pccard_init
+     /tmp/cc2IZYMA.s:535    .text.exmc_pccard_enable:0000000000000000 $t
+     /tmp/cc2IZYMA.s:541    .text.exmc_pccard_enable:0000000000000000 exmc_pccard_enable
+     /tmp/cc2IZYMA.s:552    .text.exmc_pccard_disable:0000000000000000 $t
+     /tmp/cc2IZYMA.s:558    .text.exmc_pccard_disable:0000000000000000 exmc_pccard_disable
+     /tmp/cc2IZYMA.s:569    .text.exmc_sdram_deinit:0000000000000000 $t
+     /tmp/cc2IZYMA.s:575    .text.exmc_sdram_deinit:0000000000000000 exmc_sdram_deinit
+     /tmp/cc2IZYMA.s:596    .text.exmc_sdram_struct_para_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:602    .text.exmc_sdram_struct_para_init:0000000000000000 exmc_sdram_struct_para_init
+     /tmp/cc2IZYMA.s:639    .text.exmc_sdram_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:645    .text.exmc_sdram_init:0000000000000000 exmc_sdram_init
+     /tmp/cc2IZYMA.s:749    .text.exmc_sdram_struct_command_para_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:755    .text.exmc_sdram_struct_command_para_init:0000000000000000 exmc_sdram_struct_command_para_init
+     /tmp/cc2IZYMA.s:768    .text.exmc_sqpipsram_deinit:0000000000000000 $t
+     /tmp/cc2IZYMA.s:774    .text.exmc_sqpipsram_deinit:0000000000000000 exmc_sqpipsram_deinit
+     /tmp/cc2IZYMA.s:790    .text.exmc_sqpipsram_deinit:0000000000000020 $d
+     /tmp/cc2IZYMA.s:793    .text.exmc_sqpipsram_struct_para_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:799    .text.exmc_sqpipsram_struct_para_init:0000000000000000 exmc_sqpipsram_struct_para_init
+     /tmp/cc2IZYMA.s:813    .text.exmc_sqpipsram_init:0000000000000000 $t
+     /tmp/cc2IZYMA.s:819    .text.exmc_sqpipsram_init:0000000000000000 exmc_sqpipsram_init
+     /tmp/cc2IZYMA.s:835    .text.exmc_norsram_consecutive_clock_config:0000000000000000 $t
+     /tmp/cc2IZYMA.s:841    .text.exmc_norsram_consecutive_clock_config:0000000000000000 exmc_norsram_consecutive_clock_config
+     /tmp/cc2IZYMA.s:860    .text.exmc_norsram_page_size_config:0000000000000000 $t
+     /tmp/cc2IZYMA.s:866    .text.exmc_norsram_page_size_config:0000000000000000 exmc_norsram_page_size_config
+     /tmp/cc2IZYMA.s:881    .text.exmc_nand_ecc_config:0000000000000000 $t
+     /tmp/cc2IZYMA.s:887    .text.exmc_nand_ecc_config:0000000000000000 exmc_nand_ecc_config
+     /tmp/cc2IZYMA.s:910    .text.exmc_ecc_get:0000000000000000 $t
+     /tmp/cc2IZYMA.s:916    .text.exmc_ecc_get:0000000000000000 exmc_ecc_get
+     /tmp/cc2IZYMA.s:926    .text.exmc_sdram_readsample_enable:0000000000000000 $t
+ARM GAS  /tmp/cc2IZYMA.s 			page 25
+
+
+     /tmp/cc2IZYMA.s:932    .text.exmc_sdram_readsample_enable:0000000000000000 exmc_sdram_readsample_enable
+     /tmp/cc2IZYMA.s:951    .text.exmc_sdram_readsample_config:0000000000000000 $t
+     /tmp/cc2IZYMA.s:957    .text.exmc_sdram_readsample_config:0000000000000000 exmc_sdram_readsample_config
+     /tmp/cc2IZYMA.s:970    .text.exmc_sdram_command_config:0000000000000000 $t
+     /tmp/cc2IZYMA.s:976    .text.exmc_sdram_command_config:0000000000000000 exmc_sdram_command_config
+     /tmp/cc2IZYMA.s:992    .text.exmc_sdram_refresh_count_set:0000000000000000 $t
+     /tmp/cc2IZYMA.s:998    .text.exmc_sdram_refresh_count_set:0000000000000000 exmc_sdram_refresh_count_set
+     /tmp/cc2IZYMA.s:1013   .text.exmc_sdram_autorefresh_number_set:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1019   .text.exmc_sdram_autorefresh_number_set:0000000000000000 exmc_sdram_autorefresh_number_set
+     /tmp/cc2IZYMA.s:1033   .text.exmc_sdram_write_protection_config:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1039   .text.exmc_sdram_write_protection_config:0000000000000000 exmc_sdram_write_protection_config
+     /tmp/cc2IZYMA.s:1062   .text.exmc_sdram_bankstatus_get:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1068   .text.exmc_sdram_bankstatus_get:0000000000000000 exmc_sdram_bankstatus_get
+     /tmp/cc2IZYMA.s:1085   .text.exmc_sqpipsram_read_command_set:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1091   .text.exmc_sqpipsram_read_command_set:0000000000000000 exmc_sqpipsram_read_command_set
+     /tmp/cc2IZYMA.s:1105   .text.exmc_sqpipsram_write_command_set:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1111   .text.exmc_sqpipsram_write_command_set:0000000000000000 exmc_sqpipsram_write_command_set
+     /tmp/cc2IZYMA.s:1125   .text.exmc_sqpipsram_read_id_command_send:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1131   .text.exmc_sqpipsram_read_id_command_send:0000000000000000 exmc_sqpipsram_read_id_command_send
+     /tmp/cc2IZYMA.s:1142   .text.exmc_sqpipsram_write_cmd_send:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1148   .text.exmc_sqpipsram_write_cmd_send:0000000000000000 exmc_sqpipsram_write_cmd_send
+     /tmp/cc2IZYMA.s:1159   .text.exmc_sqpipsram_low_id_get:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1165   .text.exmc_sqpipsram_low_id_get:0000000000000000 exmc_sqpipsram_low_id_get
+     /tmp/cc2IZYMA.s:1174   .text.exmc_sqpipsram_high_id_get:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1180   .text.exmc_sqpipsram_high_id_get:0000000000000000 exmc_sqpipsram_high_id_get
+     /tmp/cc2IZYMA.s:1189   .text.exmc_sqpipsram_send_command_state_get:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1195   .text.exmc_sqpipsram_send_command_state_get:0000000000000000 exmc_sqpipsram_send_command_state_get
+     /tmp/cc2IZYMA.s:1216   .text.exmc_interrupt_enable:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1222   .text.exmc_interrupt_enable:0000000000000000 exmc_interrupt_enable
+     /tmp/cc2IZYMA.s:1243   .text.exmc_interrupt_disable:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1249   .text.exmc_interrupt_disable:0000000000000000 exmc_interrupt_disable
+     /tmp/cc2IZYMA.s:1270   .text.exmc_flag_get:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1276   .text.exmc_flag_get:0000000000000000 exmc_flag_get
+     /tmp/cc2IZYMA.s:1300   .text.exmc_flag_clear:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1306   .text.exmc_flag_clear:0000000000000000 exmc_flag_clear
+     /tmp/cc2IZYMA.s:1327   .text.exmc_interrupt_flag_get:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1333   .text.exmc_interrupt_flag_get:0000000000000000 exmc_interrupt_flag_get
+     /tmp/cc2IZYMA.s:1364   .text.exmc_interrupt_flag_clear:0000000000000000 $t
+     /tmp/cc2IZYMA.s:1370   .text.exmc_interrupt_flag_clear:0000000000000000 exmc_interrupt_flag_clear
+
+NO UNDEFINED SYMBOLS

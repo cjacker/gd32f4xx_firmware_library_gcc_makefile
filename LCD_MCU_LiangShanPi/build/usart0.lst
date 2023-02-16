@@ -1,0 +1,133 @@
+ARM GAS  /tmp/cc1IhxpE.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"usart0.c"
+  14              		.text
+  15              		.section	.text.usart0_init,"ax",%progbits
+  16              		.align	1
+  17              		.global	usart0_init
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	usart0_init:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 10B5     		push	{r4, lr}
+  26 0002 4FF44060 		mov	r0, #3072
+  27 0006 FFF7FEFF 		bl	rcu_periph_clock_enable
+  28 000a 41F20410 		movw	r0, #4356
+  29 000e FFF7FEFF 		bl	rcu_periph_clock_enable
+  30 0012 1F4C     		ldr	r4, .L3
+  31 0014 4FF40072 		mov	r2, #512
+  32 0018 0721     		movs	r1, #7
+  33 001a 2046     		mov	r0, r4
+  34 001c FFF7FEFF 		bl	gpio_af_set
+  35 0020 4FF48062 		mov	r2, #1024
+  36 0024 0721     		movs	r1, #7
+  37 0026 2046     		mov	r0, r4
+  38 0028 FFF7FEFF 		bl	gpio_af_set
+  39 002c 4FF40073 		mov	r3, #512
+  40 0030 0122     		movs	r2, #1
+  41 0032 0221     		movs	r1, #2
+  42 0034 2046     		mov	r0, r4
+  43 0036 FFF7FEFF 		bl	gpio_mode_set
+  44 003a 4FF40073 		mov	r3, #512
+  45 003e 0222     		movs	r2, #2
+  46 0040 0021     		movs	r1, #0
+  47 0042 2046     		mov	r0, r4
+  48 0044 FFF7FEFF 		bl	gpio_output_options_set
+  49 0048 4FF48063 		mov	r3, #1024
+  50 004c 0122     		movs	r2, #1
+  51 004e 0221     		movs	r1, #2
+  52 0050 2046     		mov	r0, r4
+  53 0052 FFF7FEFF 		bl	gpio_mode_set
+  54 0056 4FF48063 		mov	r3, #1024
+  55 005a 0222     		movs	r2, #2
+  56 005c 0021     		movs	r1, #0
+  57 005e 2046     		mov	r0, r4
+  58 0060 FFF7FEFF 		bl	gpio_output_options_set
+ARM GAS  /tmp/cc1IhxpE.s 			page 2
+
+
+  59 0064 A4F57044 		sub	r4, r4, #61440
+  60 0068 2046     		mov	r0, r4
+  61 006a FFF7FEFF 		bl	usart_deinit
+  62 006e 4FF4E131 		mov	r1, #115200
+  63 0072 2046     		mov	r0, r4
+  64 0074 FFF7FEFF 		bl	usart_baudrate_set
+  65 0078 0421     		movs	r1, #4
+  66 007a 2046     		mov	r0, r4
+  67 007c FFF7FEFF 		bl	usart_receive_config
+  68 0080 0821     		movs	r1, #8
+  69 0082 2046     		mov	r0, r4
+  70 0084 FFF7FEFF 		bl	usart_transmit_config
+  71 0088 2046     		mov	r0, r4
+  72 008a FFF7FEFF 		bl	usart_enable
+  73 008e 10BD     		pop	{r4, pc}
+  74              	.L4:
+  75              		.align	2
+  76              	.L3:
+  77 0090 00000240 		.word	1073872896
+  79              		.section	.text.fputc,"ax",%progbits
+  80              		.align	1
+  81              		.global	fputc
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  86              	fputc:
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89 0000 10B5     		push	{r4, lr}
+  90 0002 0446     		mov	r4, r0
+  91 0004 C1B2     		uxtb	r1, r0
+  92 0006 0548     		ldr	r0, .L8
+  93 0008 FFF7FEFF 		bl	usart_data_transmit
+  94              	.L6:
+  95 000c 0721     		movs	r1, #7
+  96 000e 0348     		ldr	r0, .L8
+  97 0010 FFF7FEFF 		bl	usart_flag_get
+  98 0014 0028     		cmp	r0, #0
+  99 0016 F9D0     		beq	.L6
+ 100 0018 2046     		mov	r0, r4
+ 101 001a 10BD     		pop	{r4, pc}
+ 102              	.L9:
+ 103              		.align	2
+ 104              	.L8:
+ 105 001c 00100140 		.word	1073811456
+ 107              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 12.2.1 20221205"
+ARM GAS  /tmp/cc1IhxpE.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 usart0.c
+     /tmp/cc1IhxpE.s:16     .text.usart0_init:0000000000000000 $t
+     /tmp/cc1IhxpE.s:22     .text.usart0_init:0000000000000000 usart0_init
+     /tmp/cc1IhxpE.s:77     .text.usart0_init:0000000000000090 $d
+     /tmp/cc1IhxpE.s:80     .text.fputc:0000000000000000 $t
+     /tmp/cc1IhxpE.s:86     .text.fputc:0000000000000000 fputc
+     /tmp/cc1IhxpE.s:105    .text.fputc:000000000000001c $d
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+gpio_af_set
+gpio_mode_set
+gpio_output_options_set
+usart_deinit
+usart_baudrate_set
+usart_receive_config
+usart_transmit_config
+usart_enable
+usart_data_transmit
+usart_flag_get

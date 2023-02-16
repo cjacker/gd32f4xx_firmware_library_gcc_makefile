@@ -1,0 +1,1054 @@
+ARM GAS  /tmp/ccDAS5re.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32f4xx_dac.c"
+  14              		.text
+  15              		.section	.text.dac_deinit,"ax",%progbits
+  16              		.align	1
+  17              		.global	dac_deinit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	dac_deinit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 40F61D00 		movw	r0, #2077
+  27 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  28 000a 40F61D00 		movw	r0, #2077
+  29 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  30 0012 08BD     		pop	{r3, pc}
+  32              		.section	.text.dac_enable,"ax",%progbits
+  33              		.align	1
+  34              		.global	dac_enable
+  35              		.syntax unified
+  36              		.thumb
+  37              		.thumb_func
+  39              	dac_enable:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 38B9     		cbnz	r0, .L4
+  44 0002 084A     		ldr	r2, .L6
+  45 0004 D2F80034 		ldr	r3, [r2, #1024]
+  46 0008 43F00103 		orr	r3, r3, #1
+  47 000c C2F80034 		str	r3, [r2, #1024]
+  48 0010 7047     		bx	lr
+  49              	.L4:
+  50 0012 044A     		ldr	r2, .L6
+  51 0014 D2F80034 		ldr	r3, [r2, #1024]
+  52 0018 43F48033 		orr	r3, r3, #65536
+  53 001c C2F80034 		str	r3, [r2, #1024]
+  54 0020 7047     		bx	lr
+  55              	.L7:
+  56 0022 00BF     		.align	2
+  57              	.L6:
+  58 0024 00700040 		.word	1073770496
+  60              		.section	.text.dac_disable,"ax",%progbits
+  61              		.align	1
+ARM GAS  /tmp/ccDAS5re.s 			page 2
+
+
+  62              		.global	dac_disable
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  67              	dac_disable:
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70              		@ link register save eliminated.
+  71 0000 38B9     		cbnz	r0, .L9
+  72 0002 084A     		ldr	r2, .L11
+  73 0004 D2F80034 		ldr	r3, [r2, #1024]
+  74 0008 23F00103 		bic	r3, r3, #1
+  75 000c C2F80034 		str	r3, [r2, #1024]
+  76 0010 7047     		bx	lr
+  77              	.L9:
+  78 0012 044A     		ldr	r2, .L11
+  79 0014 D2F80034 		ldr	r3, [r2, #1024]
+  80 0018 23F48033 		bic	r3, r3, #65536
+  81 001c C2F80034 		str	r3, [r2, #1024]
+  82 0020 7047     		bx	lr
+  83              	.L12:
+  84 0022 00BF     		.align	2
+  85              	.L11:
+  86 0024 00700040 		.word	1073770496
+  88              		.section	.text.dac_dma_enable,"ax",%progbits
+  89              		.align	1
+  90              		.global	dac_dma_enable
+  91              		.syntax unified
+  92              		.thumb
+  93              		.thumb_func
+  95              	dac_dma_enable:
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		@ link register save eliminated.
+  99 0000 38B9     		cbnz	r0, .L14
+ 100 0002 084A     		ldr	r2, .L16
+ 101 0004 D2F80034 		ldr	r3, [r2, #1024]
+ 102 0008 43F48053 		orr	r3, r3, #4096
+ 103 000c C2F80034 		str	r3, [r2, #1024]
+ 104 0010 7047     		bx	lr
+ 105              	.L14:
+ 106 0012 044A     		ldr	r2, .L16
+ 107 0014 D2F80034 		ldr	r3, [r2, #1024]
+ 108 0018 43F08053 		orr	r3, r3, #268435456
+ 109 001c C2F80034 		str	r3, [r2, #1024]
+ 110 0020 7047     		bx	lr
+ 111              	.L17:
+ 112 0022 00BF     		.align	2
+ 113              	.L16:
+ 114 0024 00700040 		.word	1073770496
+ 116              		.section	.text.dac_dma_disable,"ax",%progbits
+ 117              		.align	1
+ 118              		.global	dac_dma_disable
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 123              	dac_dma_disable:
+ARM GAS  /tmp/ccDAS5re.s 			page 3
+
+
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+ 127 0000 38B9     		cbnz	r0, .L19
+ 128 0002 084A     		ldr	r2, .L21
+ 129 0004 D2F80034 		ldr	r3, [r2, #1024]
+ 130 0008 23F48053 		bic	r3, r3, #4096
+ 131 000c C2F80034 		str	r3, [r2, #1024]
+ 132 0010 7047     		bx	lr
+ 133              	.L19:
+ 134 0012 044A     		ldr	r2, .L21
+ 135 0014 D2F80034 		ldr	r3, [r2, #1024]
+ 136 0018 23F08053 		bic	r3, r3, #268435456
+ 137 001c C2F80034 		str	r3, [r2, #1024]
+ 138 0020 7047     		bx	lr
+ 139              	.L22:
+ 140 0022 00BF     		.align	2
+ 141              	.L21:
+ 142 0024 00700040 		.word	1073770496
+ 144              		.section	.text.dac_output_buffer_enable,"ax",%progbits
+ 145              		.align	1
+ 146              		.global	dac_output_buffer_enable
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	dac_output_buffer_enable:
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              		@ link register save eliminated.
+ 155 0000 38B9     		cbnz	r0, .L24
+ 156 0002 084A     		ldr	r2, .L26
+ 157 0004 D2F80034 		ldr	r3, [r2, #1024]
+ 158 0008 23F00203 		bic	r3, r3, #2
+ 159 000c C2F80034 		str	r3, [r2, #1024]
+ 160 0010 7047     		bx	lr
+ 161              	.L24:
+ 162 0012 044A     		ldr	r2, .L26
+ 163 0014 D2F80034 		ldr	r3, [r2, #1024]
+ 164 0018 23F40033 		bic	r3, r3, #131072
+ 165 001c C2F80034 		str	r3, [r2, #1024]
+ 166 0020 7047     		bx	lr
+ 167              	.L27:
+ 168 0022 00BF     		.align	2
+ 169              	.L26:
+ 170 0024 00700040 		.word	1073770496
+ 172              		.section	.text.dac_output_buffer_disable,"ax",%progbits
+ 173              		.align	1
+ 174              		.global	dac_output_buffer_disable
+ 175              		.syntax unified
+ 176              		.thumb
+ 177              		.thumb_func
+ 179              	dac_output_buffer_disable:
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182              		@ link register save eliminated.
+ 183 0000 38B9     		cbnz	r0, .L29
+ 184 0002 084A     		ldr	r2, .L31
+ARM GAS  /tmp/ccDAS5re.s 			page 4
+
+
+ 185 0004 D2F80034 		ldr	r3, [r2, #1024]
+ 186 0008 43F00203 		orr	r3, r3, #2
+ 187 000c C2F80034 		str	r3, [r2, #1024]
+ 188 0010 7047     		bx	lr
+ 189              	.L29:
+ 190 0012 044A     		ldr	r2, .L31
+ 191 0014 D2F80034 		ldr	r3, [r2, #1024]
+ 192 0018 43F40033 		orr	r3, r3, #131072
+ 193 001c C2F80034 		str	r3, [r2, #1024]
+ 194 0020 7047     		bx	lr
+ 195              	.L32:
+ 196 0022 00BF     		.align	2
+ 197              	.L31:
+ 198 0024 00700040 		.word	1073770496
+ 200              		.section	.text.dac_output_value_get,"ax",%progbits
+ 201              		.align	1
+ 202              		.global	dac_output_value_get
+ 203              		.syntax unified
+ 204              		.thumb
+ 205              		.thumb_func
+ 207              	dac_output_value_get:
+ 208              		@ args = 0, pretend = 0, frame = 0
+ 209              		@ frame_needed = 0, uses_anonymous_args = 0
+ 210              		@ link register save eliminated.
+ 211 0000 20B9     		cbnz	r0, .L34
+ 212 0002 054B     		ldr	r3, .L36
+ 213 0004 D3F82C04 		ldr	r0, [r3, #1068]
+ 214 0008 80B2     		uxth	r0, r0
+ 215 000a 7047     		bx	lr
+ 216              	.L34:
+ 217 000c 024B     		ldr	r3, .L36
+ 218 000e D3F83004 		ldr	r0, [r3, #1072]
+ 219 0012 80B2     		uxth	r0, r0
+ 220 0014 7047     		bx	lr
+ 221              	.L37:
+ 222 0016 00BF     		.align	2
+ 223              	.L36:
+ 224 0018 00700040 		.word	1073770496
+ 226              		.section	.text.dac_data_set,"ax",%progbits
+ 227              		.align	1
+ 228              		.global	dac_data_set
+ 229              		.syntax unified
+ 230              		.thumb
+ 231              		.thumb_func
+ 233              	dac_data_set:
+ 234              		@ args = 0, pretend = 0, frame = 0
+ 235              		@ frame_needed = 0, uses_anonymous_args = 0
+ 236              		@ link register save eliminated.
+ 237 0000 88B9     		cbnz	r0, .L39
+ 238 0002 0129     		cmp	r1, #1
+ 239 0004 07D0     		beq	.L40
+ 240 0006 0229     		cmp	r1, #2
+ 241 0008 09D0     		beq	.L41
+ 242 000a 01B1     		cbz	r1, .L45
+ 243              	.L38:
+ 244 000c 7047     		bx	lr
+ 245              	.L45:
+ARM GAS  /tmp/ccDAS5re.s 			page 5
+
+
+ 246 000e 0F4B     		ldr	r3, .L46
+ 247 0010 C3F80824 		str	r2, [r3, #1032]
+ 248 0014 7047     		bx	lr
+ 249              	.L40:
+ 250 0016 0D4B     		ldr	r3, .L46
+ 251 0018 C3F80C24 		str	r2, [r3, #1036]
+ 252 001c 7047     		bx	lr
+ 253              	.L41:
+ 254 001e 0B4B     		ldr	r3, .L46
+ 255 0020 C3F81024 		str	r2, [r3, #1040]
+ 256 0024 7047     		bx	lr
+ 257              	.L39:
+ 258 0026 0129     		cmp	r1, #1
+ 259 0028 07D0     		beq	.L43
+ 260 002a 0229     		cmp	r1, #2
+ 261 002c 09D0     		beq	.L44
+ 262 002e 0029     		cmp	r1, #0
+ 263 0030 ECD1     		bne	.L38
+ 264 0032 064B     		ldr	r3, .L46
+ 265 0034 C3F81424 		str	r2, [r3, #1044]
+ 266 0038 7047     		bx	lr
+ 267              	.L43:
+ 268 003a 044B     		ldr	r3, .L46
+ 269 003c C3F81824 		str	r2, [r3, #1048]
+ 270 0040 7047     		bx	lr
+ 271              	.L44:
+ 272 0042 024B     		ldr	r3, .L46
+ 273 0044 C3F81C24 		str	r2, [r3, #1052]
+ 274 0048 E0E7     		b	.L38
+ 275              	.L47:
+ 276 004a 00BF     		.align	2
+ 277              	.L46:
+ 278 004c 00700040 		.word	1073770496
+ 280              		.section	.text.dac_trigger_enable,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	dac_trigger_enable
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ 287              	dac_trigger_enable:
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290              		@ link register save eliminated.
+ 291 0000 38B9     		cbnz	r0, .L49
+ 292 0002 084A     		ldr	r2, .L51
+ 293 0004 D2F80034 		ldr	r3, [r2, #1024]
+ 294 0008 43F00403 		orr	r3, r3, #4
+ 295 000c C2F80034 		str	r3, [r2, #1024]
+ 296 0010 7047     		bx	lr
+ 297              	.L49:
+ 298 0012 044A     		ldr	r2, .L51
+ 299 0014 D2F80034 		ldr	r3, [r2, #1024]
+ 300 0018 43F48023 		orr	r3, r3, #262144
+ 301 001c C2F80034 		str	r3, [r2, #1024]
+ 302 0020 7047     		bx	lr
+ 303              	.L52:
+ 304 0022 00BF     		.align	2
+ARM GAS  /tmp/ccDAS5re.s 			page 6
+
+
+ 305              	.L51:
+ 306 0024 00700040 		.word	1073770496
+ 308              		.section	.text.dac_trigger_disable,"ax",%progbits
+ 309              		.align	1
+ 310              		.global	dac_trigger_disable
+ 311              		.syntax unified
+ 312              		.thumb
+ 313              		.thumb_func
+ 315              	dac_trigger_disable:
+ 316              		@ args = 0, pretend = 0, frame = 0
+ 317              		@ frame_needed = 0, uses_anonymous_args = 0
+ 318              		@ link register save eliminated.
+ 319 0000 38B9     		cbnz	r0, .L54
+ 320 0002 084A     		ldr	r2, .L56
+ 321 0004 D2F80034 		ldr	r3, [r2, #1024]
+ 322 0008 23F00403 		bic	r3, r3, #4
+ 323 000c C2F80034 		str	r3, [r2, #1024]
+ 324 0010 7047     		bx	lr
+ 325              	.L54:
+ 326 0012 044A     		ldr	r2, .L56
+ 327 0014 D2F80034 		ldr	r3, [r2, #1024]
+ 328 0018 23F48023 		bic	r3, r3, #262144
+ 329 001c C2F80034 		str	r3, [r2, #1024]
+ 330 0020 7047     		bx	lr
+ 331              	.L57:
+ 332 0022 00BF     		.align	2
+ 333              	.L56:
+ 334 0024 00700040 		.word	1073770496
+ 336              		.section	.text.dac_trigger_source_config,"ax",%progbits
+ 337              		.align	1
+ 338              		.global	dac_trigger_source_config
+ 339              		.syntax unified
+ 340              		.thumb
+ 341              		.thumb_func
+ 343              	dac_trigger_source_config:
+ 344              		@ args = 0, pretend = 0, frame = 0
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 346              		@ link register save eliminated.
+ 347 0000 60B9     		cbnz	r0, .L59
+ 348 0002 0D4B     		ldr	r3, .L61
+ 349 0004 D3F80024 		ldr	r2, [r3, #1024]
+ 350 0008 22F03802 		bic	r2, r2, #56
+ 351 000c C3F80024 		str	r2, [r3, #1024]
+ 352 0010 D3F80024 		ldr	r2, [r3, #1024]
+ 353 0014 0A43     		orrs	r2, r2, r1
+ 354 0016 C3F80024 		str	r2, [r3, #1024]
+ 355 001a 7047     		bx	lr
+ 356              	.L59:
+ 357 001c 064B     		ldr	r3, .L61
+ 358 001e D3F80024 		ldr	r2, [r3, #1024]
+ 359 0022 22F46012 		bic	r2, r2, #3670016
+ 360 0026 C3F80024 		str	r2, [r3, #1024]
+ 361 002a D3F80024 		ldr	r2, [r3, #1024]
+ 362 002e 42EA0142 		orr	r2, r2, r1, lsl #16
+ 363 0032 C3F80024 		str	r2, [r3, #1024]
+ 364 0036 7047     		bx	lr
+ 365              	.L62:
+ARM GAS  /tmp/ccDAS5re.s 			page 7
+
+
+ 366              		.align	2
+ 367              	.L61:
+ 368 0038 00700040 		.word	1073770496
+ 370              		.section	.text.dac_software_trigger_enable,"ax",%progbits
+ 371              		.align	1
+ 372              		.global	dac_software_trigger_enable
+ 373              		.syntax unified
+ 374              		.thumb
+ 375              		.thumb_func
+ 377              	dac_software_trigger_enable:
+ 378              		@ args = 0, pretend = 0, frame = 0
+ 379              		@ frame_needed = 0, uses_anonymous_args = 0
+ 380              		@ link register save eliminated.
+ 381 0000 38B9     		cbnz	r0, .L64
+ 382 0002 084A     		ldr	r2, .L66
+ 383 0004 D2F80434 		ldr	r3, [r2, #1028]
+ 384 0008 43F00103 		orr	r3, r3, #1
+ 385 000c C2F80434 		str	r3, [r2, #1028]
+ 386 0010 7047     		bx	lr
+ 387              	.L64:
+ 388 0012 044A     		ldr	r2, .L66
+ 389 0014 D2F80434 		ldr	r3, [r2, #1028]
+ 390 0018 43F00203 		orr	r3, r3, #2
+ 391 001c C2F80434 		str	r3, [r2, #1028]
+ 392 0020 7047     		bx	lr
+ 393              	.L67:
+ 394 0022 00BF     		.align	2
+ 395              	.L66:
+ 396 0024 00700040 		.word	1073770496
+ 398              		.section	.text.dac_software_trigger_disable,"ax",%progbits
+ 399              		.align	1
+ 400              		.global	dac_software_trigger_disable
+ 401              		.syntax unified
+ 402              		.thumb
+ 403              		.thumb_func
+ 405              	dac_software_trigger_disable:
+ 406              		@ args = 0, pretend = 0, frame = 0
+ 407              		@ frame_needed = 0, uses_anonymous_args = 0
+ 408              		@ link register save eliminated.
+ 409 0000 38B9     		cbnz	r0, .L69
+ 410 0002 084A     		ldr	r2, .L71
+ 411 0004 D2F80434 		ldr	r3, [r2, #1028]
+ 412 0008 23F00103 		bic	r3, r3, #1
+ 413 000c C2F80434 		str	r3, [r2, #1028]
+ 414 0010 7047     		bx	lr
+ 415              	.L69:
+ 416 0012 044A     		ldr	r2, .L71
+ 417 0014 D2F80434 		ldr	r3, [r2, #1028]
+ 418 0018 23F00203 		bic	r3, r3, #2
+ 419 001c C2F80434 		str	r3, [r2, #1028]
+ 420 0020 7047     		bx	lr
+ 421              	.L72:
+ 422 0022 00BF     		.align	2
+ 423              	.L71:
+ 424 0024 00700040 		.word	1073770496
+ 426              		.section	.text.dac_wave_mode_config,"ax",%progbits
+ 427              		.align	1
+ARM GAS  /tmp/ccDAS5re.s 			page 8
+
+
+ 428              		.global	dac_wave_mode_config
+ 429              		.syntax unified
+ 430              		.thumb
+ 431              		.thumb_func
+ 433              	dac_wave_mode_config:
+ 434              		@ args = 0, pretend = 0, frame = 0
+ 435              		@ frame_needed = 0, uses_anonymous_args = 0
+ 436              		@ link register save eliminated.
+ 437 0000 60B9     		cbnz	r0, .L74
+ 438 0002 0D4B     		ldr	r3, .L76
+ 439 0004 D3F80024 		ldr	r2, [r3, #1024]
+ 440 0008 22F0C002 		bic	r2, r2, #192
+ 441 000c C3F80024 		str	r2, [r3, #1024]
+ 442 0010 D3F80024 		ldr	r2, [r3, #1024]
+ 443 0014 0A43     		orrs	r2, r2, r1
+ 444 0016 C3F80024 		str	r2, [r3, #1024]
+ 445 001a 7047     		bx	lr
+ 446              	.L74:
+ 447 001c 064B     		ldr	r3, .L76
+ 448 001e D3F80024 		ldr	r2, [r3, #1024]
+ 449 0022 22F44002 		bic	r2, r2, #12582912
+ 450 0026 C3F80024 		str	r2, [r3, #1024]
+ 451 002a D3F80024 		ldr	r2, [r3, #1024]
+ 452 002e 42EA0142 		orr	r2, r2, r1, lsl #16
+ 453 0032 C3F80024 		str	r2, [r3, #1024]
+ 454 0036 7047     		bx	lr
+ 455              	.L77:
+ 456              		.align	2
+ 457              	.L76:
+ 458 0038 00700040 		.word	1073770496
+ 460              		.section	.text.dac_wave_bit_width_config,"ax",%progbits
+ 461              		.align	1
+ 462              		.global	dac_wave_bit_width_config
+ 463              		.syntax unified
+ 464              		.thumb
+ 465              		.thumb_func
+ 467              	dac_wave_bit_width_config:
+ 468              		@ args = 0, pretend = 0, frame = 0
+ 469              		@ frame_needed = 0, uses_anonymous_args = 0
+ 470              		@ link register save eliminated.
+ 471 0000 60B9     		cbnz	r0, .L79
+ 472 0002 0D4B     		ldr	r3, .L81
+ 473 0004 D3F80024 		ldr	r2, [r3, #1024]
+ 474 0008 22F47062 		bic	r2, r2, #3840
+ 475 000c C3F80024 		str	r2, [r3, #1024]
+ 476 0010 D3F80024 		ldr	r2, [r3, #1024]
+ 477 0014 0A43     		orrs	r2, r2, r1
+ 478 0016 C3F80024 		str	r2, [r3, #1024]
+ 479 001a 7047     		bx	lr
+ 480              	.L79:
+ 481 001c 064B     		ldr	r3, .L81
+ 482 001e D3F80024 		ldr	r2, [r3, #1024]
+ 483 0022 22F07062 		bic	r2, r2, #251658240
+ 484 0026 C3F80024 		str	r2, [r3, #1024]
+ 485 002a D3F80024 		ldr	r2, [r3, #1024]
+ 486 002e 42EA0142 		orr	r2, r2, r1, lsl #16
+ 487 0032 C3F80024 		str	r2, [r3, #1024]
+ARM GAS  /tmp/ccDAS5re.s 			page 9
+
+
+ 488 0036 7047     		bx	lr
+ 489              	.L82:
+ 490              		.align	2
+ 491              	.L81:
+ 492 0038 00700040 		.word	1073770496
+ 494              		.section	.text.dac_lfsr_noise_config,"ax",%progbits
+ 495              		.align	1
+ 496              		.global	dac_lfsr_noise_config
+ 497              		.syntax unified
+ 498              		.thumb
+ 499              		.thumb_func
+ 501              	dac_lfsr_noise_config:
+ 502              		@ args = 0, pretend = 0, frame = 0
+ 503              		@ frame_needed = 0, uses_anonymous_args = 0
+ 504              		@ link register save eliminated.
+ 505 0000 60B9     		cbnz	r0, .L84
+ 506 0002 0D4B     		ldr	r3, .L86
+ 507 0004 D3F80024 		ldr	r2, [r3, #1024]
+ 508 0008 22F47062 		bic	r2, r2, #3840
+ 509 000c C3F80024 		str	r2, [r3, #1024]
+ 510 0010 D3F80024 		ldr	r2, [r3, #1024]
+ 511 0014 0A43     		orrs	r2, r2, r1
+ 512 0016 C3F80024 		str	r2, [r3, #1024]
+ 513 001a 7047     		bx	lr
+ 514              	.L84:
+ 515 001c 064B     		ldr	r3, .L86
+ 516 001e D3F80024 		ldr	r2, [r3, #1024]
+ 517 0022 22F07062 		bic	r2, r2, #251658240
+ 518 0026 C3F80024 		str	r2, [r3, #1024]
+ 519 002a D3F80024 		ldr	r2, [r3, #1024]
+ 520 002e 42EA0142 		orr	r2, r2, r1, lsl #16
+ 521 0032 C3F80024 		str	r2, [r3, #1024]
+ 522 0036 7047     		bx	lr
+ 523              	.L87:
+ 524              		.align	2
+ 525              	.L86:
+ 526 0038 00700040 		.word	1073770496
+ 528              		.section	.text.dac_triangle_noise_config,"ax",%progbits
+ 529              		.align	1
+ 530              		.global	dac_triangle_noise_config
+ 531              		.syntax unified
+ 532              		.thumb
+ 533              		.thumb_func
+ 535              	dac_triangle_noise_config:
+ 536              		@ args = 0, pretend = 0, frame = 0
+ 537              		@ frame_needed = 0, uses_anonymous_args = 0
+ 538              		@ link register save eliminated.
+ 539 0000 60B9     		cbnz	r0, .L89
+ 540 0002 0D4B     		ldr	r3, .L91
+ 541 0004 D3F80024 		ldr	r2, [r3, #1024]
+ 542 0008 22F47062 		bic	r2, r2, #3840
+ 543 000c C3F80024 		str	r2, [r3, #1024]
+ 544 0010 D3F80024 		ldr	r2, [r3, #1024]
+ 545 0014 0A43     		orrs	r2, r2, r1
+ 546 0016 C3F80024 		str	r2, [r3, #1024]
+ 547 001a 7047     		bx	lr
+ 548              	.L89:
+ARM GAS  /tmp/ccDAS5re.s 			page 10
+
+
+ 549 001c 064B     		ldr	r3, .L91
+ 550 001e D3F80024 		ldr	r2, [r3, #1024]
+ 551 0022 22F07062 		bic	r2, r2, #251658240
+ 552 0026 C3F80024 		str	r2, [r3, #1024]
+ 553 002a D3F80024 		ldr	r2, [r3, #1024]
+ 554 002e 42EA0142 		orr	r2, r2, r1, lsl #16
+ 555 0032 C3F80024 		str	r2, [r3, #1024]
+ 556 0036 7047     		bx	lr
+ 557              	.L92:
+ 558              		.align	2
+ 559              	.L91:
+ 560 0038 00700040 		.word	1073770496
+ 562              		.section	.text.dac_concurrent_enable,"ax",%progbits
+ 563              		.align	1
+ 564              		.global	dac_concurrent_enable
+ 565              		.syntax unified
+ 566              		.thumb
+ 567              		.thumb_func
+ 569              	dac_concurrent_enable:
+ 570              		@ args = 0, pretend = 0, frame = 0
+ 571              		@ frame_needed = 0, uses_anonymous_args = 0
+ 572              		@ link register save eliminated.
+ 573 0000 034A     		ldr	r2, .L94
+ 574 0002 D2F80034 		ldr	r3, [r2, #1024]
+ 575 0006 43F00113 		orr	r3, r3, #65537
+ 576 000a C2F80034 		str	r3, [r2, #1024]
+ 577 000e 7047     		bx	lr
+ 578              	.L95:
+ 579              		.align	2
+ 580              	.L94:
+ 581 0010 00700040 		.word	1073770496
+ 583              		.section	.text.dac_concurrent_disable,"ax",%progbits
+ 584              		.align	1
+ 585              		.global	dac_concurrent_disable
+ 586              		.syntax unified
+ 587              		.thumb
+ 588              		.thumb_func
+ 590              	dac_concurrent_disable:
+ 591              		@ args = 0, pretend = 0, frame = 0
+ 592              		@ frame_needed = 0, uses_anonymous_args = 0
+ 593              		@ link register save eliminated.
+ 594 0000 034A     		ldr	r2, .L97
+ 595 0002 D2F80034 		ldr	r3, [r2, #1024]
+ 596 0006 23F00113 		bic	r3, r3, #65537
+ 597 000a C2F80034 		str	r3, [r2, #1024]
+ 598 000e 7047     		bx	lr
+ 599              	.L98:
+ 600              		.align	2
+ 601              	.L97:
+ 602 0010 00700040 		.word	1073770496
+ 604              		.section	.text.dac_concurrent_software_trigger_enable,"ax",%progbits
+ 605              		.align	1
+ 606              		.global	dac_concurrent_software_trigger_enable
+ 607              		.syntax unified
+ 608              		.thumb
+ 609              		.thumb_func
+ 611              	dac_concurrent_software_trigger_enable:
+ARM GAS  /tmp/ccDAS5re.s 			page 11
+
+
+ 612              		@ args = 0, pretend = 0, frame = 0
+ 613              		@ frame_needed = 0, uses_anonymous_args = 0
+ 614              		@ link register save eliminated.
+ 615 0000 034A     		ldr	r2, .L100
+ 616 0002 D2F80434 		ldr	r3, [r2, #1028]
+ 617 0006 43F00303 		orr	r3, r3, #3
+ 618 000a C2F80434 		str	r3, [r2, #1028]
+ 619 000e 7047     		bx	lr
+ 620              	.L101:
+ 621              		.align	2
+ 622              	.L100:
+ 623 0010 00700040 		.word	1073770496
+ 625              		.section	.text.dac_concurrent_software_trigger_disable,"ax",%progbits
+ 626              		.align	1
+ 627              		.global	dac_concurrent_software_trigger_disable
+ 628              		.syntax unified
+ 629              		.thumb
+ 630              		.thumb_func
+ 632              	dac_concurrent_software_trigger_disable:
+ 633              		@ args = 0, pretend = 0, frame = 0
+ 634              		@ frame_needed = 0, uses_anonymous_args = 0
+ 635              		@ link register save eliminated.
+ 636 0000 034A     		ldr	r2, .L103
+ 637 0002 D2F80434 		ldr	r3, [r2, #1028]
+ 638 0006 23F00303 		bic	r3, r3, #3
+ 639 000a C2F80434 		str	r3, [r2, #1028]
+ 640 000e 7047     		bx	lr
+ 641              	.L104:
+ 642              		.align	2
+ 643              	.L103:
+ 644 0010 00700040 		.word	1073770496
+ 646              		.section	.text.dac_concurrent_output_buffer_enable,"ax",%progbits
+ 647              		.align	1
+ 648              		.global	dac_concurrent_output_buffer_enable
+ 649              		.syntax unified
+ 650              		.thumb
+ 651              		.thumb_func
+ 653              	dac_concurrent_output_buffer_enable:
+ 654              		@ args = 0, pretend = 0, frame = 0
+ 655              		@ frame_needed = 0, uses_anonymous_args = 0
+ 656              		@ link register save eliminated.
+ 657 0000 034A     		ldr	r2, .L106
+ 658 0002 D2F80034 		ldr	r3, [r2, #1024]
+ 659 0006 23F00213 		bic	r3, r3, #131074
+ 660 000a C2F80034 		str	r3, [r2, #1024]
+ 661 000e 7047     		bx	lr
+ 662              	.L107:
+ 663              		.align	2
+ 664              	.L106:
+ 665 0010 00700040 		.word	1073770496
+ 667              		.section	.text.dac_concurrent_output_buffer_disable,"ax",%progbits
+ 668              		.align	1
+ 669              		.global	dac_concurrent_output_buffer_disable
+ 670              		.syntax unified
+ 671              		.thumb
+ 672              		.thumb_func
+ 674              	dac_concurrent_output_buffer_disable:
+ARM GAS  /tmp/ccDAS5re.s 			page 12
+
+
+ 675              		@ args = 0, pretend = 0, frame = 0
+ 676              		@ frame_needed = 0, uses_anonymous_args = 0
+ 677              		@ link register save eliminated.
+ 678 0000 034A     		ldr	r2, .L109
+ 679 0002 D2F80034 		ldr	r3, [r2, #1024]
+ 680 0006 43F00213 		orr	r3, r3, #131074
+ 681 000a C2F80034 		str	r3, [r2, #1024]
+ 682 000e 7047     		bx	lr
+ 683              	.L110:
+ 684              		.align	2
+ 685              	.L109:
+ 686 0010 00700040 		.word	1073770496
+ 688              		.section	.text.dac_concurrent_data_set,"ax",%progbits
+ 689              		.align	1
+ 690              		.global	dac_concurrent_data_set
+ 691              		.syntax unified
+ 692              		.thumb
+ 693              		.thumb_func
+ 695              	dac_concurrent_data_set:
+ 696              		@ args = 0, pretend = 0, frame = 0
+ 697              		@ frame_needed = 0, uses_anonymous_args = 0
+ 698              		@ link register save eliminated.
+ 699 0000 0128     		cmp	r0, #1
+ 700 0002 09D0     		beq	.L112
+ 701 0004 0228     		cmp	r0, #2
+ 702 0006 0DD0     		beq	.L113
+ 703 0008 00B1     		cbz	r0, .L115
+ 704              	.L111:
+ 705 000a 7047     		bx	lr
+ 706              	.L115:
+ 707 000c 41EA0241 		orr	r1, r1, r2, lsl #16
+ 708 0010 074B     		ldr	r3, .L116
+ 709 0012 C3F82014 		str	r1, [r3, #1056]
+ 710 0016 7047     		bx	lr
+ 711              	.L112:
+ 712 0018 41EA0241 		orr	r1, r1, r2, lsl #16
+ 713 001c 044B     		ldr	r3, .L116
+ 714 001e C3F82414 		str	r1, [r3, #1060]
+ 715 0022 7047     		bx	lr
+ 716              	.L113:
+ 717 0024 41EA0221 		orr	r1, r1, r2, lsl #8
+ 718 0028 014B     		ldr	r3, .L116
+ 719 002a C3F82814 		str	r1, [r3, #1064]
+ 720 002e ECE7     		b	.L111
+ 721              	.L117:
+ 722              		.align	2
+ 723              	.L116:
+ 724 0030 00700040 		.word	1073770496
+ 726              		.section	.text.dac_concurrent_interrupt_enable,"ax",%progbits
+ 727              		.align	1
+ 728              		.global	dac_concurrent_interrupt_enable
+ 729              		.syntax unified
+ 730              		.thumb
+ 731              		.thumb_func
+ 733              	dac_concurrent_interrupt_enable:
+ 734              		@ args = 0, pretend = 0, frame = 0
+ 735              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccDAS5re.s 			page 13
+
+
+ 736              		@ link register save eliminated.
+ 737 0000 034A     		ldr	r2, .L119
+ 738 0002 D2F80034 		ldr	r3, [r2, #1024]
+ 739 0006 43F02023 		orr	r3, r3, #536879104
+ 740 000a C2F80034 		str	r3, [r2, #1024]
+ 741 000e 7047     		bx	lr
+ 742              	.L120:
+ 743              		.align	2
+ 744              	.L119:
+ 745 0010 00700040 		.word	1073770496
+ 747              		.section	.text.dac_concurrent_interrupt_disable,"ax",%progbits
+ 748              		.align	1
+ 749              		.global	dac_concurrent_interrupt_disable
+ 750              		.syntax unified
+ 751              		.thumb
+ 752              		.thumb_func
+ 754              	dac_concurrent_interrupt_disable:
+ 755              		@ args = 0, pretend = 0, frame = 0
+ 756              		@ frame_needed = 0, uses_anonymous_args = 0
+ 757              		@ link register save eliminated.
+ 758 0000 034A     		ldr	r2, .L122
+ 759 0002 D2F80034 		ldr	r3, [r2, #1024]
+ 760 0006 23F02023 		bic	r3, r3, #536879104
+ 761 000a C2F80034 		str	r3, [r2, #1024]
+ 762 000e 7047     		bx	lr
+ 763              	.L123:
+ 764              		.align	2
+ 765              	.L122:
+ 766 0010 00700040 		.word	1073770496
+ 768              		.section	.text.dac_flag_get,"ax",%progbits
+ 769              		.align	1
+ 770              		.global	dac_flag_get
+ 771              		.syntax unified
+ 772              		.thumb
+ 773              		.thumb_func
+ 775              	dac_flag_get:
+ 776              		@ args = 0, pretend = 0, frame = 0
+ 777              		@ frame_needed = 0, uses_anonymous_args = 0
+ 778              		@ link register save eliminated.
+ 779 0000 30B9     		cbnz	r0, .L125
+ 780 0002 094B     		ldr	r3, .L129
+ 781 0004 D3F83434 		ldr	r3, [r3, #1076]
+ 782 0008 13F4005F 		tst	r3, #8192
+ 783 000c 08D1     		bne	.L127
+ 784 000e 7047     		bx	lr
+ 785              	.L125:
+ 786 0010 054B     		ldr	r3, .L129
+ 787 0012 D3F83434 		ldr	r3, [r3, #1076]
+ 788 0016 13F0005F 		tst	r3, #536870912
+ 789 001a 03D1     		bne	.L128
+ 790 001c 0020     		movs	r0, #0
+ 791 001e 7047     		bx	lr
+ 792              	.L127:
+ 793 0020 0120     		movs	r0, #1
+ 794 0022 7047     		bx	lr
+ 795              	.L128:
+ 796 0024 0120     		movs	r0, #1
+ARM GAS  /tmp/ccDAS5re.s 			page 14
+
+
+ 797 0026 7047     		bx	lr
+ 798              	.L130:
+ 799              		.align	2
+ 800              	.L129:
+ 801 0028 00700040 		.word	1073770496
+ 803              		.section	.text.dac_flag_clear,"ax",%progbits
+ 804              		.align	1
+ 805              		.global	dac_flag_clear
+ 806              		.syntax unified
+ 807              		.thumb
+ 808              		.thumb_func
+ 810              	dac_flag_clear:
+ 811              		@ args = 0, pretend = 0, frame = 0
+ 812              		@ frame_needed = 0, uses_anonymous_args = 0
+ 813              		@ link register save eliminated.
+ 814 0000 38B9     		cbnz	r0, .L132
+ 815 0002 084A     		ldr	r2, .L134
+ 816 0004 D2F83434 		ldr	r3, [r2, #1076]
+ 817 0008 43F40053 		orr	r3, r3, #8192
+ 818 000c C2F83434 		str	r3, [r2, #1076]
+ 819 0010 7047     		bx	lr
+ 820              	.L132:
+ 821 0012 044A     		ldr	r2, .L134
+ 822 0014 D2F83434 		ldr	r3, [r2, #1076]
+ 823 0018 43F00053 		orr	r3, r3, #536870912
+ 824 001c C2F83434 		str	r3, [r2, #1076]
+ 825 0020 7047     		bx	lr
+ 826              	.L135:
+ 827 0022 00BF     		.align	2
+ 828              	.L134:
+ 829 0024 00700040 		.word	1073770496
+ 831              		.section	.text.dac_interrupt_enable,"ax",%progbits
+ 832              		.align	1
+ 833              		.global	dac_interrupt_enable
+ 834              		.syntax unified
+ 835              		.thumb
+ 836              		.thumb_func
+ 838              	dac_interrupt_enable:
+ 839              		@ args = 0, pretend = 0, frame = 0
+ 840              		@ frame_needed = 0, uses_anonymous_args = 0
+ 841              		@ link register save eliminated.
+ 842 0000 38B9     		cbnz	r0, .L137
+ 843 0002 084A     		ldr	r2, .L139
+ 844 0004 D2F80034 		ldr	r3, [r2, #1024]
+ 845 0008 43F40053 		orr	r3, r3, #8192
+ 846 000c C2F80034 		str	r3, [r2, #1024]
+ 847 0010 7047     		bx	lr
+ 848              	.L137:
+ 849 0012 044A     		ldr	r2, .L139
+ 850 0014 D2F80034 		ldr	r3, [r2, #1024]
+ 851 0018 43F00053 		orr	r3, r3, #536870912
+ 852 001c C2F80034 		str	r3, [r2, #1024]
+ 853 0020 7047     		bx	lr
+ 854              	.L140:
+ 855 0022 00BF     		.align	2
+ 856              	.L139:
+ 857 0024 00700040 		.word	1073770496
+ARM GAS  /tmp/ccDAS5re.s 			page 15
+
+
+ 859              		.section	.text.dac_interrupt_disable,"ax",%progbits
+ 860              		.align	1
+ 861              		.global	dac_interrupt_disable
+ 862              		.syntax unified
+ 863              		.thumb
+ 864              		.thumb_func
+ 866              	dac_interrupt_disable:
+ 867              		@ args = 0, pretend = 0, frame = 0
+ 868              		@ frame_needed = 0, uses_anonymous_args = 0
+ 869              		@ link register save eliminated.
+ 870 0000 38B9     		cbnz	r0, .L142
+ 871 0002 084A     		ldr	r2, .L144
+ 872 0004 D2F80034 		ldr	r3, [r2, #1024]
+ 873 0008 23F40053 		bic	r3, r3, #8192
+ 874 000c C2F80034 		str	r3, [r2, #1024]
+ 875 0010 7047     		bx	lr
+ 876              	.L142:
+ 877 0012 044A     		ldr	r2, .L144
+ 878 0014 D2F80034 		ldr	r3, [r2, #1024]
+ 879 0018 23F00053 		bic	r3, r3, #536870912
+ 880 001c C2F80034 		str	r3, [r2, #1024]
+ 881 0020 7047     		bx	lr
+ 882              	.L145:
+ 883 0022 00BF     		.align	2
+ 884              	.L144:
+ 885 0024 00700040 		.word	1073770496
+ 887              		.section	.text.dac_interrupt_flag_get,"ax",%progbits
+ 888              		.align	1
+ 889              		.global	dac_interrupt_flag_get
+ 890              		.syntax unified
+ 891              		.thumb
+ 892              		.thumb_func
+ 894              	dac_interrupt_flag_get:
+ 895              		@ args = 0, pretend = 0, frame = 0
+ 896              		@ frame_needed = 0, uses_anonymous_args = 0
+ 897              		@ link register save eliminated.
+ 898 0000 58B9     		cbnz	r0, .L147
+ 899 0002 104B     		ldr	r3, .L153
+ 900 0004 D3F83424 		ldr	r2, [r3, #1076]
+ 901 0008 D3F80034 		ldr	r3, [r3, #1024]
+ 902 000c 03F40053 		and	r3, r3, #8192
+ 903 0010 12F4005F 		tst	r2, #8192
+ 904 0014 0ED0     		beq	.L149
+ 905 0016 7BB9     		cbnz	r3, .L150
+ 906 0018 7047     		bx	lr
+ 907              	.L147:
+ 908 001a 0A4B     		ldr	r3, .L153
+ 909 001c D3F83424 		ldr	r2, [r3, #1076]
+ 910 0020 D3F80034 		ldr	r3, [r3, #1024]
+ 911 0024 03F00053 		and	r3, r3, #536870912
+ 912 0028 12F0005F 		tst	r2, #536870912
+ 913 002c 06D0     		beq	.L151
+ 914 002e 3BB9     		cbnz	r3, .L152
+ 915 0030 0020     		movs	r0, #0
+ 916 0032 7047     		bx	lr
+ 917              	.L149:
+ 918 0034 0020     		movs	r0, #0
+ARM GAS  /tmp/ccDAS5re.s 			page 16
+
+
+ 919 0036 7047     		bx	lr
+ 920              	.L150:
+ 921 0038 0120     		movs	r0, #1
+ 922 003a 7047     		bx	lr
+ 923              	.L151:
+ 924 003c 0020     		movs	r0, #0
+ 925 003e 7047     		bx	lr
+ 926              	.L152:
+ 927 0040 0120     		movs	r0, #1
+ 928 0042 7047     		bx	lr
+ 929              	.L154:
+ 930              		.align	2
+ 931              	.L153:
+ 932 0044 00700040 		.word	1073770496
+ 934              		.section	.text.dac_interrupt_flag_clear,"ax",%progbits
+ 935              		.align	1
+ 936              		.global	dac_interrupt_flag_clear
+ 937              		.syntax unified
+ 938              		.thumb
+ 939              		.thumb_func
+ 941              	dac_interrupt_flag_clear:
+ 942              		@ args = 0, pretend = 0, frame = 0
+ 943              		@ frame_needed = 0, uses_anonymous_args = 0
+ 944              		@ link register save eliminated.
+ 945 0000 38B9     		cbnz	r0, .L156
+ 946 0002 084A     		ldr	r2, .L158
+ 947 0004 D2F83434 		ldr	r3, [r2, #1076]
+ 948 0008 43F40053 		orr	r3, r3, #8192
+ 949 000c C2F83434 		str	r3, [r2, #1076]
+ 950 0010 7047     		bx	lr
+ 951              	.L156:
+ 952 0012 044A     		ldr	r2, .L158
+ 953 0014 D2F83434 		ldr	r3, [r2, #1076]
+ 954 0018 43F00053 		orr	r3, r3, #536870912
+ 955 001c C2F83434 		str	r3, [r2, #1076]
+ 956 0020 7047     		bx	lr
+ 957              	.L159:
+ 958 0022 00BF     		.align	2
+ 959              	.L158:
+ 960 0024 00700040 		.word	1073770496
+ 962              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 12.2.1 20221205"
+ARM GAS  /tmp/ccDAS5re.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_dac.c
+     /tmp/ccDAS5re.s:16     .text.dac_deinit:0000000000000000 $t
+     /tmp/ccDAS5re.s:22     .text.dac_deinit:0000000000000000 dac_deinit
+     /tmp/ccDAS5re.s:33     .text.dac_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:39     .text.dac_enable:0000000000000000 dac_enable
+     /tmp/ccDAS5re.s:58     .text.dac_enable:0000000000000024 $d
+     /tmp/ccDAS5re.s:61     .text.dac_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:67     .text.dac_disable:0000000000000000 dac_disable
+     /tmp/ccDAS5re.s:86     .text.dac_disable:0000000000000024 $d
+     /tmp/ccDAS5re.s:89     .text.dac_dma_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:95     .text.dac_dma_enable:0000000000000000 dac_dma_enable
+     /tmp/ccDAS5re.s:114    .text.dac_dma_enable:0000000000000024 $d
+     /tmp/ccDAS5re.s:117    .text.dac_dma_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:123    .text.dac_dma_disable:0000000000000000 dac_dma_disable
+     /tmp/ccDAS5re.s:142    .text.dac_dma_disable:0000000000000024 $d
+     /tmp/ccDAS5re.s:145    .text.dac_output_buffer_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:151    .text.dac_output_buffer_enable:0000000000000000 dac_output_buffer_enable
+     /tmp/ccDAS5re.s:170    .text.dac_output_buffer_enable:0000000000000024 $d
+     /tmp/ccDAS5re.s:173    .text.dac_output_buffer_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:179    .text.dac_output_buffer_disable:0000000000000000 dac_output_buffer_disable
+     /tmp/ccDAS5re.s:198    .text.dac_output_buffer_disable:0000000000000024 $d
+     /tmp/ccDAS5re.s:201    .text.dac_output_value_get:0000000000000000 $t
+     /tmp/ccDAS5re.s:207    .text.dac_output_value_get:0000000000000000 dac_output_value_get
+     /tmp/ccDAS5re.s:224    .text.dac_output_value_get:0000000000000018 $d
+     /tmp/ccDAS5re.s:227    .text.dac_data_set:0000000000000000 $t
+     /tmp/ccDAS5re.s:233    .text.dac_data_set:0000000000000000 dac_data_set
+     /tmp/ccDAS5re.s:278    .text.dac_data_set:000000000000004c $d
+     /tmp/ccDAS5re.s:281    .text.dac_trigger_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:287    .text.dac_trigger_enable:0000000000000000 dac_trigger_enable
+     /tmp/ccDAS5re.s:306    .text.dac_trigger_enable:0000000000000024 $d
+     /tmp/ccDAS5re.s:309    .text.dac_trigger_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:315    .text.dac_trigger_disable:0000000000000000 dac_trigger_disable
+     /tmp/ccDAS5re.s:334    .text.dac_trigger_disable:0000000000000024 $d
+     /tmp/ccDAS5re.s:337    .text.dac_trigger_source_config:0000000000000000 $t
+     /tmp/ccDAS5re.s:343    .text.dac_trigger_source_config:0000000000000000 dac_trigger_source_config
+     /tmp/ccDAS5re.s:368    .text.dac_trigger_source_config:0000000000000038 $d
+     /tmp/ccDAS5re.s:371    .text.dac_software_trigger_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:377    .text.dac_software_trigger_enable:0000000000000000 dac_software_trigger_enable
+     /tmp/ccDAS5re.s:396    .text.dac_software_trigger_enable:0000000000000024 $d
+     /tmp/ccDAS5re.s:399    .text.dac_software_trigger_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:405    .text.dac_software_trigger_disable:0000000000000000 dac_software_trigger_disable
+     /tmp/ccDAS5re.s:424    .text.dac_software_trigger_disable:0000000000000024 $d
+     /tmp/ccDAS5re.s:427    .text.dac_wave_mode_config:0000000000000000 $t
+     /tmp/ccDAS5re.s:433    .text.dac_wave_mode_config:0000000000000000 dac_wave_mode_config
+     /tmp/ccDAS5re.s:458    .text.dac_wave_mode_config:0000000000000038 $d
+     /tmp/ccDAS5re.s:461    .text.dac_wave_bit_width_config:0000000000000000 $t
+     /tmp/ccDAS5re.s:467    .text.dac_wave_bit_width_config:0000000000000000 dac_wave_bit_width_config
+     /tmp/ccDAS5re.s:492    .text.dac_wave_bit_width_config:0000000000000038 $d
+     /tmp/ccDAS5re.s:495    .text.dac_lfsr_noise_config:0000000000000000 $t
+     /tmp/ccDAS5re.s:501    .text.dac_lfsr_noise_config:0000000000000000 dac_lfsr_noise_config
+     /tmp/ccDAS5re.s:526    .text.dac_lfsr_noise_config:0000000000000038 $d
+     /tmp/ccDAS5re.s:529    .text.dac_triangle_noise_config:0000000000000000 $t
+     /tmp/ccDAS5re.s:535    .text.dac_triangle_noise_config:0000000000000000 dac_triangle_noise_config
+     /tmp/ccDAS5re.s:560    .text.dac_triangle_noise_config:0000000000000038 $d
+     /tmp/ccDAS5re.s:563    .text.dac_concurrent_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:569    .text.dac_concurrent_enable:0000000000000000 dac_concurrent_enable
+ARM GAS  /tmp/ccDAS5re.s 			page 18
+
+
+     /tmp/ccDAS5re.s:581    .text.dac_concurrent_enable:0000000000000010 $d
+     /tmp/ccDAS5re.s:584    .text.dac_concurrent_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:590    .text.dac_concurrent_disable:0000000000000000 dac_concurrent_disable
+     /tmp/ccDAS5re.s:602    .text.dac_concurrent_disable:0000000000000010 $d
+     /tmp/ccDAS5re.s:605    .text.dac_concurrent_software_trigger_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:611    .text.dac_concurrent_software_trigger_enable:0000000000000000 dac_concurrent_software_trigger_enable
+     /tmp/ccDAS5re.s:623    .text.dac_concurrent_software_trigger_enable:0000000000000010 $d
+     /tmp/ccDAS5re.s:626    .text.dac_concurrent_software_trigger_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:632    .text.dac_concurrent_software_trigger_disable:0000000000000000 dac_concurrent_software_trigger_disable
+     /tmp/ccDAS5re.s:644    .text.dac_concurrent_software_trigger_disable:0000000000000010 $d
+     /tmp/ccDAS5re.s:647    .text.dac_concurrent_output_buffer_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:653    .text.dac_concurrent_output_buffer_enable:0000000000000000 dac_concurrent_output_buffer_enable
+     /tmp/ccDAS5re.s:665    .text.dac_concurrent_output_buffer_enable:0000000000000010 $d
+     /tmp/ccDAS5re.s:668    .text.dac_concurrent_output_buffer_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:674    .text.dac_concurrent_output_buffer_disable:0000000000000000 dac_concurrent_output_buffer_disable
+     /tmp/ccDAS5re.s:686    .text.dac_concurrent_output_buffer_disable:0000000000000010 $d
+     /tmp/ccDAS5re.s:689    .text.dac_concurrent_data_set:0000000000000000 $t
+     /tmp/ccDAS5re.s:695    .text.dac_concurrent_data_set:0000000000000000 dac_concurrent_data_set
+     /tmp/ccDAS5re.s:724    .text.dac_concurrent_data_set:0000000000000030 $d
+     /tmp/ccDAS5re.s:727    .text.dac_concurrent_interrupt_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:733    .text.dac_concurrent_interrupt_enable:0000000000000000 dac_concurrent_interrupt_enable
+     /tmp/ccDAS5re.s:745    .text.dac_concurrent_interrupt_enable:0000000000000010 $d
+     /tmp/ccDAS5re.s:748    .text.dac_concurrent_interrupt_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:754    .text.dac_concurrent_interrupt_disable:0000000000000000 dac_concurrent_interrupt_disable
+     /tmp/ccDAS5re.s:766    .text.dac_concurrent_interrupt_disable:0000000000000010 $d
+     /tmp/ccDAS5re.s:769    .text.dac_flag_get:0000000000000000 $t
+     /tmp/ccDAS5re.s:775    .text.dac_flag_get:0000000000000000 dac_flag_get
+     /tmp/ccDAS5re.s:801    .text.dac_flag_get:0000000000000028 $d
+     /tmp/ccDAS5re.s:804    .text.dac_flag_clear:0000000000000000 $t
+     /tmp/ccDAS5re.s:810    .text.dac_flag_clear:0000000000000000 dac_flag_clear
+     /tmp/ccDAS5re.s:829    .text.dac_flag_clear:0000000000000024 $d
+     /tmp/ccDAS5re.s:832    .text.dac_interrupt_enable:0000000000000000 $t
+     /tmp/ccDAS5re.s:838    .text.dac_interrupt_enable:0000000000000000 dac_interrupt_enable
+     /tmp/ccDAS5re.s:857    .text.dac_interrupt_enable:0000000000000024 $d
+     /tmp/ccDAS5re.s:860    .text.dac_interrupt_disable:0000000000000000 $t
+     /tmp/ccDAS5re.s:866    .text.dac_interrupt_disable:0000000000000000 dac_interrupt_disable
+     /tmp/ccDAS5re.s:885    .text.dac_interrupt_disable:0000000000000024 $d
+     /tmp/ccDAS5re.s:888    .text.dac_interrupt_flag_get:0000000000000000 $t
+     /tmp/ccDAS5re.s:894    .text.dac_interrupt_flag_get:0000000000000000 dac_interrupt_flag_get
+     /tmp/ccDAS5re.s:932    .text.dac_interrupt_flag_get:0000000000000044 $d
+     /tmp/ccDAS5re.s:935    .text.dac_interrupt_flag_clear:0000000000000000 $t
+     /tmp/ccDAS5re.s:941    .text.dac_interrupt_flag_clear:0000000000000000 dac_interrupt_flag_clear
+     /tmp/ccDAS5re.s:960    .text.dac_interrupt_flag_clear:0000000000000024 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

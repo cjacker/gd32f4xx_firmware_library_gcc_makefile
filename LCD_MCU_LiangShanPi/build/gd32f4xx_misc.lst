@@ -1,0 +1,271 @@
+ARM GAS  /tmp/ccpnVdF4.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32f4xx_misc.c"
+  14              		.text
+  15              		.section	.text.nvic_priority_group_set,"ax",%progbits
+  16              		.align	1
+  17              		.global	nvic_priority_group_set
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	nvic_priority_group_set:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 40F0BF60 		orr	r0, r0, #100139008
+  27 0004 40F40030 		orr	r0, r0, #131072
+  28 0008 014B     		ldr	r3, .L2
+  29 000a D860     		str	r0, [r3, #12]
+  30 000c 7047     		bx	lr
+  31              	.L3:
+  32 000e 00BF     		.align	2
+  33              	.L2:
+  34 0010 00ED00E0 		.word	-536810240
+  36              		.section	.text.nvic_irq_enable,"ax",%progbits
+  37              		.align	1
+  38              		.global	nvic_irq_enable
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	nvic_irq_enable:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46 0000 70B5     		push	{r4, r5, r6, lr}
+  47 0002 0546     		mov	r5, r0
+  48 0004 0E46     		mov	r6, r1
+  49 0006 1446     		mov	r4, r2
+  50 0008 274B     		ldr	r3, .L13
+  51 000a DB68     		ldr	r3, [r3, #12]
+  52 000c 03F4E063 		and	r3, r3, #1792
+  53 0010 B3F5E06F 		cmp	r3, #1792
+  54 0014 25D0     		beq	.L6
+  55 0016 244B     		ldr	r3, .L13
+  56 0018 DB68     		ldr	r3, [r3, #12]
+  57 001a 03F4E063 		and	r3, r3, #1792
+  58 001e B3F5C06F 		cmp	r3, #1536
+  59 0022 38D0     		beq	.L7
+  60 0024 204B     		ldr	r3, .L13
+ARM GAS  /tmp/ccpnVdF4.s 			page 2
+
+
+  61 0026 DB68     		ldr	r3, [r3, #12]
+  62 0028 03F4E063 		and	r3, r3, #1792
+  63 002c B3F5A06F 		cmp	r3, #1280
+  64 0030 34D0     		beq	.L8
+  65 0032 1D4B     		ldr	r3, .L13
+  66 0034 DB68     		ldr	r3, [r3, #12]
+  67 0036 03F4E063 		and	r3, r3, #1792
+  68 003a B3F5806F 		cmp	r3, #1024
+  69 003e 30D0     		beq	.L9
+  70 0040 194B     		ldr	r3, .L13
+  71 0042 DB68     		ldr	r3, [r3, #12]
+  72 0044 03F4E063 		and	r3, r3, #1792
+  73 0048 B3F5407F 		cmp	r3, #768
+  74 004c 02D1     		bne	.L12
+  75 004e 0023     		movs	r3, #0
+  76 0050 0422     		movs	r2, #4
+  77 0052 08E0     		b	.L5
+  78              	.L12:
+  79 0054 4FF4A060 		mov	r0, #1280
+  80 0058 FFF7FEFF 		bl	nvic_priority_group_set
+  81 005c 0223     		movs	r3, #2
+  82 005e 1A46     		mov	r2, r3
+  83 0060 01E0     		b	.L5
+  84              	.L6:
+  85 0062 0423     		movs	r3, #4
+  86 0064 0022     		movs	r2, #0
+  87              	.L5:
+  88 0066 C2F10402 		rsb	r2, r2, #4
+  89 006a 9640     		lsls	r6, r6, r2
+  90 006c C3F10403 		rsb	r3, r3, #4
+  91 0070 0F22     		movs	r2, #15
+  92 0072 22FA03F3 		lsr	r3, r2, r3
+  93 0076 1C40     		ands	r4, r4, r3
+  94 0078 3443     		orrs	r4, r4, r6
+  95 007a 2401     		lsls	r4, r4, #4
+  96 007c E4B2     		uxtb	r4, r4
+  97 007e 0B4A     		ldr	r2, .L13+4
+  98 0080 5319     		adds	r3, r2, r5
+  99 0082 83F80043 		strb	r4, [r3, #768]
+ 100 0086 05F01F01 		and	r1, r5, #31
+ 101 008a 6D09     		lsrs	r5, r5, #5
+ 102 008c 0123     		movs	r3, #1
+ 103 008e 8B40     		lsls	r3, r3, r1
+ 104 0090 42F82530 		str	r3, [r2, r5, lsl #2]
+ 105 0094 70BD     		pop	{r4, r5, r6, pc}
+ 106              	.L7:
+ 107 0096 0323     		movs	r3, #3
+ 108 0098 0122     		movs	r2, #1
+ 109 009a E4E7     		b	.L5
+ 110              	.L8:
+ 111 009c 0223     		movs	r3, #2
+ 112 009e 1A46     		mov	r2, r3
+ 113 00a0 E1E7     		b	.L5
+ 114              	.L9:
+ 115 00a2 0123     		movs	r3, #1
+ 116 00a4 0322     		movs	r2, #3
+ 117 00a6 DEE7     		b	.L5
+ARM GAS  /tmp/ccpnVdF4.s 			page 3
+
+
+ 118              	.L14:
+ 119              		.align	2
+ 120              	.L13:
+ 121 00a8 00ED00E0 		.word	-536810240
+ 122 00ac 00E100E0 		.word	-536813312
+ 124              		.section	.text.nvic_irq_disable,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	nvic_irq_disable
+ 127              		.syntax unified
+ 128              		.thumb
+ 129              		.thumb_func
+ 131              	nvic_irq_disable:
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134              		@ link register save eliminated.
+ 135 0000 00F01F02 		and	r2, r0, #31
+ 136 0004 4009     		lsrs	r0, r0, #5
+ 137 0006 0123     		movs	r3, #1
+ 138 0008 9340     		lsls	r3, r3, r2
+ 139 000a 2030     		adds	r0, r0, #32
+ 140 000c 014A     		ldr	r2, .L16
+ 141 000e 42F82030 		str	r3, [r2, r0, lsl #2]
+ 142 0012 7047     		bx	lr
+ 143              	.L17:
+ 144              		.align	2
+ 145              	.L16:
+ 146 0014 00E100E0 		.word	-536813312
+ 148              		.section	.text.nvic_vector_table_set,"ax",%progbits
+ 149              		.align	1
+ 150              		.global	nvic_vector_table_set
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 155              	nvic_vector_table_set:
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158              		@ link register save eliminated.
+ 159 0000 21F06041 		bic	r1, r1, #-536870912
+ 160 0004 21F07F01 		bic	r1, r1, #127
+ 161 0008 0143     		orrs	r1, r1, r0
+ 162 000a 024B     		ldr	r3, .L19
+ 163 000c 9960     		str	r1, [r3, #8]
+ 164              		.syntax unified
+ 165              	@ 343 "../Firmware/CMSIS/core_cmInstr.h" 1
+ 166 000e BFF34F8F 		dsb
+ 167              	@ 0 "" 2
+ 168              		.thumb
+ 169              		.syntax unified
+ 170 0012 7047     		bx	lr
+ 171              	.L20:
+ 172              		.align	2
+ 173              	.L19:
+ 174 0014 00ED00E0 		.word	-536810240
+ 176              		.section	.text.system_lowpower_set,"ax",%progbits
+ 177              		.align	1
+ 178              		.global	system_lowpower_set
+ 179              		.syntax unified
+ARM GAS  /tmp/ccpnVdF4.s 			page 4
+
+
+ 180              		.thumb
+ 181              		.thumb_func
+ 183              	system_lowpower_set:
+ 184              		@ args = 0, pretend = 0, frame = 0
+ 185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 186              		@ link register save eliminated.
+ 187 0000 024A     		ldr	r2, .L22
+ 188 0002 1369     		ldr	r3, [r2, #16]
+ 189 0004 0343     		orrs	r3, r3, r0
+ 190 0006 1361     		str	r3, [r2, #16]
+ 191 0008 7047     		bx	lr
+ 192              	.L23:
+ 193 000a 00BF     		.align	2
+ 194              	.L22:
+ 195 000c 00ED00E0 		.word	-536810240
+ 197              		.section	.text.system_lowpower_reset,"ax",%progbits
+ 198              		.align	1
+ 199              		.global	system_lowpower_reset
+ 200              		.syntax unified
+ 201              		.thumb
+ 202              		.thumb_func
+ 204              	system_lowpower_reset:
+ 205              		@ args = 0, pretend = 0, frame = 0
+ 206              		@ frame_needed = 0, uses_anonymous_args = 0
+ 207              		@ link register save eliminated.
+ 208 0000 024A     		ldr	r2, .L25
+ 209 0002 1369     		ldr	r3, [r2, #16]
+ 210 0004 23EA0003 		bic	r3, r3, r0
+ 211 0008 1361     		str	r3, [r2, #16]
+ 212 000a 7047     		bx	lr
+ 213              	.L26:
+ 214              		.align	2
+ 215              	.L25:
+ 216 000c 00ED00E0 		.word	-536810240
+ 218              		.section	.text.systick_clksource_set,"ax",%progbits
+ 219              		.align	1
+ 220              		.global	systick_clksource_set
+ 221              		.syntax unified
+ 222              		.thumb
+ 223              		.thumb_func
+ 225              	systick_clksource_set:
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228              		@ link register save eliminated.
+ 229 0000 0428     		cmp	r0, #4
+ 230 0002 06D0     		beq	.L30
+ 231 0004 4FF0E022 		mov	r2, #-536813568
+ 232 0008 1369     		ldr	r3, [r2, #16]
+ 233 000a 23F00403 		bic	r3, r3, #4
+ 234 000e 1361     		str	r3, [r2, #16]
+ 235 0010 7047     		bx	lr
+ 236              	.L30:
+ 237 0012 4FF0E022 		mov	r2, #-536813568
+ 238 0016 1369     		ldr	r3, [r2, #16]
+ 239 0018 43F00403 		orr	r3, r3, #4
+ 240 001c 1361     		str	r3, [r2, #16]
+ 241 001e 7047     		bx	lr
+ARM GAS  /tmp/ccpnVdF4.s 			page 5
+
+
+ 243              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 12.2.1 20221205"
+ARM GAS  /tmp/ccpnVdF4.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_misc.c
+     /tmp/ccpnVdF4.s:16     .text.nvic_priority_group_set:0000000000000000 $t
+     /tmp/ccpnVdF4.s:22     .text.nvic_priority_group_set:0000000000000000 nvic_priority_group_set
+     /tmp/ccpnVdF4.s:34     .text.nvic_priority_group_set:0000000000000010 $d
+     /tmp/ccpnVdF4.s:37     .text.nvic_irq_enable:0000000000000000 $t
+     /tmp/ccpnVdF4.s:43     .text.nvic_irq_enable:0000000000000000 nvic_irq_enable
+     /tmp/ccpnVdF4.s:121    .text.nvic_irq_enable:00000000000000a8 $d
+     /tmp/ccpnVdF4.s:125    .text.nvic_irq_disable:0000000000000000 $t
+     /tmp/ccpnVdF4.s:131    .text.nvic_irq_disable:0000000000000000 nvic_irq_disable
+     /tmp/ccpnVdF4.s:146    .text.nvic_irq_disable:0000000000000014 $d
+     /tmp/ccpnVdF4.s:149    .text.nvic_vector_table_set:0000000000000000 $t
+     /tmp/ccpnVdF4.s:155    .text.nvic_vector_table_set:0000000000000000 nvic_vector_table_set
+     /tmp/ccpnVdF4.s:174    .text.nvic_vector_table_set:0000000000000014 $d
+     /tmp/ccpnVdF4.s:177    .text.system_lowpower_set:0000000000000000 $t
+     /tmp/ccpnVdF4.s:183    .text.system_lowpower_set:0000000000000000 system_lowpower_set
+     /tmp/ccpnVdF4.s:195    .text.system_lowpower_set:000000000000000c $d
+     /tmp/ccpnVdF4.s:198    .text.system_lowpower_reset:0000000000000000 $t
+     /tmp/ccpnVdF4.s:204    .text.system_lowpower_reset:0000000000000000 system_lowpower_reset
+     /tmp/ccpnVdF4.s:216    .text.system_lowpower_reset:000000000000000c $d
+     /tmp/ccpnVdF4.s:219    .text.systick_clksource_set:0000000000000000 $t
+     /tmp/ccpnVdF4.s:225    .text.systick_clksource_set:0000000000000000 systick_clksource_set
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,116 @@
+ARM GAS  /tmp/ccHfPLUo.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"key.c"
+  14              		.text
+  15              		.section	.text.key_init,"ax",%progbits
+  16              		.align	1
+  17              		.global	key_init
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	key_init:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 10B5     		push	{r4, lr}
+  26 0002 4FF44060 		mov	r0, #3072
+  27 0006 FFF7FEFF 		bl	rcu_periph_clock_enable
+  28 000a 074C     		ldr	r4, .L3
+  29 000c 0223     		movs	r3, #2
+  30 000e 0022     		movs	r2, #0
+  31 0010 1146     		mov	r1, r2
+  32 0012 2046     		mov	r0, r4
+  33 0014 FFF7FEFF 		bl	gpio_mode_set
+  34 0018 0223     		movs	r3, #2
+  35 001a 1A46     		mov	r2, r3
+  36 001c 0021     		movs	r1, #0
+  37 001e 2046     		mov	r0, r4
+  38 0020 FFF7FEFF 		bl	gpio_output_options_set
+  39 0024 10BD     		pop	{r4, pc}
+  40              	.L4:
+  41 0026 00BF     		.align	2
+  42              	.L3:
+  43 0028 00000240 		.word	1073872896
+  45              		.section	.rodata.key_get_value.str1.4,"aMS",%progbits,1
+  46              		.align	2
+  47              	.LC0:
+  48 0000 63757272 		.ascii	"currect port is %d,pin is %d\012\000"
+  48      65637420 
+  48      706F7274 
+  48      20697320 
+  48      25642C70 
+  49              		.section	.text.key_get_value,"ax",%progbits
+  50              		.align	1
+  51              		.global	key_get_value
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+  56              	key_get_value:
+ARM GAS  /tmp/ccHfPLUo.s 			page 2
+
+
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59 0000 38B5     		push	{r3, r4, r5, lr}
+  60 0002 0446     		mov	r4, r0
+  61 0004 0D46     		mov	r5, r1
+  62 0006 FFF7FEFF 		bl	gpio_input_bit_get
+  63 000a 00B1     		cbz	r0, .L9
+  64              	.L5:
+  65 000c 38BD     		pop	{r3, r4, r5, pc}
+  66              	.L9:
+  67 000e 0A20     		movs	r0, #10
+  68 0010 FFF7FEFF 		bl	delay_1ms
+  69 0014 2946     		mov	r1, r5
+  70 0016 2046     		mov	r0, r4
+  71 0018 FFF7FEFF 		bl	gpio_input_bit_get
+  72 001c 0028     		cmp	r0, #0
+  73 001e F5D1     		bne	.L5
+  74 0020 2A46     		mov	r2, r5
+  75 0022 2146     		mov	r1, r4
+  76 0024 0448     		ldr	r0, .L10
+  77 0026 FFF7FEFF 		bl	printf
+  78              	.L7:
+  79 002a 2946     		mov	r1, r5
+  80 002c 2046     		mov	r0, r4
+  81 002e FFF7FEFF 		bl	gpio_input_bit_get
+  82 0032 0028     		cmp	r0, #0
+  83 0034 F9D0     		beq	.L7
+  84 0036 E9E7     		b	.L5
+  85              	.L11:
+  86              		.align	2
+  87              	.L10:
+  88 0038 00000000 		.word	.LC0
+  90              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 12.2.1 20221205"
+ARM GAS  /tmp/ccHfPLUo.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 key.c
+     /tmp/ccHfPLUo.s:16     .text.key_init:0000000000000000 $t
+     /tmp/ccHfPLUo.s:22     .text.key_init:0000000000000000 key_init
+     /tmp/ccHfPLUo.s:43     .text.key_init:0000000000000028 $d
+     /tmp/ccHfPLUo.s:46     .rodata.key_get_value.str1.4:0000000000000000 $d
+     /tmp/ccHfPLUo.s:50     .text.key_get_value:0000000000000000 $t
+     /tmp/ccHfPLUo.s:56     .text.key_get_value:0000000000000000 key_get_value
+     /tmp/ccHfPLUo.s:88     .text.key_get_value:0000000000000038 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+gpio_mode_set
+gpio_output_options_set
+gpio_input_bit_get
+delay_1ms
+printf

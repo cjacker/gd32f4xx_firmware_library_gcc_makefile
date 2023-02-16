@@ -1,0 +1,331 @@
+ARM GAS  /tmp/ccKWQpKm.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"system_gd32f4xx.c"
+  14              		.text
+  15              		.section	.text.system_clock_200m_25m_hxtal,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  21              	system_clock_200m_25m_hxtal:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 364A     		ldr	r2, .L10
+  26 0002 D2F80038 		ldr	r3, [r2, #2048]
+  27 0006 43F48033 		orr	r3, r3, #65536
+  28 000a C2F80038 		str	r3, [r2, #2048]
+  29 000e 0023     		movs	r3, #0
+  30              	.L3:
+  31 0010 0133     		adds	r3, r3, #1
+  32 0012 324A     		ldr	r2, .L10
+  33 0014 D2F80028 		ldr	r2, [r2, #2048]
+  34 0018 12F4003F 		tst	r2, #131072
+  35 001c 03D1     		bne	.L2
+  36 001e 4FF6FF72 		movw	r2, #65535
+  37 0022 9342     		cmp	r3, r2
+  38 0024 F4D1     		bne	.L3
+  39              	.L2:
+  40 0026 2D4B     		ldr	r3, .L10
+  41 0028 D3F80038 		ldr	r3, [r3, #2048]
+  42 002c 13F4003F 		tst	r3, #131072
+  43 0030 00D1     		bne	.L4
+  44              	.L5:
+  45 0032 FEE7     		b	.L5
+  46              	.L4:
+  47 0034 294B     		ldr	r3, .L10
+  48 0036 D3F84028 		ldr	r2, [r3, #2112]
+  49 003a 42F08052 		orr	r2, r2, #268435456
+  50 003e C3F84028 		str	r2, [r3, #2112]
+  51 0042 2749     		ldr	r1, .L10+4
+  52 0044 0A68     		ldr	r2, [r1]
+  53 0046 42F44042 		orr	r2, r2, #49152
+  54 004a 0A60     		str	r2, [r1]
+  55 004c D3F80828 		ldr	r2, [r3, #2056]
+  56 0050 C3F80828 		str	r2, [r3, #2056]
+  57 0054 D3F80828 		ldr	r2, [r3, #2056]
+  58 0058 42F40042 		orr	r2, r2, #32768
+ARM GAS  /tmp/ccKWQpKm.s 			page 2
+
+
+  59 005c C3F80828 		str	r2, [r3, #2056]
+  60 0060 D3F80828 		ldr	r2, [r3, #2056]
+  61 0064 42F4A052 		orr	r2, r2, #5120
+  62 0068 C3F80828 		str	r2, [r3, #2056]
+  63 006c 1D4A     		ldr	r2, .L10+8
+  64 006e C3F80428 		str	r2, [r3, #2052]
+  65 0072 D3F80028 		ldr	r2, [r3, #2048]
+  66 0076 42F08072 		orr	r2, r2, #16777216
+  67 007a C3F80028 		str	r2, [r3, #2048]
+  68              	.L6:
+  69 007e 174B     		ldr	r3, .L10
+  70 0080 D3F80038 		ldr	r3, [r3, #2048]
+  71 0084 13F0007F 		tst	r3, #33554432
+  72 0088 F9D0     		beq	.L6
+  73 008a 154A     		ldr	r2, .L10+4
+  74 008c 1368     		ldr	r3, [r2]
+  75 008e 43F48033 		orr	r3, r3, #65536
+  76 0092 1360     		str	r3, [r2]
+  77              	.L7:
+  78 0094 124B     		ldr	r3, .L10+4
+  79 0096 5B68     		ldr	r3, [r3, #4]
+  80 0098 13F4803F 		tst	r3, #65536
+  81 009c FAD0     		beq	.L7
+  82 009e 104A     		ldr	r2, .L10+4
+  83 00a0 1368     		ldr	r3, [r2]
+  84 00a2 43F40033 		orr	r3, r3, #131072
+  85 00a6 1360     		str	r3, [r2]
+  86              	.L8:
+  87 00a8 0D4B     		ldr	r3, .L10+4
+  88 00aa 5B68     		ldr	r3, [r3, #4]
+  89 00ac 13F4003F 		tst	r3, #131072
+  90 00b0 FAD0     		beq	.L8
+  91 00b2 0A4B     		ldr	r3, .L10
+  92 00b4 D3F80828 		ldr	r2, [r3, #2056]
+  93 00b8 22F00302 		bic	r2, r2, #3
+  94 00bc C3F80828 		str	r2, [r3, #2056]
+  95 00c0 D3F80828 		ldr	r2, [r3, #2056]
+  96 00c4 42F00202 		orr	r2, r2, #2
+  97 00c8 C3F80828 		str	r2, [r3, #2056]
+  98              	.L9:
+  99 00cc 034B     		ldr	r3, .L10
+ 100 00ce D3F80838 		ldr	r3, [r3, #2056]
+ 101 00d2 13F0080F 		tst	r3, #8
+ 102 00d6 F9D0     		beq	.L9
+ 103 00d8 7047     		bx	lr
+ 104              	.L11:
+ 105 00da 00BF     		.align	2
+ 106              	.L10:
+ 107 00dc 00300240 		.word	1073885184
+ 108 00e0 00700040 		.word	1073770496
+ 109 00e4 19644009 		.word	155214873
+ 111              		.section	.text.system_clock_config,"ax",%progbits
+ 112              		.align	1
+ 113              		.syntax unified
+ 114              		.thumb
+ 115              		.thumb_func
+ 117              	system_clock_config:
+ARM GAS  /tmp/ccKWQpKm.s 			page 3
+
+
+ 118              		@ args = 0, pretend = 0, frame = 0
+ 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 120 0000 08B5     		push	{r3, lr}
+ 121 0002 FFF7FEFF 		bl	system_clock_200m_25m_hxtal
+ 122 0006 08BD     		pop	{r3, pc}
+ 124              		.section	.text.SystemInit,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	SystemInit
+ 127              		.syntax unified
+ 128              		.thumb
+ 129              		.thumb_func
+ 131              	SystemInit:
+ 132              		@ args = 0, pretend = 0, frame = 8
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134 0000 00B5     		push	{lr}
+ 135 0002 83B0     		sub	sp, sp, #12
+ 136 0004 284A     		ldr	r2, .L21
+ 137 0006 D2F80038 		ldr	r3, [r2, #2048]
+ 138 000a 43F00103 		orr	r3, r3, #1
+ 139 000e C2F80038 		str	r3, [r2, #2048]
+ 140              	.L15:
+ 141 0012 254B     		ldr	r3, .L21
+ 142 0014 D3F80038 		ldr	r3, [r3, #2048]
+ 143 0018 13F0020F 		tst	r3, #2
+ 144 001c F9D0     		beq	.L15
+ 145 001e 224A     		ldr	r2, .L21
+ 146 0020 D2F80838 		ldr	r3, [r2, #2056]
+ 147 0024 43F08003 		orr	r3, r3, #128
+ 148 0028 C2F80838 		str	r3, [r2, #2056]
+ 149 002c 0023     		movs	r3, #0
+ 150 002e 0193     		str	r3, [sp, #4]
+ 151 0030 02E0     		b	.L16
+ 152              	.L17:
+ 153 0032 019B     		ldr	r3, [sp, #4]
+ 154 0034 0133     		adds	r3, r3, #1
+ 155 0036 0193     		str	r3, [sp, #4]
+ 156              	.L16:
+ 157 0038 019B     		ldr	r3, [sp, #4]
+ 158 003a 4F2B     		cmp	r3, #79
+ 159 003c F9D9     		bls	.L17
+ 160 003e 1A4A     		ldr	r2, .L21
+ 161 0040 D2F80838 		ldr	r3, [r2, #2056]
+ 162 0044 43F09003 		orr	r3, r3, #144
+ 163 0048 C2F80838 		str	r3, [r2, #2056]
+ 164 004c 0023     		movs	r3, #0
+ 165 004e 0193     		str	r3, [sp, #4]
+ 166 0050 02E0     		b	.L18
+ 167              	.L19:
+ 168 0052 019B     		ldr	r3, [sp, #4]
+ 169 0054 0133     		adds	r3, r3, #1
+ 170 0056 0193     		str	r3, [sp, #4]
+ 171              	.L18:
+ 172 0058 019B     		ldr	r3, [sp, #4]
+ 173 005a 4F2B     		cmp	r3, #79
+ 174 005c F9D9     		bls	.L19
+ 175 005e 124B     		ldr	r3, .L21
+ 176 0060 D3F80828 		ldr	r2, [r3, #2056]
+ARM GAS  /tmp/ccKWQpKm.s 			page 4
+
+
+ 177 0064 22F00302 		bic	r2, r2, #3
+ 178 0068 C3F80828 		str	r2, [r3, #2056]
+ 179 006c D3F80028 		ldr	r2, [r3, #2048]
+ 180 0070 22F08472 		bic	r2, r2, #17301504
+ 181 0074 22F48032 		bic	r2, r2, #65536
+ 182 0078 C3F80028 		str	r2, [r3, #2048]
+ 183 007c D3F80028 		ldr	r2, [r3, #2048]
+ 184 0080 22F48022 		bic	r2, r2, #262144
+ 185 0084 C3F80028 		str	r2, [r3, #2048]
+ 186 0088 0022     		movs	r2, #0
+ 187 008a C3F80828 		str	r2, [r3, #2056]
+ 188 008e D3F80818 		ldr	r1, [r3, #2056]
+ 189 0092 0649     		ldr	r1, .L21+4
+ 190 0094 C3F80418 		str	r1, [r3, #2052]
+ 191 0098 C3F80C28 		str	r2, [r3, #2060]
+ 192 009c FFF7FEFF 		bl	system_clock_config
+ 193 00a0 03B0     		add	sp, sp, #12
+ 194              		@ sp needed
+ 195 00a2 5DF804FB 		ldr	pc, [sp], #4
+ 196              	.L22:
+ 197 00a6 00BF     		.align	2
+ 198              	.L21:
+ 199 00a8 00300240 		.word	1073885184
+ 200 00ac 10300024 		.word	603992080
+ 202              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+ 203              		.align	1
+ 204              		.global	SystemCoreClockUpdate
+ 205              		.syntax unified
+ 206              		.thumb
+ 207              		.thumb_func
+ 209              	SystemCoreClockUpdate:
+ 210              		@ args = 0, pretend = 0, frame = 16
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		@ link register save eliminated.
+ 213 0000 84B0     		sub	sp, sp, #16
+ 214 0002 254B     		ldr	r3, .L32
+ 215 0004 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 216 0006 0DF1100C 		add	ip, sp, #16
+ 217 000a 0CE90F00 		stmdb	ip, {r0, r1, r2, r3}
+ 218 000e 234B     		ldr	r3, .L32+4
+ 219 0010 D3F80838 		ldr	r3, [r3, #2056]
+ 220 0014 C3F38103 		ubfx	r3, r3, #2, #2
+ 221 0018 012B     		cmp	r3, #1
+ 222 001a 18D0     		beq	.L24
+ 223 001c 022B     		cmp	r3, #2
+ 224 001e 1AD0     		beq	.L25
+ 225 0020 1BB1     		cbz	r3, .L31
+ 226 0022 1F4B     		ldr	r3, .L32+8
+ 227 0024 1F4A     		ldr	r2, .L32+12
+ 228 0026 1A60     		str	r2, [r3]
+ 229 0028 02E0     		b	.L27
+ 230              	.L31:
+ 231 002a 1D4B     		ldr	r3, .L32+8
+ 232 002c 1D4A     		ldr	r2, .L32+12
+ 233 002e 1A60     		str	r2, [r3]
+ 234              	.L27:
+ 235 0030 1A4B     		ldr	r3, .L32+4
+ARM GAS  /tmp/ccKWQpKm.s 			page 5
+
+
+ 236 0032 D3F80838 		ldr	r3, [r3, #2056]
+ 237 0036 C3F30313 		ubfx	r3, r3, #4, #4
+ 238 003a 1033     		adds	r3, r3, #16
+ 239 003c 6B44     		add	r3, sp, r3
+ 240 003e 13F8101C 		ldrb	r1, [r3, #-16]	@ zero_extendqisi2
+ 241 0042 174A     		ldr	r2, .L32+8
+ 242 0044 1368     		ldr	r3, [r2]
+ 243 0046 CB40     		lsrs	r3, r3, r1
+ 244 0048 1360     		str	r3, [r2]
+ 245 004a 04B0     		add	sp, sp, #16
+ 246              		@ sp needed
+ 247 004c 7047     		bx	lr
+ 248              	.L24:
+ 249 004e 144B     		ldr	r3, .L32+8
+ 250 0050 154A     		ldr	r2, .L32+16
+ 251 0052 1A60     		str	r2, [r3]
+ 252 0054 ECE7     		b	.L27
+ 253              	.L25:
+ 254 0056 114B     		ldr	r3, .L32+4
+ 255 0058 D3F80408 		ldr	r0, [r3, #2052]
+ 256 005c 00F03F00 		and	r0, r0, #63
+ 257 0060 D3F80418 		ldr	r1, [r3, #2052]
+ 258 0064 C1F38811 		ubfx	r1, r1, #6, #9
+ 259 0068 D3F80428 		ldr	r2, [r3, #2052]
+ 260 006c C2F30142 		ubfx	r2, r2, #16, #2
+ 261 0070 0132     		adds	r2, r2, #1
+ 262 0072 5200     		lsls	r2, r2, #1
+ 263 0074 D3F80438 		ldr	r3, [r3, #2052]
+ 264 0078 13F4800F 		tst	r3, #4194304
+ 265 007c 09D0     		beq	.L29
+ 266 007e 0A4B     		ldr	r3, .L32+16
+ 267              	.L28:
+ 268 0080 B3FBF0F3 		udiv	r3, r3, r0
+ 269 0084 01FB03F3 		mul	r3, r1, r3
+ 270 0088 B3FBF2F3 		udiv	r3, r3, r2
+ 271 008c 044A     		ldr	r2, .L32+8
+ 272 008e 1360     		str	r3, [r2]
+ 273 0090 CEE7     		b	.L27
+ 274              	.L29:
+ 275 0092 044B     		ldr	r3, .L32+12
+ 276 0094 F4E7     		b	.L28
+ 277              	.L33:
+ 278 0096 00BF     		.align	2
+ 279              	.L32:
+ 280 0098 00000000 		.word	.LANCHOR0
+ 281 009c 00300240 		.word	1073885184
+ 282 00a0 00000000 		.word	SystemCoreClock
+ 283 00a4 0024F400 		.word	16000000
+ 284 00a8 40787D01 		.word	25000000
+ 286              		.global	SystemCoreClock
+ 287              		.section	.data.SystemCoreClock,"aw"
+ 288              		.align	2
+ 291              	SystemCoreClock:
+ 292 0000 00C2EB0B 		.word	200000000
+ 293              		.section	.rodata
+ 294              		.align	2
+ 295              		.set	.LANCHOR0,. + 0
+ARM GAS  /tmp/ccKWQpKm.s 			page 6
+
+
+ 296              	.LC0:
+ 297 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+ 297      00000000 
+ 297      01020304 
+ 297      06
+ 298 000d 070809   		.ascii	"\007\010\011"
+ 299              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 12.2.1 20221205"
+ARM GAS  /tmp/ccKWQpKm.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 system_gd32f4xx.c
+     /tmp/ccKWQpKm.s:16     .text.system_clock_200m_25m_hxtal:0000000000000000 $t
+     /tmp/ccKWQpKm.s:21     .text.system_clock_200m_25m_hxtal:0000000000000000 system_clock_200m_25m_hxtal
+     /tmp/ccKWQpKm.s:107    .text.system_clock_200m_25m_hxtal:00000000000000dc $d
+     /tmp/ccKWQpKm.s:112    .text.system_clock_config:0000000000000000 $t
+     /tmp/ccKWQpKm.s:117    .text.system_clock_config:0000000000000000 system_clock_config
+     /tmp/ccKWQpKm.s:125    .text.SystemInit:0000000000000000 $t
+     /tmp/ccKWQpKm.s:131    .text.SystemInit:0000000000000000 SystemInit
+     /tmp/ccKWQpKm.s:199    .text.SystemInit:00000000000000a8 $d
+     /tmp/ccKWQpKm.s:203    .text.SystemCoreClockUpdate:0000000000000000 $t
+     /tmp/ccKWQpKm.s:209    .text.SystemCoreClockUpdate:0000000000000000 SystemCoreClockUpdate
+     /tmp/ccKWQpKm.s:280    .text.SystemCoreClockUpdate:0000000000000098 $d
+     /tmp/ccKWQpKm.s:291    .data.SystemCoreClock:0000000000000000 SystemCoreClock
+     /tmp/ccKWQpKm.s:288    .data.SystemCoreClock:0000000000000000 $d
+     /tmp/ccKWQpKm.s:294    .rodata:0000000000000000 $d
+
+NO UNDEFINED SYMBOLS
