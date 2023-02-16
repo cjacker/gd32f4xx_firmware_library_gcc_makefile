@@ -9,13 +9,11 @@ GD32F4xx standard firmware library is suitable for GD32F4xx series MCU. The libr
 
 # to support other GD32F4xx parts
 
-You can modify:
+You need change:
 
-- Makefile (note the '-DGD32F470)
-- Firmware/gd32f4xx.ld to define memory layout to match your MCU
-- Choose the startup asm file in 'Firmware' dir
-
-to support other GD32F4xx parts.
+- Makefile from '-DGD32F470' to your part model
+- Firmware/gd32f4xx.ld, define flash and ram size to match your MCU
+- Choose the startup asm file in 'Firmware' dir and change the Makefile.
 
 # to build
 
