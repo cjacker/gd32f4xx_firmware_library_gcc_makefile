@@ -3,6 +3,8 @@ This repo enable arm-none-eabi-gcc and Makefile support to GigaDevice GD32F4xx F
 
 And the default linker script and startup asm file is for GD32F470ZGT6 to support development with JLC LiangShanPi.
 
+<img src="https://raw.githubusercontent.com/cjacker/gd32f4xx_firmware_library_gcc_makefile/main/liangshanpi.png" width="90%"/>
+
 GD32F4xx standard firmware library is suitable for GD32F4xx series MCU. The library is compatible with the CMSIS (Cortex-M Microcontroller Software Interface Standard), and includes programs, data structures and macro definitions. It covers the features of all the integrated peripherals, contains all the related drivers and sample programs.
 
 # to support other GD32F4xx parts
