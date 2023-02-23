@@ -59,7 +59,7 @@ User/main.c \
 User/systick.c
 
 # ASM sources
-ASM_SOURCES = Firmware/startup_gd32f450_470.S
+ASM_SOURCES = Firmware/CMSIS/GD/GD32F4xx/Source/GCC/startup_gd32f450_470.S
 
 
 #######################################
@@ -136,7 +136,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-LDSCRIPT = Firmware/gd32f4xx.ld
+LDSCRIPT = Firmware/Ld/Link.ld
 
 # libraries
 LIBS = -lc -lm -lnosys 
