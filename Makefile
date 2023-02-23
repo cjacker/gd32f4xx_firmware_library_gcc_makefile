@@ -59,7 +59,7 @@ User/main.c \
 User/systick.c
 
 # ASM sources
-ASM_SOURCES = Firmware/CMSIS/GD/GD32F4xx/Source/GCC/startup_gd32f450_470.S
+ASM_SOURCES = Firmware/startup_gd32f450_470.S
 
 
 #######################################
@@ -136,7 +136,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-LDSCRIPT = Firmware/Ld/Link.ld
+LDSCRIPT = Firmware/gd32f4xx.ld
 
 # libraries
 LIBS = -lc -lm -lnosys 
@@ -179,8 +179,12 @@ $(BUILD_DIR):
 #######################################
 # program
 #######################################
-program:
+program_openocd:
 	openocd -f /usr/share/openocd/scripts/interface/cmsis-dap.cfg -f /usr/share/openocd/scripts/target/stm32f4x.cfg -c "program build/$(TARGET).elf verify reset exit"
+
+program_pyocd:
+	pyocd erase -c -t gd32f450zg --config pyocd.yaml
+	pyocd load build/$(TARGET).hex -t gd32f450zg --config pyocd.yaml
 
 #######################################
 # clean up
